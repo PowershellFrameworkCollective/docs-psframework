@@ -1,0 +1,8 @@
+fred:
+  name: Friedrich Weinmann
+  title: Cloud Solution Architect @MSFT
+  url: https://github.com/FriedrichWeinmann
+  image_url: https://github.com/FriedrichWeinmann.png
+  page: true
+  socials:
+    github: FriedrichWeinmann
