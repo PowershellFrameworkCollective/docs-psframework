@@ -1,3 +1,4 @@
+[CmdletBinding()]
 param (
 	[string]
 	$RootPath = $env:SYSTEM_DEFAULTWORKINGDIRECTORY

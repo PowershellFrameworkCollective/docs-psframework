@@ -20,7 +20,7 @@ Requires you to have already configured a target workspace to log to.
 ## Properties
 
 > Properties are used to control the behavior of the Provider.
-> They can be specified using Set-PSFLoggingProvider or provided using the [Configuration system](../../configuration.md).
+> They can be specified using Set-PSFLoggingProvider or provided using the [Configuration system](../../Configuration/overview.md).
 
 |Name|Default Value|Description|
 |---|---|---|

@@ -99,6 +99,12 @@ const config = {
             position: 'left',
             label: 'PSFramework',
           },
+          {
+            type: 'docSidebar',
+            sidebarId: 'commandsSidebar',
+            position: 'left',
+            label: 'Commands',
+          },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
             href: 'https://github.com/PowershellFrameworkCollective/',

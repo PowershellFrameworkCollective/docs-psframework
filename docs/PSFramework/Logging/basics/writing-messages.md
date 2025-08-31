@@ -45,9 +45,9 @@ There are several commands that allow you to write messages.
 
 |Command|Description|
 |---|---|
-|[Write-PSFMessage](../../../../commands/PSFramework/Write-PSFMessage.md)|The most commonly used command to write messages. It gives you the maximum flexibility in what to write.|
-|[Stop-PSFFunction](../../../../commands/PSFramework/Stop-PSFFunction.md)|Part of the [Flow Control Component](../../flow-control.md), it combines message handling with error handling.|
-|[Invoke-PSFProtectedCommand](../../../../commands/PSFramework/Invoke-PSFProtectedCommand.md)|Part of the [Flow Control Component](../../flow-control.md), it combines message handling with error handling, should process and retry logic.|
+|[Write-PSFMessage](../../../Commands/PSFramework/Write-PSFMessage.md)|The most commonly used command to write messages. It gives you the maximum flexibility in what to write.|
+|[Stop-PSFFunction](../../../Commands/PSFramework/Stop-PSFFunction.md)|Part of the [Flow Control Component](../../flow-control.md), it combines message handling with error handling.|
+|[Invoke-PSFProtectedCommand](../../../Commands/PSFramework/Invoke-PSFProtectedCommand.md)|Part of the [Flow Control Component](../../flow-control.md), it combines message handling with error handling, should process and retry logic.|
 
 ### Write-PSFMessage
 
@@ -135,7 +135,7 @@ The `-Data` parameter allows you to add additional arbitrary data.
 In opposite to the rest of the message properties, there is no promised compatibility or implementation for the `Data` field in respect to [Logging Providers](logging-providers.md).
 Some [Logging Providers](logging-providers.md) may implement it, others may not or only partially.
 
-You can find the supportability info in the stats on each respective [Provider's](../../logging.md) status sheet.
+You can find the supportability info in the stats on each respective [Provider's](../overview.md) status sheet.
 
 Data will always be fully accessible in the [In-memory debug log](inmemory-debuglog.md).
 
@@ -151,10 +151,10 @@ Write-PSFMessage -Message 'Restarting computer' -TargetObject $ComputerName -Dat
 
 ### Stop-PSFFunction
 
-As previously mentioned, [Stop-PSFFunction](../../../../commands/PSFramework/Stop-PSFFunction.md) is a major part of the [Flow Control Component](../../flow-control.md).
+As previously mentioned, [Stop-PSFFunction](../../../Commands/PSFramework/Stop-PSFFunction.md) is a major part of the [Flow Control Component](../../flow-control.md).
 Its main purpose is implementing the [opt-in exception user-experience](../../flow-control/opt-in-exceptions.md).
 
-From a message perspective, it offers less tuning options than [Write-PSFMessage](../../../../commands/PSFramework/Write-PSFMessage.md), but the ones it does match 1:1.
+From a message perspective, it offers less tuning options than [Write-PSFMessage](../../../Commands/PSFramework/Write-PSFMessage.md), but the ones it does match 1:1.
 
 All messages generated thus ...
 
@@ -188,7 +188,7 @@ return
 
 ### Invoke-PSFProtectedCommand
 
-[Invoke-PSFProtectedCommand](../../../../commands/PSFramework/Invoke-PSFProtectedCommand.md) too is part of the [Flow Control Component](../../flow-control.md) and can tie into the [opt-in exception user-experience](../../flow-control/opt-in-exceptions.md).
+[Invoke-PSFProtectedCommand](../../../Commands/PSFramework/Invoke-PSFProtectedCommand.md) too is part of the [Flow Control Component](../../flow-control.md) and can tie into the [opt-in exception user-experience](../../flow-control/opt-in-exceptions.md).
 Its main purpose however is to simplify error handling and `ShouldProcess` support.
 See its [dedicated feature page](../../flow-control/invoke-psfprotectedcommand.md) to learn how it can simplify your implementation of advanced reliability features in PowerShell.
 

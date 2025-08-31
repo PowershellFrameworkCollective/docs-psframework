@@ -62,7 +62,7 @@ By default, only the last 1028 messages are being retained in memory.
 ### Working with the file-based debug log
 
 The debug log is also written to the current user's userprofile - into appdata.
-At least by default, this can be changed using the [PSFramework Configuration System](../../configuration.md).
+At least by default, this can be changed using the [PSFramework Configuration System](../../Configuration/overview.md).
 
 To find the current location, run the following line:
 
@@ -112,7 +112,7 @@ Set-PSFConfig -FullName PSFramework.Logging.FileSystem.ModernLog -Value $true -P
 
 ## Configuring the Debug Log
 
-Using the [PSFramework Configuration System](../../configuration.md) you can change how exactly the debug logging works, as well as its limitations.
+Using the [PSFramework Configuration System](../../Configuration/overview.md) you can change how exactly the debug logging works, as well as its limitations.
 
 Using `Set-PSFConfig` and/or `Register-PSFConfig` or the other tools open to govern configuration, you can define the following settings:
 

@@ -86,7 +86,7 @@ Behind the scenes, each [Instance of a Logging Provider](../basics/logging-provi
 
 The configuration bits are what handles the information provided by the user that wants to consume your [Logging Provider](../basics/logging-providers.md).
 
-> This is backed by the [PSFramework Configuration System](../../configuration.md).
+> This is backed by the [PSFramework Configuration System](../../Configuration/overview.md).
 
 When calling `Register-PSFLoggingProvider` you need to provide two configuration-related pieces of information (there are two optional items that are generally also good to provide).
 

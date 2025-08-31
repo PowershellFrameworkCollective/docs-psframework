@@ -149,7 +149,7 @@ Now you may wonder, why offer those inserts, when you could just insert the vari
 Two reasons:
 
 + These are interpreted at runtime on each logging cycle. This can be used to split up the log on long-running tasks.
-+ It is possible to deploy these settings, such as FilePath, via [the Configuration Component](../../configuration.md), which cannot actually do live variable insertion.
++ It is possible to deploy these settings, such as FilePath, via [the Configuration Component](../../Configuration/overview.md), which cannot actually do live variable insertion.
 
 The logging provider will create the folder in which to create files if needed and able to.
 

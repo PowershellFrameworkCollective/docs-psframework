@@ -24,7 +24,7 @@ There are several concepts that are important here:
 
 ### The in-memory log
 
-All messages are automatically added to the [in-memory message log](../basics/inmemory_debuglog.md).
+All messages are automatically added to the [in-memory message log](../basics/inmemory-debuglog.md).
 They are by default limited to the last 1028 entries and can be read using `Get-PSFMessage`.
 This log is unaffected by any of the aspects that affect [Logging Providers](../basics/logging-providers.md).
 
@@ -41,7 +41,7 @@ An _Instance_ of a [Logging Provider](../basics/logging-providers.md) is a confi
 Most providers support having multiple instances active at the same time (for example writing the same message to multiple logfiles).
 
 You can configure each instance separately, what messages should be written by it (e.g. excluding messages from a given module or only including messages with a given tag).
-This configuration can be done using `Set-PSFLoggingProvider` or using the [Configuration System](../../configuration.md).
+This configuration can be done using `Set-PSFLoggingProvider` or using the [Configuration System](../../Configuration/overview.md).
 
 ### Logging Runspace
 

@@ -10,7 +10,7 @@ Writing to that log is a synchronous operation, other than the action of writing
 
 ## Reading the debug log
 
-To read that debug log, you can use the [Get-PSFMessage](../../../../commands/PSFramework/Get-PSFMessage.md) command.
+To read that debug log, you can use the [Get-PSFMessage](../../../Commands/PSFramework/Get-PSFMessage.md) command.
 It includes a lot of parameters that allow filtering messages flexibly.
 
 This log is designed to be especially useful for debugging during development.
@@ -31,7 +31,7 @@ These have a separate retention of (by default) the *last 128* errors being reta
 
 Due to that, even a lengthy task that writes a vast amount of messages will not hide the last errors.
 
-To access the error log, use [Get-PSFMessage](../../../../commands/PSFramework/Get-PSFMessage.md)'s `-Errors` switch parameter.
+To access the error log, use [Get-PSFMessage](../../../Commands/PSFramework/Get-PSFMessage.md)'s `-Errors` switch parameter.
 
 ## Clearing the log
 
@@ -62,4 +62,4 @@ Each of the log queues can be separately enabled/disabled and resized.
 |MessageLogEnabled|True|Governs, whether a log of recent messages is kept in memory.|
 |ErrorLogEnabled|True|Governs, whether a log of recent errors is kept in memory.|
 
-For more details on how to apply these settings, see the [documentation on the Configuration Component](../../configuration.md).
+For more details on how to apply these settings, see the [documentation on the Configuration Component](../../Configuration/overview.md).

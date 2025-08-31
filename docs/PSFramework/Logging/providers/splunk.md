@@ -20,7 +20,7 @@ Supports logging to both the on-prem installation and the cloud service.
 ## Properties
 
 > Properties are used to control the behavior of the Provider.
-> They can be specified using Set-PSFLoggingProvider or provided using the [Configuration system](../../configuration.md).
+> They can be specified using Set-PSFLoggingProvider or provided using the [Configuration system](../../Configuration/overview.md).
 
 |Name|Default Value|Description|
 |---|---|---|
