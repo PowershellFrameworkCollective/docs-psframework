@@ -1,0 +1,8 @@
+{
+  "label": "Logging",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "A simple to use, yet still PowerFull logging system."
+  }
+}
