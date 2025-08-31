@@ -12,7 +12,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const config = {
   title: 'PSFramework Project',
   tagline: 'The project dedicated to empowering your PowerShell scripting.',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/psframework.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
