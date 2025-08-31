@@ -114,12 +114,17 @@ const config = {
             ],
           },
           {
-            title: 'More',
+            title: 'Blog',
             items: [
               {
                 label: 'Blog',
                 to: '/blog',
               },
+            ],
+          },
+		  {
+            title: 'Github',
+            items: [
               {
                 label: 'GitHub',
                 href: 'https://github.com/PowershellFrameworkCollective/',
