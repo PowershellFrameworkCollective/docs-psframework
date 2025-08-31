@@ -4,32 +4,33 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'PSFramework',
+    Svg: require('@site/static/img/ps_black_128.svg').default,
     description: (
       <>
-        PSFramework was designed from the ground up to be easily installed and
-        used to get your PowerShell project up and running quickly.
+        The scripting toolkit that lets you focus on what really matters: The problems you have to solve.
+		Whether it is logging, managing settings, input processing or tab completion - this module has you covered!
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'PSModuleDevelopment',
+    Svg: require('@site/static/img/ps_black_128.svg').default,
     description: (
       <>
-        PSFramework lets you focus on your code, and we&apos;ll do the chores. Go
-        ahead and focus on the parts that solve your problem.
+        Treat your projects like cattle, not like pets!
+		This developer toolkit offers strong templating and many other tools to help create new code!
       </>
     ),
   },
   {
-    title: 'Powered by PowerShell',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'PSFramework.NuGet',
+    Svg: require('@site/static/img/ps_black_128.svg').default,
     description: (
       <>
-        Designed to run on any PowerShell version suported (and a few more),
-        but for the best experience, grab the <a href="https://aka.ms/pwsh">latest and greatest</a>.
+        The greatest tools cannot help, when they are not where they are needed.
+		Frustrated with PowerShell-native Package management?
+		PSFramework.NuGet is here to help!
       </>
     ),
   },
