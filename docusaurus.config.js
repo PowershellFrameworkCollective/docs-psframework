@@ -84,7 +84,7 @@ const config = {
         title: 'PSFramework',
         logo: {
           alt: 'PSFramework Logo',
-          src: 'img/logo.svg',
+          src: 'img/psframework.png',
         },
         items: [
           {
