@@ -114,7 +114,7 @@ const config = {
             ],
           },
           {
-            title: 'Blog',
+            title: 'News',
             items: [
               {
                 label: 'Blog',
@@ -123,7 +123,7 @@ const config = {
             ],
           },
 		  {
-            title: 'Github',
+            title: 'Code',
             items: [
               {
                 label: 'GitHub',
