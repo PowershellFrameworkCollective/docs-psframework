@@ -210,7 +210,7 @@ Much easier to read, and less effort to write.
 
 > Example 2: Include Filter Conditionals
 
-In addition to the previous tree structure, we can also make use of [Filter Expressions](../../filters.md)!
+In addition to the previous tree structure, we can also make use of [Filter Expressions](../../Filters/overview.md)!
 This allows us to selectively chose which part of the configuration to include:
 
 ```json
@@ -249,7 +249,7 @@ However, the `Deployment.Path` setting is defined with different values, dependi
 + If powershell is running on Github Actions, the value will be `"/var/etc/whateverElse"`.
 + If powershell is running on a Gitlab runner, the value will be `"/var/etc/lab"`.
 
-By default, each [Filter Expression](../filters.md) defined under `!Condition` is executed against the Environment Condition Set provided by the PSFramework.
+By default, each [Filter Expression](../../Filters/overview.md) defined under `!Condition` is executed against the Environment Condition Set provided by the PSFramework.
 If you want your expression to be evaluated using a different Condition Set, you also need to specify `!ConditionSet`, which consists of two parts:
 
 + The text until the first whitespace is the module name of the Condition Set
@@ -294,7 +294,7 @@ Nothing more to cover here really, for details on the tree structure, see above 
 
 > Filter conditions & Dynamisms
 
-The [Filter Expression](../../filters.md) statements defined in `!Condition` are _not_ subject to dynamic insertion from environment variables.
+The [Filter Expression](../../Filters/overview.md) statements defined in `!Condition` are _not_ subject to dynamic insertion from environment variables.
 
 ### Category: Include
 
