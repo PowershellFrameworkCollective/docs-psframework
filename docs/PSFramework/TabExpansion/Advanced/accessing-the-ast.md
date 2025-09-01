@@ -11,7 +11,7 @@ Shows how to react to the entire pipeline.
 ## Description
 
 For some seriously advanced tab completion, you can parse the current pipeline and react to commands before and after the command for which you want to complete a parameter's value.
-For this you have access to the full Ast via the [$commandAst](../Basics/special-variables.html) variable.
+For this you have access to the full Ast via the [$commandAst](../Basics/special-variables.md) variable.
 
 An non-hardened example that picks up on the properties of the output type of the preceding command:
 

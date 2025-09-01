@@ -18,5 +18,5 @@ This includes support for error handling, enhancing readability of your flow con
 
 ## Code Flow & User Experience
 
-+ [Savely and reliably execute code with less effort](invoke-psfprotectedcommand.html)
-+ [Implement an error-free user experience with Opt-In Exceptions](opt-in-exceptions.html)
++ [Savely and reliably execute code with less effort](invoke-psfprotectedcommand.md)
++ [Implement an error-free user experience with Opt-In Exceptions](opt-in-exceptions.md)

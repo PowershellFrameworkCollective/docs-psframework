@@ -13,7 +13,7 @@ Shows how you can implement tab completion that is aware of already specified pa
 One of the advanced features of tab completion is the ability to know, what was already bound to other parameters.
 This allows to prefilter offered values or to pick from different sets of values, depending.
 
-This makes use of the [$fakeBoundParameter variable](special-variables.html) that is available to your scriptblock.
+This makes use of the [$fakeBoundParameter variable](special-variables.md) that is available to your scriptblock.
 
 ```powershell
 Register-PSFTeppScriptblock -Name Alcohol.MugSize -ScriptBlock {

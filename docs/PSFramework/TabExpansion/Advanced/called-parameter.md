@@ -10,7 +10,7 @@ Tab completion can react to the name of the parameter completed for.
 
 ## Description
 
-In the PSFramework Tab Completion system, developers can use the [$parameterName](../Basics/special-variables.html) variable to access the name of the parameter it is currently completing for.
+In the PSFramework Tab Completion system, developers can use the [$parameterName](../Basics/special-variables.md) variable to access the name of the parameter it is currently completing for.
 This is rarely needed, as it is unusual to have parameters of different names have sufficiently similar content to merit sharing a scriptblock while still needing differentiation.
 
 Nevertheless, in instances where it _is_ required, it's available:

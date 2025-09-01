@@ -146,7 +146,7 @@ This is the recommended path if you make extensive use of custom tab completion 
 
 There are more advanced topics to help building your scriptblock:
 
-+ You can access [what the user typed so far](typed-so-far.html). You do not need to locally prefilter your output - the system handles that for you - but you can include it in search filters if you need to perform remote queries.
-+ You can access the [parameters already bound](previous-parameters.html) in order to react to input.
-+ You have access to the [command called](../Advanced/calling-command.html) or the [parameter completed for](../Advanced/called-parameter.html).
-+ For real fun deep-dives into the PowerShell Ast, you can parse [the current Ast](../Advanced/accessing-the-ast.html), opening the door to new realms of technical possibilities (and headaches; you have been warned!). For example, this would allow you to react to the bound parameters on the previous command in the pipeline.
++ You can access [what the user typed so far](typed-so-far.md). You do not need to locally prefilter your output - the system handles that for you - but you can include it in search filters if you need to perform remote queries.
++ You can access the [parameters already bound](previous-parameters.md) in order to react to input.
++ You have access to the [command called](../Advanced/calling-command.md) or the [parameter completed for](../Advanced/called-parameter.md).
++ For real fun deep-dives into the PowerShell Ast, you can parse [the current Ast](../Advanced/accessing-the-ast.md), opening the door to new realms of technical possibilities (and headaches; you have been warned!). For example, this would allow you to react to the bound parameters on the previous command in the pipeline.

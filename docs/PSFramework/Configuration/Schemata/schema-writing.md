@@ -149,7 +149,7 @@ foreach ($configItem in $configurationItems)
 
 The settings `$EnableException` and `$Cmdlet` are designed to help you with your error handling.
 The configuration system is - among other things - expected to be used directly be the end user.
-As such it implements the [Opt-In Exception workflow](../flow-control/opt-in-exceptions.md).
+As such it implements the [Opt-In Exception workflow](../../FlowControl/opt-in-exceptions.md).
 
 Your schema code is expected to handle errors gracefully, whether you cannot read the file or the layout is incorrect.
 As such you should use `Stop-PSFFunction` for your error handling, passing through these two variables.

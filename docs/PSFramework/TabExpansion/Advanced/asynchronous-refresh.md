@@ -1,4 +1,4 @@
----
+﻿---
 sidebar_position: 4
 ---
 
@@ -42,5 +42,5 @@ Register-PSFTeppScriptblock -Name ADComputer -ScriptBlock {
 Register-PSFTeppArgumentCompleter -Command Get-Something -Parameter ComputerName -Name ADComputer
 ```
 
-As was covered in the [Tab Completion guide](basics.html), you need to define a scriptblock and then assign it to command and parameter that should use it.
+As was covered in the [Tab Completion guide](basics.md), you need to define a scriptblock and then assign it to command and parameter that should use it.
 Using `Get-PSFTaskEngineCache -Module MyModule -Name Computers` during the Tab Completion scriptblock retrieves the information stored in the cache.

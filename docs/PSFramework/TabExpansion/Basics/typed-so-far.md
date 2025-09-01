@@ -15,7 +15,7 @@ Generally, no further implementation to respect this is necessary - PSFramework 
 
 However, in instances where providing custom Tab Completion relies on network calls hat can benefit from server-side filtering for improved performance, being able to use that current input in the query would be useful.
 
-That is where the special variable [$wordToComplete](spcial-variables.html) comes in handy:
+That is where the special variable [$wordToComplete](spcial-variables.md) comes in handy:
 
 ```powershell
 Register-PSFTeppScriptBlock -Name MyModule.ComputerName -ScriptBlock {

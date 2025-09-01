@@ -33,25 +33,25 @@ The PSFramework Tab Completion component removes most overhead, makes it easy to
 
 ## Quick Start Guides
 
-+ [Getting Started with Tab Completion](../../quickstart/PSFramework/tabcompletion.html)
++ [Getting Started with Tab Completion](../../quickstart/PSFramework/tabcompletion.md)
 
 ## Fundamentals
 
-+ [Basics](Basics/basics.html)
-+ [Special Variables](tab-completion/special-variables.html)
-+ [Working with the Word to Complete](tab-completion/typed-so-far.html)
-+ [Accessing already bound parameters](tab-completion/previous-parameters.html)
-+ [Training your Completion](tab-completion/training-completers.html)
++ [Basics](Basics/basics.md)
++ [Special Variables](tab-completion/special-variables.md)
++ [Working with the Word to Complete](tab-completion/typed-so-far.md)
++ [Accessing already bound parameters](tab-completion/previous-parameters.md)
++ [Training your Completion](tab-completion/training-completers.md)
 
 ## Diving Deeper
 
-+ [Accessing the parameter bound to](tab-completion/called-parameter.html)
-+ [Accessing the called command](tab-completion/calling-command.html)
-+ [Accessing the Ast](tab-completion/accessing-the-ast.html)
-+ [Cached Tab Completion with Asynchronous Refresh](tab-completion/asynchronous-refresh.html)
++ [Accessing the parameter bound to](tab-completion/called-parameter.md)
++ [Accessing the called command](tab-completion/calling-command.md)
++ [Accessing the Ast](tab-completion/accessing-the-ast.md)
++ [Cached Tab Completion with Asynchronous Refresh](tab-completion/asynchronous-refresh.md)
 
 ## Predefined Completions
 
 The PSFramework may include finished tab completion scripts useful to the audience at large:
 
-+ [Tab Completion: Input Object Properties](Predefined/completion-inputobject.html)
++ [Tab Completion: Input Object Properties](Predefined/completion-inputobject.md)

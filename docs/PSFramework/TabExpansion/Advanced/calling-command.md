@@ -16,7 +16,7 @@ Generally that is all well, but sometimes it may be useful to have slight differ
 One way to cause different behavior would be to implement separate scriptblocks, however that would lead to both scriptblocks requiring maintenance.
 If the code is mostly identical, that is not really efficient.
 
-Instead you can use the [$CommandName](../Basics/special-variables.html) variable to change scriptblock execution based upon this.
+Instead you can use the [$CommandName](../Basics/special-variables.md) variable to change scriptblock execution based upon this.
 For example the following snippet changes the search scope, based on whether the command contain the `-Client` string:
 
 ```powershell

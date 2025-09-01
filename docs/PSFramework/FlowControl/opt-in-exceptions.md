@@ -21,7 +21,7 @@ The Opt-In Exception system allows combining the best of both worlds:
 The following commands can be used to implement the Opt-In Exception system:
 
 + Stop-PSFFunction
-+ [Invoke-PSFProtectedCommand](invoke-psfprotectedcommand.html)
++ [Invoke-PSFProtectedCommand](invoke-psfprotectedcommand.md)
 + Invoke-PSFCallback
 
 Basically, these are designed to handle errors for you.

@@ -51,13 +51,13 @@ This performs all the steps that were taken in the previous example:
 
 ### Error Handling peculiarities
 
-This command implements the same [opt-in exception system](opt-in-exceptions.html) as `Stop-PSFFunction` and `Write-PSFMessage` implement.
+This command implements the same [opt-in exception system](opt-in-exceptions.md) as `Stop-PSFFunction` and `Write-PSFMessage` implement.
 This means, by default it will not throw an exception on failure.
 Instead it will flag the calling command as failed if an error happens in the scriptblock provided for it.
 
 Use the `-EnableException` parameter to enable terminating exceptions.
 
-More details on the [opt-in exception system](opt-in-exceptions.html) can be found on its [dedicated page](opt-in-exceptions.html)
+More details on the [opt-in exception system](opt-in-exceptions.md) can be found on its [dedicated page](opt-in-exceptions.md)
 
 ### The -Continue Parameter
 
@@ -90,7 +90,7 @@ Invoke-PSFProtectedCommand -Action Delete -Target $Path -ScriptBlock {
 In this case, the command will now attempt four times - once plus three retries - to delete the file in the specified path.
 It will wait for five seconds inbetween attempts (five seconds is the default waiting time).
 
-If a different time is desired, use `-RetryWait`, which is a [Timespan Parameter Class](../parameter-classes/timespan-parameter.html). For example, this will cut the waiting time down to two seconds:
+If a different time is desired, use `-RetryWait`, which is a [Timespan Parameter Class](../parameter-classes/timespan-parameter.md). For example, this will cut the waiting time down to two seconds:
 
 ```powershell
 Invoke-PSFProtectedCommand -Action Delete -Target $Path -ScriptBlock {
