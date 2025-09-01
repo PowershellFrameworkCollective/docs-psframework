@@ -38,17 +38,17 @@ The PSFramework Tab Completion component removes most overhead, makes it easy to
 ## Fundamentals
 
 + [Basics](Basics/basics.md)
-+ [Special Variables](tab-completion/special-variables.md)
-+ [Working with the Word to Complete](tab-completion/typed-so-far.md)
-+ [Accessing already bound parameters](tab-completion/previous-parameters.md)
-+ [Training your Completion](tab-completion/training-completers.md)
++ [Special Variables](Basics/special-variables.md)
++ [Working with the Word to Complete](Basics/typed-so-far.md)
++ [Accessing already bound parameters](Basics/previous-parameters.md)
++ [Training your Completion](Basics/training-completers.md)
 
 ## Diving Deeper
 
-+ [Accessing the parameter bound to](tab-completion/called-parameter.md)
-+ [Accessing the called command](tab-completion/calling-command.md)
-+ [Accessing the Ast](tab-completion/accessing-the-ast.md)
-+ [Cached Tab Completion with Asynchronous Refresh](tab-completion/asynchronous-refresh.md)
++ [Accessing the parameter bound to](Advanced/called-parameter.md)
++ [Accessing the called command](Advanced/calling-command.md)
++ [Accessing the Ast](Advanced/accessing-the-ast.md)
++ [Cached Tab Completion with Asynchronous Refresh](Advanced/asynchronous-refresh.md)
 
 ## Predefined Completions
 

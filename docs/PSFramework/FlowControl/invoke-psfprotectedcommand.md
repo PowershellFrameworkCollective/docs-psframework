@@ -90,7 +90,7 @@ Invoke-PSFProtectedCommand -Action Delete -Target $Path -ScriptBlock {
 In this case, the command will now attempt four times - once plus three retries - to delete the file in the specified path.
 It will wait for five seconds inbetween attempts (five seconds is the default waiting time).
 
-If a different time is desired, use `-RetryWait`, which is a [Timespan Parameter Class](../parameter-classes/timespan-parameter.md). For example, this will cut the waiting time down to two seconds:
+If a different time is desired, use `-RetryWait`, which is a [Timespan Parameter Class](../ParameterClasses/timespan-parameter.md). For example, this will cut the waiting time down to two seconds:
 
 ```powershell
 Invoke-PSFProtectedCommand -Action Delete -Target $Path -ScriptBlock {
