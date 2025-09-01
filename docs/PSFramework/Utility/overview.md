@@ -18,4 +18,4 @@ Simple standalone commands that offer value:
 
 ## Micro-Features
 
-+ [PSFramework Hashtables](Features/psfhashtables.html): Extending hashtables to be better.
++ [PSFramework Hashtables](Features/psfhashtables.md): Extending hashtables to be better.
