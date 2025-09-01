@@ -81,7 +81,7 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'PSFramework',
+        title: 'Home',
         logo: {
           alt: 'PSFramework Logo',
           src: 'img/psframework.png',
