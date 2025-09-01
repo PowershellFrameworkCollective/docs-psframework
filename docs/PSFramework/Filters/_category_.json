@@ -1,0 +1,8 @@
+﻿{
+  "label": "Filters",
+  "position": 9,
+  "link": {
+    "type": "generated-index",
+    "description": "Implement your own filter syntaxes."
+  }
+}
