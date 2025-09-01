@@ -34,6 +34,26 @@ const FeatureList = [
       </>
     ),
   },
+  {
+    title: 'PSUtil',
+    Svg: require('@site/static/img/ps_black_128.svg').default,
+    description: (
+      <>
+        Upgrade your console experience.
+		Small helper commands, keybindings, aliases and other utilities make it easier to make yourself at home in your console.
+      </>
+    ),
+  },
+  {
+    title: 'MailDaemon',
+    Svg: require('@site/static/img/ps_black_128.svg').default,
+    description: (
+      <>
+        One of the classic challenges of scripting is sending mails.
+		This mail client makes it convenient and doesn't lose your mail, just because the server is offline for a bit.
+      </>
+    ),
+  },
 ];
 
 function Feature({Svg, title, description}) {

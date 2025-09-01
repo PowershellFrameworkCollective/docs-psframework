@@ -1,0 +1,8 @@
+﻿{
+  "label": "Tab Expansion",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Making Tab Expansion more useful and flexible"
+  }
+}
