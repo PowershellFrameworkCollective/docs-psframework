@@ -25,9 +25,10 @@ Add-PSFRunspaceWorker [-Name] <String> [-InQueue] <String> [-OutQueue] <String> 
 Adds a new worker / workload to a runspace workflow.
 
 The worker as a conceptually consists of three parts:
-- Input Queue: A queue where data to process awaits
-- N Runspaces to convert input to output
-- Output Queue: A queue where the finished results are passed off to.
+
++ Input Queue: A queue where data to process awaits
++ N Runspaces to convert input to output
++ Output Queue: A queue where the finished results are passed off to.
 
 In the wider flow of a Runspace Workflow, one Worker's Output Queue is alse another Worker's Input Queue.
 Thus we create a chain of workers from original input to finished output, each step individually with as many runspaces as needed.
@@ -35,6 +36,7 @@ Thus we create a chain of workers from original input to finished output, each s
 ## EXAMPLES
 
 ### EXAMPLE 1
+
 ```
 $workflow | Add-PSFRunspaceWorker -Name DoubleIt -InQueue Q1 -OutQueue Q2 -Count 5 -ScriptBlock { $args[0] * 2 }
 ```
@@ -43,6 +45,7 @@ Adds a worker to the workflow that will take items from Q1, double them, then wr
 Will create 5 runspaces to do the job.
 
 ### EXAMPLE 2
+
 ```
 $workflow | Add-PSFRunspaceWorker -Name Mailboxes -InQueue Organizations -OutQueue Mailboxes -Count 1 -Variables $connectionData -Begin $logonScript -ScriptBlock $getMailbox -End $logoutScript
 ```
@@ -50,6 +53,7 @@ $workflow | Add-PSFRunspaceWorker -Name Mailboxes -InQueue Organizations -OutQue
 Adds a worker that will for each organization retrieve the mailboxes.
 Will create 1 runspace to avoid hitting EXO throttling.
 More detailed examples and explanations can be found on psframework.org.
+
 https://psframework.org/documentation/documents/psframework/runspace-workflows.html
 
 ## PARAMETERS
@@ -289,7 +293,7 @@ Accept wildcard characters: False
 Any variables to provide to the worker runspaces.
 To each variable name, match as many values as you plan to have runspaces for this worker.
 So, if you set Count to 3, each variable here should have three values:
-@{ Key = $key1, $key2, $key3 }
+@\{ Key = $key1, $key2, $key3 \}
 While the order is not guaranteed, each worker runspace will receive its own, unique value for its variable.
 - If you provide more values than Count, only the first Count values will be used
 - If you provide less values than Count, the variable will be $null for any runspace beyond the count of values.
@@ -405,4 +409,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [https://psframework.org/documentation/documents/psframework/runspace-workflows.html](https://psframework.org/documentation/documents/psframework/runspace-workflows.html)
-
