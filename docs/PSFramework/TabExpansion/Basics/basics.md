@@ -46,7 +46,9 @@ Register-PSFTeppScriptblock -Name "mymodule.beerlabel" -ScriptBlock {
 
 ### Assigning a Scriptblock
 
-To assign the scriptblock, three things are needed:
+> By Command
+
+To assign the scriptblock by command, three things are needed:
 
 + Name of the command that has the parameter you want to complete.
 + Name of the parameter you want to complete.
@@ -57,7 +59,33 @@ To assign the scriptblock, three things are needed:
 Register-PSFTeppArgumentCompleter -Command Get-Alcohol -Parameter Type -Name "mymodule.alcohol"
 ```
 
-> Nothing in this claims you can only provide custom tab completion only for your own commands! You can update tab completion for commands in other modules. This allows using this system in your profile to customize tab completion to your environment (for example to auto-populate the list of Hyper-V hosts to connect to).
+:::info
+
+Nothing in this claims you can only provide custom tab completion only for your own commands! You can update tab completion for commands in other modules. This allows using this system in your profile to customize tab completion to your environment (for example to auto-populate the list of Hyper-V hosts to connect to).
+
+:::
+
+> By Attribute
+
+As an alternative to `Register-PSFTeppArgumentCompleter`, it is also possible to assign an argument completer by attribute.
+Following the previous example, that would like this:
+
+```powershell
+[PsfArgumentCompleter('mymodule.alcohol')]
+```
+
+Or in a full example function:
+
+```powershell
+function Get-Alcohol {
+    [CmdletBinding()]
+    param (
+        [PsfArgumentCompleter('mymodule.alcohol')]
+        [string]
+        $Type
+    )
+}
+```
 
 ### Adding Tooltips
 
