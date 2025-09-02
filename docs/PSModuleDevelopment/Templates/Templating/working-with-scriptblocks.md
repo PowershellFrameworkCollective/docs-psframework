@@ -69,11 +69,13 @@ The beginning of a powershell module's psd1 file might thus look like this:
     Author = 'þauthorþ'
 ```
 
-*Important note:*
+:::info
 
 Each scriptblock is only executed exactly once on template invocation! The result is saved and then pasted inside.
 
 If you need to run the same scriptblock multiple times - for example to create multiple guids - you need to define additional scriptblocks with different names!
+
+:::
 
 ### Dynamic Scriptblocks
 
@@ -96,17 +98,23 @@ A dynamic scriptblock is embedded as it is into the template files where needed.
 
 This scriptblock will be parsed out during template creation and replaced with an automatic name, the scriptblock assigned to the template file in a similar manner to a registered scriptblock.
 
-*Important note:*
+:::info
 
 Dynamic scriptblocks are combined with other dynamic scriptblocks that have an identical signature.
 
 If for example you need to run `þ{ [System.Guid]::NewGuid().ToString() }þ` multiple times, be sure to vary its signature, for example by appending a number of comment symbols.
 
+:::
+
 ### Scriptblock validation
 
 Scriptblocks are _not_ validated by the template system in any way.
 
-*Do not use* templates from untrusted sources without inspecting them first yourself, by using the `-Raw` parameter:
+:::warning
+
+Do not use templates from untrusted sources without inspecting them first yourself, by using the `-Raw` parameter:
+
+:::
 
 ```powershell
 Invoke-PSMDTemplate someTemplate -Raw

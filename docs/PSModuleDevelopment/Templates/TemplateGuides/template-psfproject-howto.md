@@ -39,4 +39,4 @@ Below is the output in the directory you will see after you invoke the creation 
 11. Commit your changes with your comments.
 12. Lastly publish your code to your GitHub repository.
 
-![A large list of changes in the Github Desktop client, ready to be comitted and uploaded](resources/GithubCode.png)
+![A large list of changes in the Github Desktop client, ready to be comitted and uploaded](resources/GitHubCode.png)
