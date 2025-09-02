@@ -101,6 +101,12 @@ const config = {
           },
           {
             type: 'docSidebar',
+            sidebarId: 'psmoduledevelopmentSidebar',
+            position: 'left',
+            label: 'PSModuleDevelopment',
+          },
+          {
+            type: 'docSidebar',
             sidebarId: 'commandsSidebar',
             position: 'left',
             label: 'Commands',

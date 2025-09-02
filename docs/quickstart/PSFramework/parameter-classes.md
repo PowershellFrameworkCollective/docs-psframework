@@ -34,6 +34,7 @@ With this your command will correctly understand dns resolution objects, the out
 
 ## Further reading
 
-+ [The Computer Parameter Class](https://psframework.org/documentation/documents/psframework/parameter-classes/computer-parameter.html)
-+ [The DateTime Parameter Class](https://psframework.org/documentation/documents/psframework/parameter-classes/datetime-parameter.html)
-+ [The TimeSpan Parameter Class](https://psframework.org/documentation/documents/psframework/parameter-classes/timespan-parameter.html)
++ [The Computer Parameter Class](../../PSFramework/ParameterClasses/computer-parameter.md)
++ [The Path Parameter Class](../../PSFramework/ParameterClasses/path-parameter.md)
++ [The DateTime Parameter Class](../../PSFramework/ParameterClasses/datetime-parameter.md)
++ [The TimeSpan Parameter Class](../../PSFramework/ParameterClasses/timespan-parameter.md)

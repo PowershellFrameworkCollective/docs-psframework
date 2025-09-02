@@ -1,6 +1,6 @@
 # Getting started with Tab Completion
 
-Tab Completion is what happens in PowerShell when you hit the `TAB` key:
+Tab Completion is what happens in PowerShell when you hit the `TAB` key`*`:
 
 + If you are typing a command name, it will be completed
 + If you are writing a parameter name, it will be completed
@@ -9,6 +9,12 @@ Tab Completion is what happens in PowerShell when you hit the `TAB` key:
 This third option isn't always so simple, because PowerShell needs to know what to offer and it is not always able to do so. When it can't, it generally offers files and folders in the current folder.
 
 Instead, you _can_ tell PowerShell what to do.
+
+:::info
+
+`*`: It also happens when you use `CTRL+Space` which is way more convenient, as it gives you a menu of available options!
+
+:::
 
 ## Command to complete
 
@@ -61,4 +67,4 @@ Get-Alcohol -Type <TAB>
 
 ## Further reading
 
-+ [Full Feature documentation](https://psframework.org/documentation/documents/psframework/tab-completion.html)
++ [Full Feature documentation](../../PSFramework/TabExpansion/overview.md)

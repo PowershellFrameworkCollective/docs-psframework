@@ -51,4 +51,4 @@ Wait-PSFMessage
 
 ## Further reading
 
-+ [Documentation root for the Logging System](https://psframework.org/documentation/documents/psframework/logging.html)
++ [Documentation root for the Logging System](../../PSFramework/Logging/overview.md)

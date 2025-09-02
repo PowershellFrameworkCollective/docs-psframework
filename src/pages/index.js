@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      description="The project dedicated to empowering your PowerShell scripting.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
