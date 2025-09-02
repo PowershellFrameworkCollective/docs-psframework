@@ -65,4 +65,4 @@ Since this component has some complexities that need to be dealt with, some in-d
 + [Deploying Template Stores per Group Policy](Managing/deploying-template-stores-per-gpo.md)
 + [Module included templates](Managing/module-include-templates.md)
 + [Default template parameters](Managing/default-template-parameters.md)
-+ [Configuration Options](Managing/configuration-options.html)
++ [Configuration Options](Managing/configuration-options.md)
