@@ -45,7 +45,7 @@ Then a quick:
 New-PSMDTemplate -FilePath ".\þnameþ.ps1" -TemplateName myFunction -Description "My first function template" -Author "<Insert your name here>" -Tags 'function','file'
 ```
 
-And you've got a template named `myFunction` in your default [template store](../Managing/template-store.md).
+And you've got a template named `myFunction` in your default [template store](../Managing/template-stores.md).
 
 Easy enough to use, let's dig into the details:
 
