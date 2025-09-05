@@ -21,6 +21,12 @@ The Workflow Object, the Worker and the Queue:
 + Worker: An individual step in the workflow, the worker contains the business logic of that step, the configuration and the runspaces actually executing it.
 + Queue: A workflow can have as many queues as desired. They ensure data gets exchanged between steps, usually the output of one step becoming the input of the next step.
 
+## Conference Recording
+
+This feature was extensively explained and demonstrated at the PowerShell Summit 2024:
+
+> [PowerShell Summit 2024: Runspace Workflows](https://www.youtube.com/watch?v=rspi8necNy0)
+
 ## Core Concepts
 
 + [The Workflow Object](Core/workflow.md)
