@@ -16,7 +16,7 @@ It will automatically create database or table if necessary (and able to).
 |Name|Sql|
 |Version|2|
 |ConfigurationRoot|PSFramework.Logging.Sql|
-|Supports Data|False|
+|Supports Data|True|
 |Installation|Required|
 
 ## Installation
