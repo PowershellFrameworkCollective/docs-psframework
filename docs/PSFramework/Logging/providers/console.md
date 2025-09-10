@@ -16,6 +16,8 @@ If [writing a message](../basics/writing-messages.md) at a visible [message leve
 
 ## Stats
 
+|||
+|---|---|
 |Name|console|
 |Version|2|
 |ConfigurationRoot|PSFramework.Logging.Console|

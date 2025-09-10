@@ -11,6 +11,8 @@ Supports logging to both the on-prem installation and the cloud service.
 
 ## Stats
 
+|||
+|---|---|
 |Name|splunk|
 |Version|2|
 |ConfigurationRoot|PSFramework.Logging.Splunk|

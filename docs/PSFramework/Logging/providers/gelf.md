@@ -10,6 +10,8 @@ Allows logging to Graylog SIEM servers.
 
 ## Stats
 
+|||
+|---|---|
 |Name|gelf|
 |Version|2|
 |ConfigurationRoot|PSFramework.Logging.GELF|

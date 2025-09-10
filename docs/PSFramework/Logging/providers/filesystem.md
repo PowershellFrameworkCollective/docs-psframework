@@ -19,6 +19,8 @@ It will also create clixml exports of all error records that are logged.
 
 ## Stats
 
+|||
+|---|---|
 |Name|filesystem|
 |Version|1|
 |ConfigurationRoot|PSFramework.Logging.FileSystem|

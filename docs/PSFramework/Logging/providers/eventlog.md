@@ -14,6 +14,8 @@ Sources that do not exist yet will automatically be created if able to (this wou
 
 ## Stats
 
+|||
+|---|---|
 |Name|eventlog|
 |Version|2|
 |ConfigurationRoot|PSFramework.Logging.EventLog|

@@ -13,6 +13,8 @@ It also offers logrotate capabilities, to clean up after itself.
 
 ## Stats
 
+|||
+|---|---|
 |Name|logfile|
 |Version|2|
 |ConfigurationRoot|PSFramework.Logging.LogFile|

@@ -11,6 +11,8 @@ It will automatically create database or table if necessary (and able to).
 
 ## Stats
 
+|||
+|---|---|
 |Name|Sql|
 |Version|2|
 |ConfigurationRoot|PSFramework.Logging.Sql|
