@@ -101,6 +101,12 @@ const config = {
           },
           {
             type: 'docSidebar',
+            sidebarId: 'psframeworkNugetSidebar',
+            position: 'left',
+            label: 'PSFramework.NuGet',
+          },
+          {
+            type: 'docSidebar',
             sidebarId: 'psmoduledevelopmentSidebar',
             position: 'left',
             label: 'PSModuleDevelopment',
@@ -153,6 +159,7 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} Friedrich Weinmann.`,
       },
       prism: {
+		additionalLanguages: ['powershell'],
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
       },
