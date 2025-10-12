@@ -130,7 +130,45 @@ Simple environment settings support only a subset of data types:
 + Strings
 + Arrays
 
-Configuration Validation might be able to further coerce its tyoe into its intended form.
+Configuration Validation might be able to further coerce its type into its intended form.
+
+To provide values, just provide the text form of it:
+
++ `42`
++ `Hello World`
++ `True`
++ `2028-01-01 HH:mm:ss`
+
+And so on.
+Due to the simplified nature of this format, some collisions may occur:
+`True` is always only going to be a boolean, not a string.
+`42` is always only going to be a number, not a string.
+
+> Precedence of types:
+
+Values are tested for these types in the following order, the first match wins:
+
++ $null (an empty string)
++ Boolean (`true` or `false`)
++ Int32
++ Int64
++ double
++ DateTime (will assume UTC unless specified in a format that includes timezone offset)
++ Array (see below)
++ Non-Simple Environment format (see Scope below)
++ String (anything else)
+
+> Arrays
+
+To specify an array of values, start with the separating symbol, then a pipe, and then the values.
+
+Example:
+
+```text
+,|1,2,3
+```
+
+Each value in that list of values will be parsed individually, using the precedence described above.
 
 |||
 |---|---|
