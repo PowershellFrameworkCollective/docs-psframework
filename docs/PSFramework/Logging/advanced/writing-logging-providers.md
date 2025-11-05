@@ -24,6 +24,8 @@ Except for the actual message event, all other events can be ignored.
 
 The events that are available:
 
+|Event|Description|
+|---|---|
 |Begin|Happens the first time the [Logging Provider](../basics/logging-providers.md) is started|
 |Start|Happens at the beginning of each logging cycle|
 |Message|Happens for each message to be logged|
