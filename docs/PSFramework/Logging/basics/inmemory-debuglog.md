@@ -1,4 +1,8 @@
-﻿# The in-memory debug log
+﻿---
+sidebar_position: 4
+---
+
+# The in-memory debug log
 
 ## Description
 

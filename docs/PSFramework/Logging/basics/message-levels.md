@@ -1,4 +1,8 @@
-﻿# Message Levels
+﻿---
+sidebar_position: 5
+---
+
+# Message Levels
 
 ## Synopsis
 

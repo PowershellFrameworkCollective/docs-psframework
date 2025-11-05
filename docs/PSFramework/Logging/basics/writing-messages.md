@@ -1,4 +1,8 @@
-﻿# Writing Messages
+﻿---
+sidebar_position: 1
+---
+
+# Writing Messages
 
 ## What is a Message?
 

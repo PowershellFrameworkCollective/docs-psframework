@@ -1,4 +1,8 @@
-﻿# Troubleshooting
+﻿---
+sidebar_position: 2
+---
+
+# Troubleshooting
 
 ## Synopsis
 
