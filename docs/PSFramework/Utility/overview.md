@@ -14,6 +14,7 @@ While it is hard to convey the value of a category of tools that each do their o
 Simple standalone commands that offer value:
 
 + [Select-PSFObject](Commands/select-psfobject.md): Expanding the default `Select-Object` with extra convenience. And a bit of magic.
++ [New-PSFSupportPackage](Commands/new-psfsupportpackage.md): Collect data useful for debugging. Easily integrated as debug dump in a script.
 + [ConvertFrom-PSFArray](Commands/convertfrom-psfarray.md): Flatten array-properties on objects, to keep them pretty when exporting to CSV.
 
 ## Micro-Features

@@ -147,7 +147,7 @@ logfile  CsvLog     True    {}             {}             {}          {}
 As you can see, we can also configure filters for our Logging Provider Instance.
 More on that in a chapter below.
 
-> My Logging Fails!
+### My Logging Fails!
 
 Now, if you have any issues with log entries not arriving where you expect them to be, there might be issues with the configuration provided or the plugin / Provider used.
 There is a full [guidance on debugging Logging Providers](../advanced/debugging-providers.md), but that is aimed at developers who write their own Logging Providers.
