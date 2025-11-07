@@ -56,6 +56,19 @@ This means, by default it will not throw an exception on failure.
 Instead it will flag the calling command as failed if an error happens in the scriptblock provided for it.
 
 Use the `-EnableException` parameter to enable terminating exceptions.
+If the exception should _not_ be terminating (but still be an exception), also include the `-NonTerminating` switch:
+
+```powershell
+# Guaranteed Terminating if failed
+Invoke-PSFProtectedCommand -Action Delete -Target $Path -ScriptBlock {
+    Remove-Item -Path $Path -Recurse -Force -Confirm:$false -ErrorAction Stop
+} -EnableException $true -Continue
+
+# Non-Terminating if failed
+Invoke-PSFProtectedCommand -Action Delete -Target $Path -ScriptBlock {
+    Remove-Item -Path $Path -Recurse -Force -Confirm:$false -ErrorAction Stop
+} -EnableException $true -NonTerminating -Continue
+```
 
 More details on the [opt-in exception system](opt-in-exceptions.md) can be found on its [dedicated page](opt-in-exceptions.md)
 
@@ -112,6 +125,20 @@ Invoke-PSFProtectedCommand -Action Delete -Target $Path -ScriptBlock {
 ```
 
 This will try again if the file could not be found, but not on any other error.
+
+### Error Event
+
+Using the `-ErrorEvent` parameter, it is possible to cause a specific action if the code fails, before processing the error itself.
+For example, this allows including a cleanup step before killing the entire command:
+
+```powershell
+Invoke-PSFProtectedCommand -Action "Failing at Math" -Target 0 -ScriptBlock {
+    1 / 0
+} -EnableException $true -ErrorEvent {
+    param ($Fail)
+    Write-Host "This was (maybe) not so smart: $($fail)"
+}
+```
 
 ### Localization
 
