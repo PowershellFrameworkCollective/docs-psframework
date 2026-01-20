@@ -31,6 +31,7 @@ Each available placeholder starts and ends with a "%".
 Available Placeholders:
 
 |Message|The message that was actually logged|
+|---|---|
 |Time|The time the message was written at in "HH:mm:ss.fff" format. E.g.: "14:12:47.453"|
 |Date|The date the message was written at in "yyyy-MM-dd" format. E.g.: "2021-01-17"|
 |Tags|The tags that were part of the message. E.g.: "error, failed, connect"|
