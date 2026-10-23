@@ -1,4 +1,8 @@
-﻿# Logging to: SQL
+﻿---
+sidebar_position: 5
+---
+
+# Logging to: SQL
 
 ## Setting up logging
 

@@ -1,4 +1,15 @@
-﻿# Logging to: Azure Log Analytics
+﻿---
+sidebar_position: 999
+---
+
+# Logging to: Azure Log Analytics (Deprecated)
+
+:::warning
+This is the guide to the old way of sending logs to Azure Log Analytics, which has been retired by Microsoft.
+It may still be useful in Azure Local deployments, so it has been retained.
+
+For guidance on the latest way, [see the guide for logging to Azure Log Analytics (V2)](azureloganalyticsv2.md)
+:::
 
 ## Setting up logging
 

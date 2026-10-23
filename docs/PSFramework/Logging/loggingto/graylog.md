@@ -1,4 +1,8 @@
-﻿# Logging to: Graylog
+﻿---
+sidebar_position: 7
+---
+
+# Logging to: Graylog
 
 ## Setting up logging
 

@@ -1,4 +1,8 @@
-﻿# Logging to: Splunk
+﻿---
+sidebar_position: 6
+---
+
+# Logging to: Splunk
 
 ## Setting up logging
 

@@ -1,4 +1,8 @@
-﻿# Logging Provider: SQL
+﻿---
+sidebar_position: 5
+---
+
+# Logging Provider: SQL
 
 > What are [Logging Providers](../basics/logging-providers.md)?
 >

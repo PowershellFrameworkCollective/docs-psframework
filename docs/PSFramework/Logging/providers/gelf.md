@@ -1,4 +1,8 @@
-﻿# Logging Provider: GELF
+﻿---
+sidebar_position: 7
+---
+
+# Logging Provider: GELF
 
 > What are [Logging Providers](../basics/logging-providers.md)?
 >

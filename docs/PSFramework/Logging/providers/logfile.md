@@ -1,4 +1,8 @@
-﻿# Logging Provider: Logfile
+﻿---
+sidebar_position: 1
+---
+
+# Logging Provider: Logfile
 
 > What are [Logging Providers](../basics/logging-providers.md)?
 >

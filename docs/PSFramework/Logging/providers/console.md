@@ -1,4 +1,8 @@
-﻿# Logging Provider: Console
+﻿---
+sidebar_position: 8
+---
+
+# Logging Provider: Console
 
 > What are [Logging Providers](../basics/logging-providers.md)?
 >

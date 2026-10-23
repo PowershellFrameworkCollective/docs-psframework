@@ -1,4 +1,8 @@
-﻿# Logging to: Debuglog
+﻿---
+sidebar_position: 4
+---
+
+# Logging to: Debuglog
 
 ## Setting up logging
 

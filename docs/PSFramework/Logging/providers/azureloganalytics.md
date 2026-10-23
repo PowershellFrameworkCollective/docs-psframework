@@ -1,10 +1,21 @@
-﻿# Logging Provider: Azure Log Analytics
+﻿---
+sidebar_position: 999
+---
+
+# Logging Provider: Azure Log Analytics (Deprecated)
 
 > What are [Logging Providers](../basics/logging-providers.md)?
 >
 > [Logging to Azure Log Analytics](../loggingto/azureloganalytics.md)
 
 ## Description
+
+:::warning
+This is the guide to the old way of sending logs to Azure Log Analytics, which has been retired by Microsoft.
+It may still be useful in Azure Local deployments, so it has been retained.
+
+For guidance on the latest way, [see the guide for logging to Azure Log Analytics (V2)](azureloganalyticsv2.md)
+:::
 
 A Logging Provider that enables to user to send messages straight to an Azure Log Analytics workspace.
 Requires you to have already configured a target workspace to log to.

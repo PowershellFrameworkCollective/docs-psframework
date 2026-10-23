@@ -1,4 +1,8 @@
-﻿# Logging Provider: FileSystem
+﻿---
+sidebar_position: 4
+---
+
+# Logging Provider: FileSystem
 
 > What are [Logging Providers](../basics/logging-providers.md)?
 >

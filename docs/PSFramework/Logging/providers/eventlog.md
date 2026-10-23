@@ -1,4 +1,8 @@
-﻿# Logging Provider: Eventlog
+﻿---
+sidebar_position: 2
+---
+
+# Logging Provider: Eventlog
 
 > What are [Logging Providers](../basics/logging-providers.md)?
 >

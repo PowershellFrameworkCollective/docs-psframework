@@ -1,4 +1,8 @@
-﻿# Logging to: Windows Eventlog
+﻿---
+sidebar_position: 2
+---
+
+# Logging to: Windows Eventlog
 
 ## Setting up logging
 

@@ -1,4 +1,8 @@
-﻿# Logging to: Console
+﻿---
+sidebar_position: 8
+---
+
+# Logging to: Console
 
 ## Setting up logging
 

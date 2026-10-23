@@ -1,4 +1,8 @@
-﻿# Logging Provider: Splunk
+﻿---
+sidebar_position: 6
+---
+
+# Logging Provider: Splunk
 
 > What are [Logging Providers](../basics/logging-providers.md)?
 >

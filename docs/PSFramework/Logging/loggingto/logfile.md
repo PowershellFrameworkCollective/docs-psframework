@@ -1,4 +1,8 @@
-﻿# Logging to: A Logfile
+﻿---
+sidebar_position: 1
+---
+
+# Logging to: A Logfile
 
 ## Setting up logging
 
