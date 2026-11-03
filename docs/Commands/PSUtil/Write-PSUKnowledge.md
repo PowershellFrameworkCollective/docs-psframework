@@ -1,23 +1,31 @@
----
-external help file: PSUtil-help.xml
+﻿---
+document type: cmdlet
+external help file: PSUtil-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSUtil
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Write-PSUKnowledge
 ---
 
 # Write-PSUKnowledge
 
-## SYNOPSIS
+## Synopsis
+
 Writes a piece of knowledge into the designated book.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Write-PSUKnowledge [-Name] <String> [-Text] <String> [[-Tags] <String[]>] [[-Book] <String>] [-EnableException]
- [<CommonParameters>]
+Write-PSUKnowledge [-Name] <string> [-Text] <string> [[-Tags] <string[]>] [[-Book] <string>]
+ [-EnableException] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Writes a piece of knowledge into the designated book.
 This can be later retrieved using Read-PSUKnowledge.
 
@@ -26,104 +34,127 @@ You could separate them by category (e.g.
 "Active Directory" or "Exchagne Online") or by computer (e.g.
 "Desktop", "Notebook", ...).
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Set-PSUKnowledge -Name 'DNS Queries' -Text $nslookupExplained -Tags dns, network, infrastructure
+
+```powershell
+Set-PSUKnowledge -Name 'DNS Queries' -Text $nslookupExplained -Tags dns, network, infrastructure
 ```
 
 Defines a new page named "DNS Queries" with the text contained in $nslookupExplained.
 It also adds a few tags to make searching for it later easier.
 
-## PARAMETERS
+## Parameters
 
-### -Name
-The name of the page to write.
+### Book
 
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Text
-The page / text to write.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: Page
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Tags
-Additional tags to include.
-Tags help find content later on.
-
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Book
 The book to write the content to.
 Defaults to the book specified under the 'PSUtil.Knowledge.DefaultBook' configuration setting.
 It will look for books in your library path, which can be specified under 'PSUtil.Knowledge.LibraryPath'.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: (Get-PSFConfigValue -FullName 'PSUtil.Knowledge.DefaultBook')
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: (Get-PSFConfigValue -FullName 'PSUtil.Knowledge.DefaultBook')
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 3
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: true
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -EnableException
+### EnableException
+
 This parameters disables user-friendly warnings and enables the throwing of exceptions.
 This is less user friendly, but allows catching exceptions in calling scripts.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### Name
 
-## INPUTS
+The name of the page to write.
 
-## OUTPUTS
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: true
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
+### Tags
 
-## RELATED LINKS
+Additional tags to include.
+Tags help find content later on.
+
+```yaml
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 2
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: true
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Text
+
+The page / text to write.
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases:
+- Page
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: true
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+

@@ -1,28 +1,36 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Register-PSFTypeAssemblyMapping
 ---
 
 # Register-PSFTypeAssemblyMapping
 
-## SYNOPSIS
+## Synopsis
+
 Adds a mapping path for assembly resolution when deserializing objects.
 
-## SYNTAX
+## Syntax
 
 ### Assembly
+
 ```
-Register-PSFTypeAssemblyMapping -Name <String> -Assembly <Assembly> [<CommonParameters>]
+Register-PSFTypeAssemblyMapping -Name <string> -Assembly <Assembly> [<CommonParameters>]
 ```
 
 ### ShortName
+
 ```
-Register-PSFTypeAssemblyMapping -ByShortName <String> [<CommonParameters>]
+Register-PSFTypeAssemblyMapping -ByShortName <string> [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Adds a mapping path for assembly resolution when deserializing objects.
 
 THIS ONLY APPLIES TO OBJECTS THAT USE THE PSFRAMEWORK TYPE CONVERTER!
@@ -39,94 +47,104 @@ Can provide your own types a conversion path, that allows them to survive this p
 by telling PowerShell how to do the conversion.
 
 This system is not quite perfect, however, as by default we need the exact same assembly (name, version, etc.) on both ends.
-Different version numbers?
-Changed the name?
-Tough luck ...
+Different version numbers? Changed the name? Tough luck ...
 
 This is where the Assembly Mapping feature comes in, assuming you use the default PSFramework type converter:
 Use this command to tell the system that just the simple name is enough, or point an old name to a new name!
 
 Redirection only happens when the originally expected assembly is not available.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Register-PSFTypeAssemblyMapping -Name '1s445vjt.n1r, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null' -Assembly ([Foo.Bar].Assembly)
+
+```powershell
+Register-PSFTypeAssemblyMapping -Name '1s445vjt.n1r, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null' -Assembly ([Foo.Bar].Assembly)
 ```
 
-Redirects requests for '1s445vjt.n1r, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null' to the assembly implementing the type \[Foo.Bar\].
+Redirects requests for '1s445vjt.n1r, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null' to the assembly implementing the type [Foo.Bar].
 
 ### EXAMPLE 2
-```
-Register-PSFTypeAssemblyMapping -Name '^MyProject,' -Assembly ([MyProject.User].Assembly)
+
+```powershell
+Register-PSFTypeAssemblyMapping -Name '^MyProject,' -Assembly ([MyProject.User].Assembly)
 ```
 
-Redirects requests for assemblies starting with the name 'MyProject,' to the assembly implementing \[MyProject.User\].
+Redirects requests for assemblies starting with the name 'MyProject,' to the assembly implementing [MyProject.User].
 
 ### EXAMPLE 3
-```
-Register-PSFTypeAssemblyMapping -Name MyProject
+
+```powershell
+Register-PSFTypeAssemblyMapping -Name MyProject
 ```
 
 All requests for the assembly with the shortname "MyProject" will now ignore assembly versions.
 
-## PARAMETERS
+## Parameters
 
-### -Name
-Full name or regex pattern for an assembly name.
-The name of the assembly you want to point to a new assembly.
+### Assembly
 
-```yaml
-Type: String
-Parameter Sets: Assembly
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Assembly
 The new assembly to use instead of the one under the previous name.
 
 ```yaml
-Type: Assembly
-Parameter Sets: Assembly
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Reflection.Assembly
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Assembly
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -ByShortName
+### ByShortName
+
 The assembly with this specified short name uses only its short name to match the destination assembly.
 Use this to ignore issues with changing assembly version numbers.
 
 ```yaml
-Type: String
-Parameter Sets: ShortName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: ShortName
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### Name
 
-## INPUTS
+Full name or regex pattern for an assembly name.
+The name of the assembly you want to point to a new assembly.
 
-## OUTPUTS
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Assembly
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
 
-## RELATED LINKS

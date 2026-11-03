@@ -1,108 +1,132 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Compare-PSFArray
 ---
 
 # Compare-PSFArray
 
-## SYNOPSIS
+## Synopsis
+
 Compares two arrays.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Compare-PSFArray [-ReferenceObject] <Object[]> [-DifferenceObject] <Object[]> [-OrderSpecific] [-Quiet]
- [<CommonParameters>]
+Compare-PSFArray [-ReferenceObject] <Object[]> [-DifferenceObject] <Object[]> [-OrderSpecific]
+ [-Quiet] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Compares two arrays.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Compare-PSFArray -ReferenceObject $arraySource -DifferenceObject $arrayDestination -Quiet -OrderSpecific
+
+```powershell
+Compare-PSFArray -ReferenceObject $arraySource -DifferenceObject $arrayDestination -Quiet -OrderSpecific
 ```
 
 Compares the two sets of objects, and returns ...
 - $true if both sets contains the same objects in the same order
 - $false if they do not
 
-## PARAMETERS
+## Parameters
 
-### -ReferenceObject
-The first array to compare with the second array.
+### DifferenceObject
 
-```yaml
-Type: Object[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DifferenceObject
 The second array to compare with the first array.
 
 ```yaml
-Type: Object[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Object[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -OrderSpecific
+### OrderSpecific
+
 Makes the comparison order specific.
 By default, the command does not care for the order the objects are stored in.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Quiet
+### Quiet
+
 Rather than returning a delta report object, return a single truth statement:
 - $true if the two arrays are equal
 - $false if the two arrays are NOT equal.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### ReferenceObject
 
-## INPUTS
+The first array to compare with the second array.
 
-## OUTPUTS
+```yaml
+Type: System.Object[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
 
-## RELATED LINKS

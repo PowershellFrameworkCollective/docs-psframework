@@ -1,60 +1,67 @@
----
-external help file: PSModuleDevelopment-help.xml
+﻿---
+document type: cmdlet
+external help file: PSModuleDevelopment-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSModuleDevelopment
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Export-PSMDString
 ---
 
 # Export-PSMDString
 
-## SYNOPSIS
+## Synopsis
+
 Parses a module that uses the PSFramework localization feature for strings and their value.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Export-PSMDString [-ModuleRoot] <String> [<CommonParameters>]
+Export-PSMDString [-ModuleRoot] <string> [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Parses a module that uses the PSFramework localization feature for strings and their value.
 This command can be used to generate and update the language files used by the module.
 It is also used in automatic tests, ensuring no abandoned string has been left behind and no key is unused.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Export-PSMDString -ModuleRoot 'C:\Code\Github\MyModuleProject\MyModule'
+
+```powershell
+Export-PSMDString -ModuleRoot 'C:\Code\Github\MyModuleProject\MyModule'
 ```
 
 Generates the strings data for the MyModule module.
 
-## PARAMETERS
+## Parameters
 
-### -ModuleRoot
+### ModuleRoot
+
 The root of the module to process.
 Must be the root folder where the psd1 file is stored in.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: ModuleBase
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases:
+- ModuleBase
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: true
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

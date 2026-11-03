@@ -1,87 +1,100 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Unregister-PSFCallback
 ---
 
 # Unregister-PSFCallback
 
-## SYNOPSIS
+## Synopsis
+
 Removes a callback from the list of registered callbacks.
 
-## SYNTAX
+## Syntax
 
-### Name (Default)
+### Name
+
 ```
-Unregister-PSFCallback -Name <String[]> [<CommonParameters>]
+Unregister-PSFCallback -Name <string[]> [<CommonParameters>]
 ```
 
 ### Object
+
 ```
 Unregister-PSFCallback -Callback <Callback[]> [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Removes a callback from the list of registered callbacks.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Unregister-PSFCallback -Name 'MyModule.Configuration'
+
+```powershell
+Unregister-PSFCallback -Name 'MyModule.Configuration'
 ```
 
 Unregisters the 'MyModule.Configuration' callback script.
 
 ### EXAMPLE 2
-```
-Get-PSFCallback | Unregister-PSFCallback
+
+```powershell
+Get-PSFCallback | Unregister-PSFCallback
 ```
 
 Removes all callback scripts applicable to the current runspace.
 
-## PARAMETERS
+## Parameters
 
-### -Name
-The name of the callback to remove.
-Does NOT support wildcards.
+### Callback
 
-```yaml
-Type: String[]
-Parameter Sets: Name
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Callback
 A full callback object to remove.
 Use Get-PSFCallback to get the list of relevant callback objects.
 
 ```yaml
-Type: Callback[]
-Parameter Sets: Object
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
+Type: PSFramework.FlowControl.Callback[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Object
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### Name
 
-## INPUTS
+The name of the callback to remove.
+Does NOT support wildcards.
 
-## OUTPUTS
+```yaml
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Name
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
 
-## RELATED LINKS

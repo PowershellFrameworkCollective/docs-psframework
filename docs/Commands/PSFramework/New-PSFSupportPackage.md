@@ -1,30 +1,40 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/docs/Commands/PSFramework/New-PSFSupportPackage
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: New-PSFSupportPackage
 ---
 
 # New-PSFSupportPackage
 
-## SYNOPSIS
+## Synopsis
+
 Creates a package of troubleshooting information that can be used by developers to help debug issues.
 
-## SYNTAX
+## Syntax
 
-### Path (Default)
+### Path
+
 ```
-New-PSFSupportPackage [-Path <String>] [-TaskRetentionCount <Int32>] [-Force] [-Include <SupportData>]
- [-Exclude <SupportData>] [-Variables <String[]>] [-ExcludeError] [-EnableException] [<CommonParameters>]
+New-PSFSupportPackage [-Path <string>] [-TaskRetentionCount <int>] [-Force] [-Include <SupportData>]
+ [-Exclude <SupportData>] [-Variables <string[]>] [-ExcludeError] [-EnableException]
+ [<CommonParameters>]
 ```
 
 ### Task
+
 ```
-New-PSFSupportPackage -TaskName <String> [-TaskRetentionCount <Int32>] [-Force] [-Include <SupportData>]
- [-Exclude <SupportData>] [-Variables <String[]>] [-ExcludeError] [-EnableException] [<CommonParameters>]
+New-PSFSupportPackage -TaskName <string> [-TaskRetentionCount <int>] [-Force]
+ [-Include <SupportData>] [-Exclude <SupportData>] [-Variables <string[]>] [-ExcludeError]
+ [-EnableException] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 This function creates an extensive debugging package that can help with reproducing and fixing issues.
 
 The file will be created on the desktop by default and will contain quite a bit of information:
@@ -41,52 +51,172 @@ Use "Register-PSFSupportDataProvider" to add more information to include in the 
 The zip-file contains a debug file with the extension ".clidat".
 Use Import-PSFClixml to read this file.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-New-PSFSupportPackage
+
+```powershell
+New-PSFSupportPackage
 ```
 
 Creates a large support pack in order to help troubleshoot whatever went wrong in the current session.
 The support pack will be written to a zip file on the current user's desktop.
 
 ### EXAMPLE 2
-```
-New-PSFSupportPackage -Path .
+
+```powershell
+New-PSFSupportPackage -Path .
 ```
 
 Creates a large support pack in order to help troubleshoot whatever went wrong in the current session.
 The support pack will be written to a zip file in the current path.
 
 ### EXAMPLE 3
-```
-New-PSFSupportPackage -TaskName MyScript
+
+```powershell
+New-PSFSupportPackage -TaskName MyScript
 ```
 
 Creates a large support pack in order to help troubleshoot whatever went wrong in the current session.
 The support pack will be written to a zip file in the dedicated debug path for this task.
 By default, that path will be: %AppData%\PowerShell\PSFramework\Debug\MyScript
 
-## PARAMETERS
+## Parameters
 
-### -Path
+### EnableException
+
+This parameters disables user-friendly warnings and enables the throwing of exceptions.
+This is less user friendly, but allows catching exceptions in calling scripts.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases:
+- Silent
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Exclude
+
+Anything not to include in the export.
+Use this to explicitly exclude content you do not wish to be part of the dump (for example for data protection reasons).
+
+```yaml
+Type: PSFramework.Utility.SupportData
+DefaultValue: None
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### ExcludeError
+
+By default, the content of $Error is included, as it often can be helpful in debugging, even with error handling using the message system.
+However, there can be rare instances where this will explode the total export size to gigabytes, in which case it becomes necessary to skip this.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Force
+
+Create the folder for the output path if needed.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Include
+
+What to include in the export.
+By default, all is included.
+
+```yaml
+Type: PSFramework.Utility.SupportData
+DefaultValue: All
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Path
+
 The folder where to place the output xml in.
 Defaults to your desktop.
 
 ```yaml
-Type: String
-Parameter Sets: Path
-Aliases:
-
-Required: False
-Position: Named
-Default value: "$($env:USERPROFILE)\Desktop"
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: '"$($env:USERPROFILE)\Desktop"'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Path
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -TaskName
+### TaskName
+
 Automatically write the debug dump to a managed debug dump folder associated with this task name.
 By default, this path will be:
 %AppData%\PowerShell\PSFramework\Debug\%TaskName%
@@ -94,138 +224,65 @@ This parameter is intended to have a script automatically create a debug dump in
 In that scenario, it is still necessary to call this command, for example during a trap statement before killing the script in failure.
 
 ```yaml
-Type: String
-Parameter Sets: Task
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Task
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -TaskRetentionCount
+### TaskRetentionCount
+
 The number of debug dumps associated with the chosen TaskName that will be retained.
 Any excess debug dumps will be deleted, starting with the oldest.
 Defaults to the value of the "Utility.SupportPackage.TaskDumpLimit" configuration setting, which by default is 10.
 
 ```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: (Get-PSFConfigValue -FullName 'Utility.SupportPackage.TaskDumpLimit')
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Int32
+DefaultValue: (Get-PSFConfigValue -FullName 'PSFramework.Utility.SupportPackage.TaskDumpLimit')
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Force
-Create the folder for the output path if needed.
+### Variables
 
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Include
-What to include in the export.
-By default, all is included.
-
-```yaml
-Type: SupportData
-Parameter Sets: (All)
-Aliases:
-Accepted values: None, Message, ErrorMessage, Messages, Screenshot, OperatingSystem, CPU, Ram, Environment, PSVersion, History, Module, SnapIns, Assemblies, PSResource, Exceptions, Critical, ExtensionData, All
-
-Required: False
-Position: Named
-Default value: All
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Exclude
-Anything not to include in the export.
-Use this to explicitly exclude content you do not wish to be part of the dump (for example for data protection reasons).
-
-```yaml
-Type: SupportData
-Parameter Sets: (All)
-Aliases:
-Accepted values: None, Message, ErrorMessage, Messages, Screenshot, OperatingSystem, CPU, Ram, Environment, PSVersion, History, Module, SnapIns, Assemblies, PSResource, Exceptions, Critical, ExtensionData, All
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Variables
 Name of additional variables to attach.
 This allows you to add the content of variables to the support package, if you believe them to be relevant to the case.
 
 ```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -ExcludeError
-By default, the content of $Error is included, as it often can be helpful in debugging, even with error handling using the message system.
-However, there can be rare instances where this will explode the total export size to gigabytes, in which case it becomes necessary to skip this.
 
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableException
-This parameters disables user-friendly warnings and enables the throwing of exceptions.
-This is less user friendly, but allows catching exceptions in calling scripts.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: Silent
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
-
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

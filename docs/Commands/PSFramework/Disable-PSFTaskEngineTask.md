@@ -1,73 +1,85 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/docs/Commands/PSFramework/Disable-PSFTaskEngineTask
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Disable-PSFTaskEngineTask
 ---
 
 # Disable-PSFTaskEngineTask
 
-## SYNOPSIS
+## Synopsis
+
 Disables a task registered to the PSFramework task engine.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Disable-PSFTaskEngineTask [[-Name] <String[]>] [[-Task] <PsfTask[]>] [<CommonParameters>]
+Disable-PSFTaskEngineTask [[-Name] <string[]>] [[-Task] <PsfTask[]>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Disables a task registered to the PSFramework task engine.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-PSFTaskEngineTask -Name 'mymodule.maintenance' | Disable-PSFTaskEngineTask
+
+```powershell
+Get-PSFTaskEngineTask -Name 'mymodule.maintenance' | Disable-PSFTaskEngineTask
 ```
 
 Disables the task named 'mymodule.maintenance'
 
-## PARAMETERS
+## Parameters
 
-### -Name
+### Name
+
 Name of the task to disable.
 
 ```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Task
+### Task
+
 The task registered.
 Must be a task object returned by Get-PSFTaskEngineTask.
 
 ```yaml
-Type: PsfTask[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
+Type: PSFramework.TaskEngine.PsfTask[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

@@ -1,169 +1,231 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/documentation/documents/psframework/runspace-workflows.html
+Locale: en-US
 Module Name: PSFramework
-online version: https://psframework.org/documentation/documents/psframework/runspace-workflows.html
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Write-PSFRunspaceQueue
 ---
 
 # Write-PSFRunspaceQueue
 
-## SYNOPSIS
+## Synopsis
+
 Write data to a queue of a Runspace Workflow.
 
-## SYNTAX
+## Syntax
 
-### Single (Default)
+### Single
+
 ```
-Write-PSFRunspaceQueue -Name <String> -Value <Object> [-Close] [-WorkflowName <String[]>]
+Write-PSFRunspaceQueue -Name <string> -Value <Object> [-Close] [-WorkflowName <string[]>]
  [-InputObject <RSWorkflow[]>] [<CommonParameters>]
 ```
 
 ### SingleCurrent
+
 ```
-Write-PSFRunspaceQueue -Name <String> -Value <Object> [-UseCurrent] [-Close] [<CommonParameters>]
+Write-PSFRunspaceQueue -Name <string> -Value <Object> -UseCurrent [-Close] [<CommonParameters>]
 ```
 
 ### Multi
+
 ```
-Write-PSFRunspaceQueue -Name <String> -BulkValues <Object[]> [-Close] [-WorkflowName <String[]>]
+Write-PSFRunspaceQueue -Name <string> -BulkValues <Object[]> [-Close] [-WorkflowName <string[]>]
  [-InputObject <RSWorkflow[]>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Write data to a queue of a Runspace Workflow.
 This is generally used to provide the initial input of the first queue.
 
 Can also be used by a worker code to provide output to more than one queue.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-$workflow | Write-PSFRunspaceQueue -Name input -BulkValues $entries
+
+```powershell
+$workflow | Write-PSFRunspaceQueue -Name input -BulkValues $entries
 ```
 
 Provides all values in $entries as input for the queue named "input" of the Runspace Workflow in $workflow.
 
-## PARAMETERS
+## Parameters
 
-### -Name
-Name of the Queue to write to.
+### BulkValues
 
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Value
-The value to write.
-
-```yaml
-Type: Object
-Parameter Sets: Single, SingleCurrent
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -BulkValues
 Write multiple values as separate entries.
 
 ```yaml
-Type: Object[]
-Parameter Sets: Multi
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Object[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Multi
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -UseCurrent
-Write to a queue in the current runspace workflow.
-Only valid when used from within the code of a Runspace Workflow worker.
+### Close
 
-```yaml
-Type: SwitchParameter
-Parameter Sets: SingleCurrent
-Aliases:
-
-Required: True
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Close
 Closes the queue after writing the input.
 This prevents further data to be added to the queue,
 and allows a worker to know, when it has fully processed input.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -WorkflowName
-Name of the workflow owning the queue written to.
+### InputObject
 
-```yaml
-Type: String[]
-Parameter Sets: Single, Multi
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -InputObject
 Workflow object that owns the queue written to.
 
 ```yaml
-Type: RSWorkflow[]
-Parameter Sets: Single, Multi
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
+Type: PSFramework.Runspace.RSWorkflow[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Multi
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+- Name: Single
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### Name
 
-## INPUTS
+Name of the Queue to write to.
 
-## OUTPUTS
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
+### UseCurrent
 
-## RELATED LINKS
+Write to a queue in the current runspace workflow.
+Only valid when used from within the code of a Runspace Workflow worker.
 
-[https://psframework.org/documentation/documents/psframework/runspace-workflows.html](https://psframework.org/documentation/documents/psframework/runspace-workflows.html)
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: SingleCurrent
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Value
+
+The value to write.
+
+```yaml
+Type: System.Object
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: SingleCurrent
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+- Name: Single
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### WorkflowName
+
+Name of the workflow owning the queue written to.
+
+```yaml
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Multi
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: true
+  ValueFromRemainingArguments: false
+- Name: Single
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: true
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+## Links
+
+Microsoft.PowerShell.PlatyPS.Model.Links
+
 

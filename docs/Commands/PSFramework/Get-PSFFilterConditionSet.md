@@ -1,116 +1,140 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Get-PSFFilterConditionSet
 ---
 
 # Get-PSFFilterConditionSet
 
-## SYNOPSIS
+## Synopsis
+
 Retrieve defined filter condition sets.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Get-PSFFilterConditionSet [[-Module] <String>] [[-Name] <String>] [[-Version] <Version>] [-AllVersions]
- [<CommonParameters>]
+Get-PSFFilterConditionSet [[-Module] <string>] [[-Name] <string>] [[-Version] <version>]
+ [-AllVersions] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Retrieve defined filter condition sets.
 Filter condition sets are a grouped set of conditions used in filter expressions.
 Create a filter expression by using New-PSFFilter.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-PSFFilterConditionSet
+
+```powershell
+Get-PSFFilterConditionSet
 ```
 
 List all defined filter condition sets.
 
 ### EXAMPLE 2
-```
-Get-PSFFilterConditionSet -Module PSFramework -Name Environment
+
+```powershell
+Get-PSFFilterConditionSet -Module PSFramework -Name Environment
 ```
 
 Returns the filter condition set "Environment" from the module PSFramework.
 
-## PARAMETERS
+## Parameters
 
-### -Module
+### AllVersions
+
+Retrieve all versions of a given filter condition set.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Module
+
 The module to filter by.
 Defaults to '*'
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: *
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: '*'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Name
+### Name
+
 The name of the condition set to retrieve.
 Defaults to '*'
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: *
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: '*'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Version
+### Version
+
 Retrieve a specific version of the filter condition set.
 By default, the latest version only is returned.
 
 ```yaml
-Type: Version
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Version
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 2
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -AllVersions
-Retrieve all versions of a given filter condition set.
 
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
-
-## INPUTS
-
-## OUTPUTS
-
-### PSFramework.Filter.ConditionSet
-## NOTES
-
-## RELATED LINKS

@@ -1,22 +1,30 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Get-PSFTeppCompletion
 ---
 
 # Get-PSFTeppCompletion
 
-## SYNOPSIS
+## Synopsis
+
 Lists the registered completion options.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Get-PSFTeppCompletion [[-Name] <String[]>] [<CommonParameters>]
+Get-PSFTeppCompletion [[-Name] <string[]>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Lists the registered completion options.
 Using Add-PSFTeppCompletion, it is possible to manually provide values that will be offered during tab completion for a given argument completion script.
 Alternatively, a completion scriptblock can be configured for "AutoTraining" during setup via "Register-PSFTeppScriptblock", which enables automatically
@@ -24,40 +32,38 @@ remembering values previously provided (By later calling Update-PSFTeppCompletio
 
 In either case, those values are stored in memory and retrieved using this command.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-PSFTeppCompletion
+
+```powershell
+Get-PSFTeppCompletion
 ```
 
 List all registered completion options for all completer scriptblocks.
 
-## PARAMETERS
+## Parameters
 
-### -Name
+### Name
+
 Name of the completer scriptblock, for which to retrieve registered options.
 Defaults to *
 
 ```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: *
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
+Type: System.String[]
+DefaultValue: '*'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

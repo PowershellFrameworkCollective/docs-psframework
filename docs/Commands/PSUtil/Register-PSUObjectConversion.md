@@ -1,90 +1,109 @@
----
-external help file: PSUtil-help.xml
+﻿---
+document type: cmdlet
+external help file: PSUtil-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSUtil
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Register-PSUObjectConversion
 ---
 
 # Register-PSUObjectConversion
 
-## SYNOPSIS
+## Synopsis
+
 Registers an object conversion for Convert-PSUObject.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Register-PSUObjectConversion [-From] <String> [-To] <String> [-ScriptBlock] <ScriptBlock> [<CommonParameters>]
+Register-PSUObjectConversion [-From] <string> [-To] <string> [-ScriptBlock] <scriptblock>
+ [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 This command can be used to register an object conversion for Convert-PSUObject, allowing the user to extend the conversion utility as desired.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Register-PSUObjectConversion -From 'dec' -To 'oct' -ScriptBlock $ScriptBlock
+
+```powershell
+Register-PSUObjectConversion -From 'dec' -To 'oct' -ScriptBlock $ScriptBlock
 ```
 
 Registers a conversion that is supposed to convert a decimal into an octal number.
 
-## PARAMETERS
+## Parameters
 
-### -From
+### From
+
 The input type.
 Using a suitable shorthand is recommended ("int" rather than "System.Int32", etc.).
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -To
-The conversion target type.
-Using a suitable shorthand is recommended ("int" rather than "System.Int32", etc.).
+### ScriptBlock
 
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScriptBlock
 The scriptblock that will be invoked to convert.
 Receives a single argument: The input object to convert.
 
 ```yaml
-Type: ScriptBlock
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.ScriptBlock
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 2
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### To
 
-## INPUTS
+The conversion target type.
+Using a suitable shorthand is recommended ("int" rather than "System.Int32", etc.).
 
-## OUTPUTS
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
 
-## RELATED LINKS

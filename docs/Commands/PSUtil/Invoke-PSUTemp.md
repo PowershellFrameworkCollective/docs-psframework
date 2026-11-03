@@ -1,22 +1,30 @@
----
-external help file: PSUtil-help.xml
+﻿---
+document type: cmdlet
+external help file: PSUtil-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSUtil
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Invoke-PSUTemp
 ---
 
 # Invoke-PSUTemp
 
-## SYNOPSIS
+## Synopsis
+
 Moves the current location to a temp directory.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
 Invoke-PSUTemp [-Get] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Moves the current location to a temp directory.
 
 The path returned can be set by configuring the 'psutil.path.temp' configuration.
@@ -30,40 +38,39 @@ E:\Temp
 C:\Service
 $env:temp
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Invoke-PSUTemp
+
+```powershell
+Invoke-PSUTemp
 ```
 
 Moves to the temporary directory.
 
-## PARAMETERS
+## Parameters
 
-### -Get
+### Get
+
 Alias: g
 Rather than move to the directory, return its path.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: g
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases:
+- g
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

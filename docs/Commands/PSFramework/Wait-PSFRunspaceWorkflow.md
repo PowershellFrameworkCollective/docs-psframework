@@ -1,283 +1,426 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/documentation/documents/psframework/runspace-workflows.html
+Locale: en-US
 Module Name: PSFramework
-online version: https://psframework.org/documentation/documents/psframework/runspace-workflows.html
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Wait-PSFRunspaceWorkflow
 ---
 
 # Wait-PSFRunspaceWorkflow
 
-## SYNOPSIS
+## Synopsis
+
 Wait for a Runspace Workflow to complete.
 
-## SYNTAX
+## Syntax
 
-### Closed (Default)
-```
-Wait-PSFRunspaceWorkflow -Queue <String> [-Closed] [-PassThru] [-Timeout <TimeSpanParameter>]
- [-Name <String[]>] [-InputObject <RSWorkflow[]>] [<CommonParameters>]
-```
+### Closed
 
-### Reference
 ```
-Wait-PSFRunspaceWorkflow -Queue <String> -ReferenceQueue <String> [-ReferenceMultiplier <Int32>] [-PassThru]
- [-Timeout <TimeSpanParameter>] [-Name <String[]>] [-InputObject <RSWorkflow[]>] [<CommonParameters>]
-```
-
-### Count
-```
-Wait-PSFRunspaceWorkflow -Queue <String> -Count <Int32> [-PassThru] [-Timeout <TimeSpanParameter>]
- [-Name <String[]>] [-InputObject <RSWorkflow[]>] [<CommonParameters>]
-```
-
-### QueueTimeout
-```
-Wait-PSFRunspaceWorkflow -Queue <String> -QueueTimeout <TimeSpanParameter> [-PassThru]
- [-Timeout <TimeSpanParameter>] [-Name <String[]>] [-InputObject <RSWorkflow[]>] [<CommonParameters>]
-```
-
-### WorkerReference
-```
-Wait-PSFRunspaceWorkflow -WorkerName <String> -ReferenceQueue <String> [-ReferenceMultiplier <Int32>]
- [-PassThru] [-Timeout <TimeSpanParameter>] [-Name <String[]>] [-InputObject <RSWorkflow[]>]
+Wait-PSFRunspaceWorkflow -Queue <string> [-Closed] [-PassThru] [-ShowProgress]
+ [-Timeout <TimeSpanParameter>] [-Name <string[]>] [-InputObject <RSWorkflow[]>]
  [<CommonParameters>]
 ```
 
-### WorkerCount
+### Reference
+
 ```
-Wait-PSFRunspaceWorkflow -WorkerName <String> -Count <Int32> [-PassThru] [-Timeout <TimeSpanParameter>]
- [-Name <String[]>] [-InputObject <RSWorkflow[]>] [<CommonParameters>]
+Wait-PSFRunspaceWorkflow -Queue <string> -ReferenceQueue <string> [-ReferenceMultiplier <int>]
+ [-PassThru] [-ShowProgress] [-Timeout <TimeSpanParameter>] [-Name <string[]>]
+ [-InputObject <RSWorkflow[]>] [<CommonParameters>]
+```
+
+### Count
+
+```
+Wait-PSFRunspaceWorkflow -Queue <string> -Count <int> [-PassThru] [-ShowProgress]
+ [-Timeout <TimeSpanParameter>] [-Name <string[]>] [-InputObject <RSWorkflow[]>]
+ [<CommonParameters>]
+```
+
+### QueueTimeout
+
+```
+Wait-PSFRunspaceWorkflow -Queue <string> -QueueTimeout <TimeSpanParameter> [-PassThru]
+ [-ShowProgress] [-Timeout <TimeSpanParameter>] [-Name <string[]>] [-InputObject <RSWorkflow[]>]
+ [<CommonParameters>]
+```
+
+### WorkerReference
+
+```
+Wait-PSFRunspaceWorkflow -WorkerName <string> -ReferenceQueue <string> [-ReferenceMultiplier <int>]
+ [-PassThru] [-ShowProgress] [-Timeout <TimeSpanParameter>] [-Name <string[]>]
+ [-InputObject <RSWorkflow[]>] [<CommonParameters>]
+```
+
+### WorkerCount
+
+```
+Wait-PSFRunspaceWorkflow -WorkerName <string> -Count <int> [-PassThru] [-ShowProgress]
+ [-Timeout <TimeSpanParameter>] [-Name <string[]>] [-InputObject <RSWorkflow[]>]
+ [<CommonParameters>]
 ```
 
 ### WorkerClosed
+
 ```
-Wait-PSFRunspaceWorkflow -WorkerName <String> [-Closed] [-PassThru] [-Timeout <TimeSpanParameter>]
- [-Name <String[]>] [-InputObject <RSWorkflow[]>] [<CommonParameters>]
+Wait-PSFRunspaceWorkflow -WorkerName <string> -Closed [-PassThru] [-ShowProgress]
+ [-Timeout <TimeSpanParameter>] [-Name <string[]>] [-InputObject <RSWorkflow[]>]
+ [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Wait for a Runspace Workflow to complete.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-$workflow | Wait-PSFRunspaceWorkflow -Queue Done -Count 1000
+
+```powershell
+$workflow | Wait-PSFRunspaceWorkflow -Queue Done -Count 1000
 ```
 
 Wait until 1000 items have been queued to "Done" in total.
 
 ### EXAMPLE 2
-```
-$workflow | Wait-PSFRunspaceWorkflow -Queue Done -PassThru | Stop-PSFRunspaceWorkflow
+
+```powershell
+$workflow | Wait-PSFRunspaceWorkflow -Queue Done -PassThru | Stop-PSFRunspaceWorkflow
 ```
 
 Wait until the "Done" queue has been closed, then stop the workflow.
 
 ### EXAMPLE 3
-```
-$workflow | Wait-PSFRunspaceWorkflow -Queue Done -ReferenceQueue Input
+
+```powershell
+$workflow | Wait-PSFRunspaceWorkflow -Queue Done -ReferenceQueue Input
 ```
 
 Wait until the "Done" queue has processed as many items as there were written to the "Input" queue.
 
-## PARAMETERS
+## Parameters
 
-### -Queue
-The name of the queue to measure completion by.
-Usually the last output queue in the chain of steps.
+### Closed
 
-```yaml
-Type: String
-Parameter Sets: Closed, Reference, Count, QueueTimeout
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WorkerName
-The name of the worker to measure completion by.
-Usually the last step in the chain of steps.
-
-```yaml
-Type: String
-Parameter Sets: WorkerReference, WorkerCount, WorkerClosed
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Closed
 The workflow is considered completed, when the queue or worker selected is closed.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: Closed
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: WorkerClosed
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+- Name: Closed
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-```yaml
-Type: SwitchParameter
-Parameter Sets: WorkerClosed
-Aliases:
+### Count
 
-Required: True
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Count
 The workflow is considered completed, when the queue selected has received the specified number of results.
 This looks at the total amount ever provided, not current number queued.
 
 ```yaml
-Type: Int32
-Parameter Sets: Count, WorkerCount
-Aliases:
-
-Required: True
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Int32
+DefaultValue: 0
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Count
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+- Name: WorkerCount
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -ReferenceQueue
-The workflow is considered completed, when the queue selected has received the same number of items as the reference queue.
+### InputObject
+
+A runspace workflow object to wait for.
 
 ```yaml
-Type: String
-Parameter Sets: Reference, WorkerReference
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: PSFramework.Runspace.RSWorkflow[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -ReferenceMultiplier
+### Name
+
+Name of the workflow to wait for.
+
+```yaml
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: true
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### PassThru
+
+Pass through the workflow object waiting for.
+Useful to stop it once waiting has completed.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Queue
+
+The name of the queue to measure completion by.
+Usually the last output queue in the chain of steps.
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Reference
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+- Name: Count
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+- Name: Closed
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+- Name: QueueTimeout
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### QueueTimeout
+
+Wait based on how long ago the last item was added to the specified queue.
+
+```yaml
+Type: PSFramework.Parameter.TimeSpanParameter
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: QueueTimeout
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### ReferenceMultiplier
+
 When comparing the result queue with a reference queue, multiply the number of items in the reference queue by this value.
 Use when the number of output items, based from the original input, scales by a constant multiplier.
 Defaults to 1.
 
 ```yaml
-Type: Int32
-Parameter Sets: Reference, WorkerReference
-Aliases:
-
-Required: False
-Position: Named
-Default value: 1
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Int32
+DefaultValue: 1
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Reference
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+- Name: WorkerReference
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -QueueTimeout
-Wait based on how long ago the last item was added to the specified queue.
+### ReferenceQueue
+
+The workflow is considered completed, when the queue selected has received the same number of items as the reference queue.
 
 ```yaml
-Type: TimeSpanParameter
-Parameter Sets: QueueTimeout
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Reference
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+- Name: WorkerReference
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -PassThru
-Pass through the workflow object waiting for.
-Useful to stop it once waiting has completed.
+### ShowProgress
+
+To show a progressbar while waiting for runspace completion
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Timeout
+### Timeout
+
 Maximum wait time.
 Throws an error if exceeded.
 Defaults to 1 day.
 
 ```yaml
-Type: TimeSpanParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: PSFramework.Parameter.TimeSpanParameter
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Name
-Name of the workflow to wait for.
+### WorkerName
+
+The name of the worker to measure completion by.
+Usually the last step in the chain of steps.
 
 ```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: WorkerReference
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+- Name: WorkerCount
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+- Name: WorkerClosed
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -InputObject
-A runspace workflow object to wait for.
+## Links
 
-```yaml
-Type: RSWorkflow[]
-Parameter Sets: (All)
-Aliases:
+Microsoft.PowerShell.PlatyPS.Model.Links
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
-
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS
-
-[https://psframework.org/documentation/documents/psframework/runspace-workflows.html](https://psframework.org/documentation/documents/psframework/runspace-workflows.html)
 

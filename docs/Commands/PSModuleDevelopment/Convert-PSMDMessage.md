@@ -1,88 +1,106 @@
----
-external help file: PSModuleDevelopment-help.xml
+﻿---
+document type: cmdlet
+external help file: PSModuleDevelopment-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSModuleDevelopment
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Convert-PSMDMessage
 ---
 
 # Convert-PSMDMessage
 
-## SYNOPSIS
+## Synopsis
+
 Converts a file's use of PSFramework messages to strings.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Convert-PSMDMessage [-Path] <String> [-OutPath] <String> [-EnableException] [<CommonParameters>]
+Convert-PSMDMessage [-Path] <string> [-OutPath] <string> [-EnableException] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Converts a file's use of PSFramework messages to strings.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Convert-PSMDMessage -Path 'C:\Scripts\logrotate.ps1' -OutPath 'C:\output'
+
+```powershell
+Convert-PSMDMessage -Path 'C:\Scripts\logrotate.ps1' -OutPath 'C:\output'
 ```
 
 Converts all instances of writing messages in logrotate.ps1 to use strings instead.
 
-## PARAMETERS
+## Parameters
 
-### -Path
-Path to the file to convert.
+### EnableException
 
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OutPath
-Folder in which to generate the output ps1 and psd1 file.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableException
 Replaces user friendly yellow warnings with bloody red exceptions of doom!
 Use this if you want the function to throw terminating errors you want to catch.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### OutPath
 
-## INPUTS
+Folder in which to generate the output ps1 and psd1 file.
 
-## OUTPUTS
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
+### Path
 
-## RELATED LINKS
+Path to the file to convert.
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+

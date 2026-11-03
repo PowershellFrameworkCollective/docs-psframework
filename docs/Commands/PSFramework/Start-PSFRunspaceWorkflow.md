@@ -1,100 +1,121 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/documentation/documents/psframework/runspace-workflows.html
+Locale: en-US
 Module Name: PSFramework
-online version: https://psframework.org/documentation/documents/psframework/runspace-workflows.html
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Start-PSFRunspaceWorkflow
 ---
 
 # Start-PSFRunspaceWorkflow
 
-## SYNOPSIS
+## Synopsis
+
 Starts a Runspace Workflow.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Start-PSFRunspaceWorkflow [[-Name] <String[]>] [[-InputObject] <RSWorkflow[]>] [-PassThru] [<CommonParameters>]
+Start-PSFRunspaceWorkflow [[-Name] <string[]>] [[-InputObject] <RSWorkflow[]>] [-PassThru]
+ [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Starts a Runspace Workflow.
 This will launch all workers and their associated runspaces.
 
 Consider queuing input first (Write-PSFRunspaceQueue) before starting the workflow.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Start-PSFRunspaceWorkflow -Name MailboxAnalysis
+
+```powershell
+Start-PSFRunspaceWorkflow -Name MailboxAnalysis
 ```
 
 Starts the Runspace Workflow "MailboxAnalysis"
 
 ### EXAMPLE 2
-```
-Get-PSFRunspaceWorkflow | Start-PSFRunspaceWorkflow
+
+```powershell
+Get-PSFRunspaceWorkflow | Start-PSFRunspaceWorkflow
 ```
 
 Start all Runspace Worklflow.
 
-## PARAMETERS
+## Parameters
 
-### -Name
-Name of the Runspace Workflow to launch.
+### InputObject
 
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -InputObject
 Runspace Workflow object to launch.
 
 ```yaml
-Type: RSWorkflow[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
+Type: PSFramework.Runspace.RSWorkflow[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -PassThru
+### Name
+
+Name of the Runspace Workflow to launch.
+
+```yaml
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: true
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### PassThru
+
 Return the runspace workflow just started.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+## Links
 
-## INPUTS
+Microsoft.PowerShell.PlatyPS.Model.Links
 
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS
-
-[https://psframework.org/documentation/documents/psframework/runspace-workflows.html](https://psframework.org/documentation/documents/psframework/runspace-workflows.html)
 

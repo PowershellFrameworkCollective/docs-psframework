@@ -1,23 +1,31 @@
----
-external help file: PSFramework.NuGet-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework.NuGet-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework.NuGet
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Set-PSFRepository
 ---
 
 # Set-PSFRepository
 
-## SYNOPSIS
+## Synopsis
+
 Configure existing powershell repositories or define a new one.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Set-PSFRepository [-Name] <String> [-Priority <Int32>] [-Credential <PSCredential>] [-Uri <String>]
- [-Trusted <Boolean>] [-Type <String>] [-Persist] [<CommonParameters>]
+Set-PSFRepository [-Name] <string> [-Priority <int>] [-Credential <pscredential>] [-Uri <string>]
+ [-Trusted <bool>] [-Type <string>] [-Persist] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Configure existing powershell repositories or define a new one.
 This allows you to modify their metadata, notably registering credentials to use on all requests or modifying its priority.
 For defining new repositories, it is required to at least define "Type" and "Uri"
@@ -28,98 +36,131 @@ The command will handle that, which will be slightly slower and also affect dire
 Settings will apply to all repositories with the same name.
 If you have the same repository configured in both V2 and V3, they BOTH will receive the update.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Set-PSFRepository -Name AzDevOps -Credential $cred
+
+```powershell
+Set-PSFRepository -Name AzDevOps -Credential $cred
 ```
 
 Assigns for the repository "AzDevOps" the credentials stored in $cred.
 All subsequent PSGet calls through this module will be made using those credentials.
 
-## PARAMETERS
+## Parameters
 
-### -Name
+### Credential
+
+Credentials to use on all requests against the repository.
+
+```yaml
+Type: System.Management.Automation.PSCredential
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Name
+
 Name of the repository to modify.
 Wildcards not supported (unless you actually name a repository with a wildcard in the name.
 In which case you probably want reconsider your naming strategy.)
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: true
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Priority
+### Persist
+
+Whether the settings should be remembered.
+If settings are not persisted, they only last until the console is closed.
+When persisting credentials, they are - at least on windows - stored encrypted in registry (HKCU) and are only readable by the same user on the same computer.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Priority
+
 The priority the repository should have.
 Lower-numbered repositories will beu sed before repositories with higher numbers.
 
 ```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Int32
+DefaultValue: 0
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Credential
-Credentials to use on all requests against the repository.
+### Trusted
 
-```yaml
-Type: PSCredential
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Uri
-The Uri from which modules are installed (and to which they are published).
-Will update the PSGet repositories objects.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Trusted
 Whether the repository is considered trusted.
 
 ```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Boolean
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Type
+### Type
+
 What version of PSGet it should use.
 - Any: Will register as V3 if available, otherwise V2.
 Will not update to V3 if already on V2.
@@ -133,41 +174,42 @@ If V2 does not exist, existing V3 repositories will be allowed.
 If V2 is present, it will be unregistered, irrespective of whether V3 is available.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Persist
-Whether the settings should be remembered.
-If settings are not persisted, they only last until the console is closed.
-When persisting credentials, they are - at least on windows - stored encrypted in registry (HKCU) and are only readable by the same user on the same computer.
+### Uri
+
+The Uri from which modules are installed (and to which they are published).
+Will update the PSGet repositories objects.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

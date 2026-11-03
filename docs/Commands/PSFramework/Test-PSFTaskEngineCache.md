@@ -1,77 +1,88 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/docs/Commands/PSFramework/Test-PSFTaskEngineCache
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Test-PSFTaskEngineCache
 ---
 
 # Test-PSFTaskEngineCache
 
-## SYNOPSIS
+## Synopsis
+
 Tests, whether the specified task engine cache-entry has been written.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Test-PSFTaskEngineCache [-Module] <String> [-Name] <String> [<CommonParameters>]
+Test-PSFTaskEngineCache [-Module] <string> [-Name] <string> [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Tests, whether the specified task engine cache-entry has been written.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Test-PSFTaskEngineCache -Module 'mymodule' -Name 'maintenancetask'
+
+```powershell
+Test-PSFTaskEngineCache -Module 'mymodule' -Name 'maintenancetask'
 ```
 
 Returns, whether the cache has been set for the module 'mymodule' and the task 'maintenancetask'
 Does not require the cache to actually contain a value, but must exist.
 
-## PARAMETERS
+## Parameters
 
-### -Module
+### Module
+
 The name of the module that generated the task.
 Use scriptname in case of using this within a script.
 Note: Must be the same as the name used within the task when calling 'Set-PSFTaskEngineCache'
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Name
+### Name
+
 The name of the task for which the cache is.
 Note: Must be the same as the name used within the task when calling 'Set-PSFTaskEngineCache'
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-### System.Boolean
-## NOTES
-
-## RELATED LINKS

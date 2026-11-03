@@ -1,28 +1,38 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Import-PSFPowerShellDataFile
 ---
 
 # Import-PSFPowerShellDataFile
 
-## SYNOPSIS
+## Synopsis
+
 A wrapper command around Import-PowerShellDataFile
 
-## SYNTAX
+## Syntax
 
-### ByPath (Default)
+### ByPath
+
 ```
-Import-PSFPowerShellDataFile [[-Path] <String[]>] [-Psd1Mode <String>] [-Unsafe] [<CommonParameters>]
+Import-PSFPowerShellDataFile [[-Path] <string[]>] [-Psd1Mode <string>] [-Unsafe]
+ [<CommonParameters>]
 ```
 
 ### ByLiteralPath
+
 ```
-Import-PSFPowerShellDataFile [-LiteralPath <String[]>] [-Psd1Mode <String>] [-Unsafe] [<CommonParameters>]
+Import-PSFPowerShellDataFile [-LiteralPath <string[]>] [-Psd1Mode <string>] [-Unsafe]
+ [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 A wrapper command around Import-PowerShellDataFile
 This enables use of the command on PowerShell 3+ as well as during JEA endpoints.
 
@@ -32,56 +42,72 @@ If you care about PowerShell security, update to the latest version (in which ca
 
 Also supports importing Json files.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Import-PSFPowerShellDataFile -Path .\data.psd1
+
+```powershell
+Import-PSFPowerShellDataFile -Path .\data.psd1
 ```
 
 Safely loads the data stored in data.psd1
 
 ### EXAMPLE 2
-```
-Import-PSFPowerShellDataFile -Path .\data.json
+
+```powershell
+Import-PSFPowerShellDataFile -Path .\data.json
 ```
 
 Safely loads the data stored in data.json
 
-## PARAMETERS
+## Parameters
 
-### -Path
-The path from which to load the data file.
+### LiteralPath
 
-```yaml
-Type: String[]
-Parameter Sets: ByPath
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LiteralPath
 The path from which to load the data file.
 In opposite to the Path parameter, input here will not be interpreted.
 
 ```yaml
-Type: String[]
-Parameter Sets: ByLiteralPath
-Aliases: PSPath
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases:
+- PSPath
+ParameterSets:
+- Name: ByLiteralPath
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: true
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Psd1Mode
+### Path
+
+The path from which to load the data file.
+
+```yaml
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: ByPath
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Psd1Mode
+
 How psd1 files should be parsed.
 Available modes:
 - Classic: Only safe documents will be executed, and only the first hashtable will be processed.
@@ -98,18 +124,24 @@ Both safe and unsafe modes respect Constrained Language Mode.
 Defaults to "Classic"
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: Classic
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: Classic
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Unsafe
+### Unsafe
+
 This parameter has been deprecated and should no longer be used.
 Use "-Psd1Mode Unsafe" instead.
 Disables the protective value of Import-PowerShellDataFile.
@@ -120,24 +152,20 @@ Note: In environments with tight security constraints, the file imported will be
 Specifically, path-based rules will be ignored and .cab files will have no effect, but directly signed and trusted files will remain unconstrained.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

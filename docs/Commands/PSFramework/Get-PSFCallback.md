@@ -1,90 +1,103 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Get-PSFCallback
 ---
 
 # Get-PSFCallback
 
-## SYNOPSIS
+## Synopsis
+
 Returns a list of callback scripts.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Get-PSFCallback [[-Name] <String[]>] [-All] [<CommonParameters>]
+Get-PSFCallback [[-Name] <string[]>] [-All] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Returns a list of callback scripts.
 Use Register-PSFCallback to register new callback scripts.
 Use Unregister-PSFCallback to remove callback scripts.
 Use Invoke-PSFCallback within a function of your module to execute all registered callback scripts that apply.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-PSFCallback
+
+```powershell
+Get-PSFCallback
 ```
 
 Returns all callback scripts relevant to the current runspace.
 
 ### EXAMPLE 2
-```
-Get-PSFCallback -All
+
+```powershell
+Get-PSFCallback -All
 ```
 
 Returns all callback scripts in the entire process.
 
 ### EXAMPLE 3
-```
-Get-PSFCallback -Name MyModule.Configuration
+
+```powershell
+Get-PSFCallback -Name MyModule.Configuration
 ```
 
 Returns the callback script named 'MyModule.Configuration'
 
-## PARAMETERS
+## Parameters
 
-### -Name
-The name to filter by.
+### All
 
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: *
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -All
 Return all callback scripts, even those specific to other runspaces.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### Name
 
-## INPUTS
+The name to filter by.
 
-## OUTPUTS
+```yaml
+Type: System.String[]
+DefaultValue: '*'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: true
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-### PSFramework.FlowControl.Callback
-## NOTES
 
-## RELATED LINKS

@@ -1,115 +1,149 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/docs/Commands/PSFramework/Get-PSFMessage
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Get-PSFMessage
 ---
 
 # Get-PSFMessage
 
-## SYNOPSIS
+## Synopsis
+
 Returns log entries for the PSFramework
 
-## SYNTAX
+## Syntax
+
+### SelectDefault
 
 ```
-Get-PSFMessage [[-FunctionName] <String>] [[-ModuleName] <String>] [[-Target] <Object>] [[-Tag] <String[]>]
- [[-Last] <Int32>] [[-Skip] <Int32>] [[-Runspace] <Guid>] [[-Level] <MessageLevel[]>] [-Errors]
- [<CommonParameters>]
+Get-PSFMessage [-FunctionName <string>] [-ModuleName <string>] [-Target <Object>] [-Tag <string[]>]
+ [-Last <int>] [-Skip <int>] [-Runspace <guid>] [-Level <MessageLevel[]>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+### SelectErrors
+
+```
+Get-PSFMessage -Errors [-FunctionName <string>] [-ModuleName <string>] [-Target <Object>]
+ [-Tag <string[]>] [-Runspace <guid>] [-Level <MessageLevel[]>] [<CommonParameters>]
+```
+
+### SelectInMemoryLog
+
+```
+Get-PSFMessage -LogName <string> [-FunctionName <string>] [-ModuleName <string>] [-Target <Object>]
+ [-Tag <string[]>] [-Runspace <guid>] [-Level <MessageLevel[]>] [-AsLog] [<CommonParameters>]
+```
+
+## Description
+
 Returns log entries for the PSFramework.
 Handy when debugging or developing a script using it.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-PSFMessage
+
+```powershell
+Get-PSFMessage
 ```
 
 Returns all log entries currently in memory.
 
 ### EXAMPLE 2
+
+```powershell
+Get-PSFMessage -LogName group-cleanup
 ```
-Get-PSFMessage -Target "a" -Last 1 -Skip 1
+
+
+### EXAMPLE 3
+
+```powershell
+Get-PSFMessage -Target "a" -Last 1 -Skip 1
 ```
 
 Returns all log entries that targeted the object "a" in the second last execution sent.
 
-### EXAMPLE 3
-```
-Get-PSFMessage -Tag "fail" -Last 5
+### EXAMPLE 4
+
+```powershell
+Get-PSFMessage -Tag "fail" -Last 5
 ```
 
 Returns all log entries within the last 5 executions that contained the tag "fail"
 
-## PARAMETERS
+## Parameters
 
-### -FunctionName
+### AsLog
+
+Return the entire log object of the instance of the inmemory Logging Provider.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: SelectInMemoryLog
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Errors
+
+Instead of log entries, the error entries will be retrieved.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: SelectErrors
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### FunctionName
+
 Default: "*"
 Only messages written by similar functions will be returned.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: *
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: '*'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -ModuleName
-Default: "*"
-Only messages written by commands from similar modules will be returned.
+### Last
 
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: *
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Target
-Only messages handling the specified target will be returned.
-
-```yaml
-Type: Object
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Only messages containing one of these tags will be returned.
-
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Last
 Only messages written by the last X executions will be returned.
 Uses Get-History to determine execution.
 Ignores Get-PSFmessage commands.
@@ -118,53 +152,24 @@ If your command executes in parallel, that's useful.
 If it doesn't and you were offloading executions to other runspaces, consider also filtering by runspace using '-Runspace'
 
 ```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Int32
+DefaultValue: 0
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: SelectDefault
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Skip
-How many executions to skip when specifying '-Last'.
-Has no effect without the '-Last' parameter.
+### Level
 
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 6
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Runspace
-The guid of the runspace to return messages from.
-By default, messages from all runspaces are returned.
-Run the following line to see the list of guids:
-
-Get-Runspace | ft Id, Name, InstanceId -Autosize
-
-```yaml
-Type: Guid
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 7
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Level
 Limit the message selection by level.
 Message levels have a numeric value, making it easier to select a range:
 
@@ -173,40 +178,152 @@ Message levels have a numeric value, making it easier to select a range:
 Will select the first 6 levels (Critical - SomewhatVerbose).
 
 ```yaml
-Type: MessageLevel[]
-Parameter Sets: (All)
-Aliases:
-Accepted values: Critical, Important, Output, Host, Significant, VeryVerbose, Verbose, SomewhatVerbose, System, Debug, InternalComment, Warning, Error
-
-Required: False
-Position: 8
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: PSFramework.Message.MessageLevel[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Errors
-Instead of log entries, the error entries will be retrieved
+### LogName
+
+Instead of the message system log, access logs from an instance of the inmemory Logging Provider.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: SelectInMemoryLog
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### ModuleName
 
-## INPUTS
+Default: "*"
+Only messages written by commands from similar modules will be returned.
 
-## OUTPUTS
+```yaml
+Type: System.String
+DefaultValue: '*'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
+### Runspace
 
-## RELATED LINKS
+The guid of the runspace to return messages from.
+By default, messages from all runspaces are returned.
+Run the following line to see the list of guids:
+
+Get-Runspace | ft Id, Name, InstanceId -Autosize
+
+```yaml
+Type: System.Guid
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Skip
+
+How many executions to skip when specifying '-Last'.
+Has no effect without the '-Last' parameter.
+
+```yaml
+Type: System.Int32
+DefaultValue: 0
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: SelectDefault
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Tag
+
+Only messages containing one of these tags will be returned.
+
+```yaml
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Target
+
+Only messages handling the specified target will be returned.
+
+```yaml
+Type: System.Object
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+

@@ -1,40 +1,50 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/docs/Commands/PSFramework/Register-PSFMessageTransform
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Register-PSFMessageTransform
 ---
 
 # Register-PSFMessageTransform
 
-## SYNOPSIS
+## Synopsis
+
 Registers a scriptblock that can transform message content.
 
-## SYNTAX
+## Syntax
 
 ### Target
+
 ```
-Register-PSFMessageTransform -TargetType <String> -ScriptBlock <ScriptBlock> [<CommonParameters>]
+Register-PSFMessageTransform -TargetType <string> -ScriptBlock <scriptblock> [<CommonParameters>]
 ```
 
 ### Exception
+
 ```
-Register-PSFMessageTransform -ExceptionType <String> -ScriptBlock <ScriptBlock> [<CommonParameters>]
+Register-PSFMessageTransform -ExceptionType <string> -ScriptBlock <scriptblock> [<CommonParameters>]
 ```
 
 ### TargetFilter
+
 ```
-Register-PSFMessageTransform -ScriptBlock <ScriptBlock> -TargetTypeFilter <String>
+Register-PSFMessageTransform -ScriptBlock <scriptblock> -TargetTypeFilter <string>
  [-FunctionNameFilter <Object>] [-ModuleNameFilter <Object>] [<CommonParameters>]
 ```
 
 ### ExceptionFilter
+
 ```
-Register-PSFMessageTransform -ScriptBlock <ScriptBlock> -ExceptionTypeFilter <String>
+Register-PSFMessageTransform -ScriptBlock <scriptblock> -ExceptionTypeFilter <string>
  [-FunctionNameFilter <Object>] [-ModuleNameFilter <Object>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Registers a scriptblock that can transform message content.
 This can be used to convert some kinds of input.
 Specifically:
@@ -54,159 +64,207 @@ In all instances, the scriptblock will be called, receiving only the relevant ob
 Note: This transformation is performed synchronously on the active runspace.
 Complex scriptblocks may delay execution times when a matching object is passed.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Register-PSFMessageTransform -TargetType 'mymodule.category.classname' -ScriptBlock $ScriptBlock
+
+```powershell
+Register-PSFMessageTransform -TargetType 'mymodule.category.classname' -ScriptBlock $ScriptBlock
 ```
 
 Whenever a target object of type 'mymodule.category.classname' is specified, invoke $ScriptBlock (with the object as sole argument) and store the result as target instead.
 
 ### EXAMPLE 2
-```
-Register-PSFMessageTransform -ExceptionType 'mymodule.category.exceptionname' -ScriptBlock $ScriptBlock
+
+```powershell
+Register-PSFMessageTransform -ExceptionType 'mymodule.category.exceptionname' -ScriptBlock $ScriptBlock
 ```
 
 Whenever an exception or error record of type 'mymodule.category.classname' is specified, invoke $ScriptBlock (with the object as sole argument) and store the result as exception instead.
 If the full error record is specified, only the updated exception will be inserted
 
 ### EXAMPLE 3
-```
-Register-PSFMessageTransform -TargetTypeFilter 'mymodule.category.*' -ScriptBlock $ScriptBlock
+
+```powershell
+Register-PSFMessageTransform -TargetTypeFilter 'mymodule.category.*' -ScriptBlock $ScriptBlock
 ```
 
 Adds a transform for all target objects that are of a type whose full name starts with 'mymodule.category.'
 All target objects matching that typename will be run through the specified scriptblock, which in return generates the new target object.
 
-## PARAMETERS
+## Parameters
 
-### -TargetType
-The full typename of the target object to apply the scriptblock to.
-All objects of that typename will be processed through that scriptblock.
+### ExceptionType
 
-```yaml
-Type: String
-Parameter Sets: Target
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExceptionType
 The full typename of the exception object to apply the scriptblock to.
 All objects of that typename will be processed through that scriptblock.
 Note: In case of error records, the type of the Exception Property is inspected.
 The error record as a whole will not be touched, except for having its exception exchanged.
 
 ```yaml
-Type: String
-Parameter Sets: Exception
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Exception
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -ScriptBlock
-The scriptblock that performs the transformation.
+### ExceptionTypeFilter
 
-```yaml
-Type: ScriptBlock
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TargetTypeFilter
-A filter for the typename of the target object to transform.
-Supports wildcards, but not regex.
-WARNING: Adding too many filter-type transforms may impact overall performance, try to avoid using them!
-
-```yaml
-Type: String
-Parameter Sets: TargetFilter
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExceptionTypeFilter
 A filter for the typename of the exception object to transform.
 Supports wildcards, but not regex.
 WARNING: Adding too many filter-type transforms may impact overall performance, try to avoid using them!
 
 ```yaml
-Type: String
-Parameter Sets: ExceptionFilter
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: ExceptionFilter
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -FunctionNameFilter
+### FunctionNameFilter
+
 Default: "*"
 Allows filtering by function name, in order to consider whether the function is affected.
 Supports wildcards, but not regex.
 WARNING: Adding too many filter-type transforms may impact overall performance, try to avoid using them!
 
 ```yaml
-Type: Object
-Parameter Sets: TargetFilter, ExceptionFilter
-Aliases:
-
-Required: False
-Position: Named
-Default value: *
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Object
+DefaultValue: '*'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: ExceptionFilter
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+- Name: TargetFilter
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -ModuleNameFilter
+### ModuleNameFilter
+
 Default: "*"
 Allows filtering by module name, in order to consider whether the function is affected.
 Supports wildcards, but not regex.
 WARNING: Adding too many filter-type transforms may impact overall performance, try to avoid using them!
 
 ```yaml
-Type: Object
-Parameter Sets: TargetFilter, ExceptionFilter
-Aliases:
-
-Required: False
-Position: Named
-Default value: *
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Object
+DefaultValue: '*'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: ExceptionFilter
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+- Name: TargetFilter
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### ScriptBlock
 
-## INPUTS
+The scriptblock that performs the transformation.
 
-## OUTPUTS
+```yaml
+Type: System.Management.Automation.ScriptBlock
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
+### TargetType
 
-## RELATED LINKS
+The full typename of the target object to apply the scriptblock to.
+All objects of that typename will be processed through that scriptblock.
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Target
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### TargetTypeFilter
+
+A filter for the typename of the target object to transform.
+Supports wildcards, but not regex.
+WARNING: Adding too many filter-type transforms may impact overall performance, try to avoid using them!
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: TargetFilter
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+

@@ -1,143 +1,179 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Export-PSFPowerShellDataFile
 ---
 
 # Export-PSFPowerShellDataFile
 
-## SYNOPSIS
+## Synopsis
+
 Exports data into psd1 config files.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Export-PSFPowerShellDataFile [-Path] <PathNewFileParameter> [[-Depth] <Int32>]
- [[-Encoding] <EncodingParameter>] [-EnableVerbose] [[-Configuration] <Hashtable>] [-InputObject] <Object>
- [<CommonParameters>]
+Export-PSFPowerShellDataFile [-Path] <PathNewFileParameter> [[-Depth] <int>]
+ [[-Encoding] <EncodingParameter>] [[-Configuration] <hashtable>] [-InputObject] <Object>
+ [-EnableVerbose] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Exports data into psd1 config files.
 
 Use Register-PSFPsd1Converter to extend/customize how this conversion happens.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-ChildItem | Export-PSFPowerShellDataFile -Path .\files.psd1
+
+```powershell
+Get-ChildItem | Export-PSFPowerShellDataFile -Path .\files.psd1
 ```
 
 Takes all files and folders and converts the data into psd1-style data structures, then write that to "files.psd1" in the current path..
 
-## PARAMETERS
+## Parameters
 
-### -Path
-The path where to write to.
-The parent folder must exist.
-May provide multiple paths.
+### Configuration
+
+Additional configuration settings to provide for the conversion.
+Custom converters may use these as implemented in their custom conversion.
 
 ```yaml
-Type: PathNewFileParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Collections.Hashtable
+DefaultValue: '@{}'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 3
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Depth
+### Depth
+
 How many levels deep do you want to process sub-properties?
 Defaults to 2
 
 ```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: 2
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Int32
+DefaultValue: 2
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Encoding
-The encoding to write the text file in.
-Defaults to: UTF8 (with BOM).
+### EnableVerbose
 
-```yaml
-Type: EncodingParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: UTF8
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableVerbose
 Enables deep verbosity when processing objects.
 By default, individual conversion steps are not tracked for performance reasons.
 Enable this for extensive amounts of debug messages.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Configuration
-Additional configuration settings to provide for the conversion.
-Custom converters may use these as implemented in their custom conversion.
+### Encoding
+
+The encoding to write the text file in.
+Defaults to: UTF8 (with BOM).
 
 ```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: @{}
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: PSFramework.Parameter.EncodingParameter
+DefaultValue: UTF8
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 2
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -InputObject
+### InputObject
+
 The object(s) to convert and write to file.
 
 ```yaml
-Type: Object
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 5
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
+Type: System.Object
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 4
+  IsRequired: true
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### Path
 
-## INPUTS
+The path where to write to.
+The parent folder must exist.
+May provide multiple paths.
 
-## OUTPUTS
+```yaml
+Type: PSFramework.Parameter.PathNewFileParameter
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
 
-## RELATED LINKS

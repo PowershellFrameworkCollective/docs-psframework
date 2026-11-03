@@ -1,117 +1,143 @@
----
-external help file: PSModuleDevelopment-help.xml
+﻿---
+document type: cmdlet
+external help file: PSModuleDevelopment-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSModuleDevelopment
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Publish-PSMDStagedModule
 ---
 
 # Publish-PSMDStagedModule
 
-## SYNOPSIS
+## Synopsis
+
 Publish a module to your staging repository.
 
-## SYNTAX
+## Syntax
 
 ### Name
+
 ```
-Publish-PSMDStagedModule -Name <String> [-Repository <String>] [-EnableException] [<CommonParameters>]
+Publish-PSMDStagedModule -Name <string> [-Repository <string>] [-EnableException]
+ [<CommonParameters>]
 ```
 
 ### Path
+
 ```
-Publish-PSMDStagedModule -Path <String> [-EnableException] [<CommonParameters>]
+Publish-PSMDStagedModule -Path <string> [-EnableException] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Publish a module to your staging repository.
 Always publishes the latest version available when specifying a name.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Publish-PSMDStagedModule -Name 'PSFramework'
+
+```powershell
+Publish-PSMDStagedModule -Name 'PSFramework'
 ```
 
 Publishes the latest version of PSFramework found on the local machine.
 
 ### EXAMPLE 2
-```
-Publish-PSMDStagedModule -Name 'Microsoft.Graph' -Repository PSGallery
+
+```powershell
+Publish-PSMDStagedModule -Name 'Microsoft.Graph' -Repository PSGallery
 ```
 
 Publishes the entire kit of 'Microsoft.Graph' modules from the PSGallery to the staging repository.
 
-## PARAMETERS
+## Parameters
 
-### -Name
-The name of the module to publish.
+### EnableException
 
-```yaml
-Type: String
-Parameter Sets: Name
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Path
-The path to the module to publish.
-
-```yaml
-Type: String
-Parameter Sets: Path
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Repository
-The repository from which to withdraw the module to then publish to the staging repository.
-
-```yaml
-Type: String
-Parameter Sets: Name
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableException
 This parameters disables user-friendly warnings and enables the throwing of exceptions.
 This is less user friendly, but allows catching exceptions in calling scripts.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### Name
 
-## INPUTS
+The name of the module to publish.
 
-## OUTPUTS
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Name
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
+### Path
 
-## RELATED LINKS
+The path to the module to publish.
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Path
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Repository
+
+The repository from which to withdraw the module to then publish to the staging repository.
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Name
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+

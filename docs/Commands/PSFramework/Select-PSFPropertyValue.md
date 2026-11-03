@@ -1,158 +1,200 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Select-PSFPropertyValue
 ---
 
 # Select-PSFPropertyValue
 
-## SYNOPSIS
+## Synopsis
+
 Expand specific property values based on selection logic.
 
-## SYNTAX
+## Syntax
 
-### Default (Default)
+### Default
+
 ```
-Select-PSFPropertyValue [-Property] <String[]> [-InputObject <Object>] [<CommonParameters>]
+Select-PSFPropertyValue [-Property] <string[]> [-InputObject <Object>] [<CommonParameters>]
 ```
 
 ### Fallback
-```
-Select-PSFPropertyValue [-Property] <String[]> [-Fallback] [-InputObject <Object>] [<CommonParameters>]
-```
 
-### Select
 ```
-Select-PSFPropertyValue [-Property] <String[]> [-Select <String>] [-InputObject <Object>] [<CommonParameters>]
-```
-
-### Join
-```
-Select-PSFPropertyValue [-Property] <String[]> [-JoinBy <String>] [-InputObject <Object>] [<CommonParameters>]
-```
-
-### Format
-```
-Select-PSFPropertyValue [-Property] <String[]> [-FormatWith <String>] [-InputObject <Object>]
+Select-PSFPropertyValue [-Property] <string[]> [-Fallback] [-InputObject <Object>]
  [<CommonParameters>]
 ```
 
-## DESCRIPTION
+### Select
+
+```
+Select-PSFPropertyValue [-Property] <string[]> [-Select <string>] [-InputObject <Object>]
+ [<CommonParameters>]
+```
+
+### Join
+
+```
+Select-PSFPropertyValue [-Property] <string[]> [-JoinBy <string>] [-InputObject <Object>]
+ [<CommonParameters>]
+```
+
+### Format
+
+```
+Select-PSFPropertyValue [-Property] <string[]> [-FormatWith <string>] [-InputObject <Object>]
+ [<CommonParameters>]
+```
+
+## Description
+
 This command allows picking a set of properties and then returning ...
 - All their values
 - The value that meets specific rules
 - A composite value
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-ADComputer -Filter * | Select-PSFPropertyValue -Property 'DNSHostName', 'Name' -Fallback
+
+```powershell
+Get-ADComputer -Filter * | Select-PSFPropertyValue -Property 'DNSHostName', 'Name' -Fallback
 ```
 
 For each computer in the domain, it will pick the DNSHostName if available, otherwise the Name.
 
-## PARAMETERS
+## Parameters
 
-### -Property
-The properties to work with, in the order they should be considered.
+### Fallback
 
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Fallback
 Whether to fall back on other properties if the first one doesn't contain values.
 This picks the value of the first property that actually has a value.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: Fallback
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Fallback
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Select
-Select either the largest or lowest propertyvalue in the Propertynames specified.
+### FormatWith
 
-```yaml
-Type: String
-Parameter Sets: Select
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JoinBy
-Joins the selected properties by the string specified.
-
-```yaml
-Type: String
-Parameter Sets: Join
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FormatWith
 Formats the selected properties into the specified format string.
 
 ```yaml
-Type: String
-Parameter Sets: Format
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Format
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -InputObject
+### InputObject
+
 The object(s) whose properties to inspect.
 
 ```yaml
-Type: Object
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
+Type: System.Object
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### JoinBy
 
-## INPUTS
+Joins the selected properties by the string specified.
 
-## OUTPUTS
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Join
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
+### Property
 
-## RELATED LINKS
+The properties to work with, in the order they should be considered.
+
+```yaml
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Select
+
+Select either the largest or lowest propertyvalue in the Propertynames specified.
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Select
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+

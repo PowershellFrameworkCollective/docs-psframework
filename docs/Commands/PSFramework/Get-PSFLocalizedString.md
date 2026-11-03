@@ -1,89 +1,106 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Get-PSFLocalizedString
 ---
 
 # Get-PSFLocalizedString
 
-## SYNOPSIS
+## Synopsis
+
 Returns the localized strings of a module.
 
-## SYNTAX
+## Syntax
 
-### Default (Default)
+### Default
+
 ```
-Get-PSFLocalizedString -Module <String> [<CommonParameters>]
+Get-PSFLocalizedString -Module <string> [<CommonParameters>]
 ```
 
 ### Name
+
 ```
-Get-PSFLocalizedString -Module <String> -Name <String> [<CommonParameters>]
+Get-PSFLocalizedString -Module <string> -Name <string> [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Returns the localized strings of a module.
 By default, it creates a variable that has access to each localized string in the module (with string name as propertyname).
 Alternatively, by specifying a specific string, that string can instead be returned.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-PSFLocalizedString -Module 'MyModule'
+
+```powershell
+Get-PSFLocalizedString -Module 'MyModule'
 ```
 
 Returns an object that can be used to access any localized string.
 
 ### EXAMPLE 2
-```
-Get-PSFLocalizedString -Module 'MyModule' -Name 'ErrorValidation'
+
+```powershell
+Get-PSFLocalizedString -Module 'MyModule' -Name 'ErrorValidation'
 ```
 
 Returns the string for the module 'MyModule'  that is stored under the 'ErrorValidation'  name.
 
-## PARAMETERS
+## Parameters
 
-### -Module
+### Module
+
 The name of the module to map.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Default
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+- Name: Name
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Name
+### Name
+
 The name of the string to return
 
 ```yaml
-Type: String
-Parameter Sets: Name
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Name
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-### PSFramework.Localization.LocalStrings
-### System.String
-## NOTES
-
-## RELATED LINKS

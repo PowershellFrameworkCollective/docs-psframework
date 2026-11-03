@@ -1,30 +1,40 @@
----
-external help file: PSUtil-help.xml
+﻿---
+document type: cmdlet
+external help file: PSUtil-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSUtil
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Set-PSUShell
 ---
 
 # Set-PSUShell
 
-## SYNOPSIS
+## Synopsis
+
 Command that sets various console properties
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Set-PSUShell [[-WindowWidth] <Int32>] [[-BackgroundColor] <ConsoleColor>] [[-ForegroundColor] <ConsoleColor>]
- [[-BufferLength] <Int32>] [[-WindowTitle] <String>] [-EnableException] [<CommonParameters>]
+Set-PSUShell [[-WindowWidth] <int>] [[-BackgroundColor] <ConsoleColor>]
+ [[-ForegroundColor] <ConsoleColor>] [[-BufferLength] <int>] [[-WindowTitle] <string>]
+ [-EnableException] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Command that sets various console properties.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Set-PSUShell -WindowWidth 140 -WindowTitle "The Foo Shell" -ForegroundColor DarkGreen -BackgroundColor Black
+
+```powershell
+Set-PSUShell -WindowWidth 140 -WindowTitle "The Foo Shell" -ForegroundColor DarkGreen -BackgroundColor Black
 ```
 
 Sets the current shell to ...
@@ -33,112 +43,137 @@ Sets the current shell to ...
 - Use a foreground color of DarkGreen for all output, default prompt color and comment color (PSReadline syntax detection remains unaffected)
 - Use a background color of Black
 
-## PARAMETERS
+## Parameters
 
-### -WindowWidth
-The width of the console window.
-Not much of a change on windows 10, more of a chore on older console hosts.
+### BackgroundColor
 
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BackgroundColor
 The background color to use.
 Is PSReadline aware.
 
 ```yaml
-Type: ConsoleColor
-Parameter Sets: (All)
-Aliases:
-Accepted values: Black, DarkBlue, DarkGreen, DarkCyan, DarkRed, DarkMagenta, DarkYellow, Gray, DarkGray, Blue, Green, Cyan, Red, Magenta, Yellow, White
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.ConsoleColor
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -ForegroundColor
-The foreground color to use.
-Is PSReadline aware.
+### BufferLength
 
-```yaml
-Type: ConsoleColor
-Parameter Sets: (All)
-Aliases:
-Accepted values: Black, DarkBlue, DarkGreen, DarkCyan, DarkRed, DarkMagenta, DarkYellow, Gray, DarkGray, Blue, Green, Cyan, Red, Magenta, Yellow, White
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BufferLength
 How lengthy a memory the console screen keeps.
 The size of the stuff cls clears.
 
 ```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Int32
+DefaultValue: 0
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 3
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -WindowTitle
-The title the window should have.
+### EnableException
 
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableException
 Replaces user friendly yellow warnings with bloody red exceptions of doom!
 Use this if you want the function to throw terminating errors you want to catch.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### ForegroundColor
 
-## INPUTS
+The foreground color to use.
+Is PSReadline aware.
 
-## OUTPUTS
+```yaml
+Type: System.ConsoleColor
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 2
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
+### WindowTitle
 
-## RELATED LINKS
+The title the window should have.
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 4
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### WindowWidth
+
+The width of the console window.
+Not much of a change on windows 10, more of a chore on older console hosts.
+
+```yaml
+Type: System.Int32
+DefaultValue: 0
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+

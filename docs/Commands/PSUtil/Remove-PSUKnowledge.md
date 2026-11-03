@@ -1,75 +1,88 @@
----
-external help file: PSUtil-help.xml
+﻿---
+document type: cmdlet
+external help file: PSUtil-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSUtil
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Remove-PSUKnowledge
 ---
 
 # Remove-PSUKnowledge
 
-## SYNOPSIS
+## Synopsis
+
 Removes pages from the books of your holy console library of knowledge.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Remove-PSUKnowledge [-Name] <String[]> [[-Book] <String>] [<CommonParameters>]
+Remove-PSUKnowledge [-Name] <string[]> [[-Book] <string>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Removes pages from the books of your holy console library of knowledge.
 Contribute new knowledge by using Write-PSUKnowledge or search it by using Read-PSUKnowlege.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Remove-PSUKnowledge -Name 'DNS for Dummies'
+
+```powershell
+Remove-PSUKnowledge -Name 'DNS for Dummies'
 ```
 
 Rips out the page 'DNS for Dummies' from your default book.
 
-## PARAMETERS
+## Parameters
 
-### -Name
-The name of the page to rip out.
+### Book
 
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases: page
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -Book
 The book of knowledge to deface.
 Defaults to the book specified under the 'PSUtil.Knowledge.DefaultBook' configuration setting.
 It will look for books in your library path, which can be specified under 'PSUtil.Knowledge.LibraryPath'.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: (Get-PSFConfigValue -FullName 'PSUtil.Knowledge.DefaultBook')
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: (Get-PSFConfigValue -FullName 'PSUtil.Knowledge.DefaultBook')
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: true
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### Name
 
-## INPUTS
+The name of the page to rip out.
 
-## OUTPUTS
+```yaml
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases:
+- page
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: true
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
 
-## RELATED LINKS

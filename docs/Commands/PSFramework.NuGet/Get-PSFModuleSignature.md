@@ -1,22 +1,30 @@
----
-external help file: PSFramework.NuGet-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework.NuGet-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework.NuGet
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Get-PSFModuleSignature
 ---
 
 # Get-PSFModuleSignature
 
-## SYNOPSIS
+## Synopsis
+
 Verifies, whether a module is properly signed.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Get-PSFModuleSignature [-Path] <String[]> [<CommonParameters>]
+Get-PSFModuleSignature [-Path] <string[]> [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Verifies, whether a module is properly signed.
 Iterates over every module file and verifies its signature.
 
@@ -32,54 +40,56 @@ A module should be considered signed, when ...
 - the subjects are expected (A microsoft module being signed by a microsoft code signing cert, etc.)
 - the issuer CAs are expected (A microsoft module being signed by a cert issued by Microsoft, etc.)
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-PSFModuleSignature -Path .
+
+```powershell
+Get-PSFModuleSignature -Path .
 ```
 
 Returns, whether the module in the current path is signed.
 
 ### EXAMPLE 2
-```
-Get-PSFModuleSignature -Path \\contoso.com\it\coding\modules\ContosoTools
+
+```powershell
+Get-PSFModuleSignature -Path \\contoso.com\it\coding\modules\ContosoTools
 ```
 
-Verifies the code signing of the module stored in \\\\contoso.com\it\coding\modules\ContosoTools
+Verifies the code signing of the module stored in \\contoso.com\it\coding\modules\ContosoTools
 
 ### EXAMPLE 3
-```
-Get-Module | Get-PSFModuleSignature
+
+```powershell
+Get-Module | Get-PSFModuleSignature
 ```
 
 Verifies for each currently loaded module, whether they are signed.
 
-## PARAMETERS
+## Parameters
 
-### -Path
+### Path
+
 Path to the module(s) to scan.
 Should be the path to either a module-root or a psd1 file.
 
 ```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases: ModuleBase, FullName
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases:
+- ModuleBase
+- FullName
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: true
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

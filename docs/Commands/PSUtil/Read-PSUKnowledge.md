@@ -1,139 +1,175 @@
----
-external help file: PSUtil-help.xml
+﻿---
+document type: cmdlet
+external help file: PSUtil-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSUtil
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Read-PSUKnowledge
 ---
 
 # Read-PSUKnowledge
 
-## SYNOPSIS
+## Synopsis
+
 Searches for knowledge.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Read-PSUKnowledge [[-Name] <String>] [-Tags <String[]>] [-Pattern <String>] [-Book <String>] [-Online]
- [<CommonParameters>]
+Read-PSUKnowledge [[-Name] <string>] [-Tags <string[]>] [-Pattern <string>] [-Book <string>]
+ [-Online] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Searches for knowledge.
 Generally, knowledge must first be generated using Write-PSUKnowledge.
 This allows these functions to server as a searchable notes section right within your console.
 
 However, there might be some other ways to seek knowledge ...
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Read-PSUKnowledge
+
+```powershell
+Read-PSUKnowledge
 ```
 
 Lists all knowledge entries.
 
 ### EXAMPLE 2
-```
-Read-PSUKnowledge -Tags DNS
+
+```powershell
+Read-PSUKnowledge -Tags DNS
 ```
 
 Lists all knowledge entries with the tag "DNS"
 
 ### EXAMPLE 3
-```
-read -p ldap
+
+```powershell
+read -p ldap
 ```
 
 Lists all knowledge entries with the string "ldap" in name or text.
 
-## PARAMETERS
+## Parameters
 
-### -Name
-The name of the knowledge entry.
+### Book
 
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: Page
-
-Required: False
-Position: 1
-Default value: *
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tags
-Tags to search by.
-At least one of the specified tags must be contained.
-
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Pattern
-Search Name and text of the page by using this regex pattern.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: p, f, filter
-
-Required: False
-Position: Named
-Default value: .
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Book
 The book to search in.
 By default you only have one and don't need to worry about this.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: *
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: '*'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Online
+### Name
+
+The name of the knowledge entry.
+
+```yaml
+Type: System.String
+DefaultValue: '*'
+SupportsWildcards: false
+Aliases:
+- Page
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Online
+
 Mysterious parameter.
 I wonder what it does ...
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### Pattern
 
-## INPUTS
+Search Name and text of the page by using this regex pattern.
 
-## OUTPUTS
+```yaml
+Type: System.String
+DefaultValue: .
+SupportsWildcards: false
+Aliases:
+- p
+- f
+- filter
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
+### Tags
 
-## RELATED LINKS
+Tags to search by.
+At least one of the specified tags must be contained.
+
+```yaml
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+

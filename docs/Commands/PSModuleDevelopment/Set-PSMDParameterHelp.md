@@ -1,23 +1,31 @@
----
-external help file: PSModuleDevelopment-help.xml
+﻿---
+document type: cmdlet
+external help file: PSModuleDevelopment-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSModuleDevelopment
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Set-PSMDParameterHelp
 ---
 
 # Set-PSMDParameterHelp
 
-## SYNOPSIS
+## Synopsis
+
 Sets the content of a CBH parameter help.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Set-PSMDParameterHelp [-Path] <String> [-CommandName] <String> [-ParameterName] <String> [-HelpText] <String>
- [-DisableCache] [<CommonParameters>]
+Set-PSMDParameterHelp [-Path] <string> [-CommandName] <string> [-ParameterName] <string>
+ [-HelpText] <string> [-DisableCache] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Sets the content of a CBH parameter help.
 This command will enumerate all files in the specified folder and subfolders.
 Then scan all files with extension .ps1 and .psm1.
@@ -30,113 +38,134 @@ It must be placed within.
 - It will not ADD a CBH, if none is present yet.
 If there is no help for the specified parameter, it will simply do nothing, but report the fact.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Set-PSMDParameterHelp -Path "C:\PowerShell\Projects\MyModule" -CommandName "*" -ParameterName "Foo" -HelpText @"
-```
 
+```powershell
+Set-PSMDParameterHelp -Path "C:\PowerShell\Projects\MyModule" -CommandName "*" -ParameterName "Foo" -HelpText @"
 This is some foo text
 For a truly foo-some result
-"@
+"@
+```
 
 Scans all files in the specified path.
 - Considers every function found
 - Will only process the parameter 'Foo'
 - And replace the current text with the one specified
 
-## PARAMETERS
+## Parameters
 
-### -Path
-The base path where all the files are in.
+### CommandName
 
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CommandName
 The name of the command to update.
 Uses wildcard matching to match, so you can do a global update using "*"
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -ParameterName
-The name of the parameter to update.
-Must be an exact match, but is not case sensitive.
+### DisableCache
+
+By default, this command caches the results of its execution in the PSFramework result cache.
+This information can then be retrieved for the last command to do so by running Get-PSFResultCache.
+Setting this switch disables the caching of data in the cache.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -HelpText
+### HelpText
+
 The text to insert.
 - Do not include indents.
 It will pick up the previous indents and reuse them
 - Do not include an extra line, it will automatically add a separating line to the next element
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 3
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -DisableCache
-By default, this command caches the results of its execution in the PSFramework result cache.
-This information can then be retrieved for the last command to do so by running Get-PSFResultCache.
-Setting this switch disables the caching of data in the cache.
+### ParameterName
+
+The name of the parameter to update.
+Must be an exact match, but is not case sensitive.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 2
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### Path
 
-## INPUTS
+The base path where all the files are in.
 
-## OUTPUTS
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
 
-## RELATED LINKS

@@ -1,73 +1,85 @@
----
-external help file: PSModuleDevelopment-help.xml
+﻿---
+document type: cmdlet
+external help file: PSModuleDevelopment-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSModuleDevelopment
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Select-PSMDBuildProject
 ---
 
 # Select-PSMDBuildProject
 
-## SYNOPSIS
+## Synopsis
+
 Set the specified build project as the default project.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Select-PSMDBuildProject [-Path] <String> [-Register] [<CommonParameters>]
+Select-PSMDBuildProject [-Path] <string> [-Register] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Set the specified build project as the default project.
 This will have most other commands in this Component automatically use the specified project.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Select-PSMDBuildProject -Path 'c:\code\Project\Project.build.json'
+
+```powershell
+Select-PSMDBuildProject -Path 'c:\code\Project\Project.build.json'
 ```
 
 Sets the specified build project as the default project.
 
-## PARAMETERS
+## Parameters
 
-### -Path
+### Path
+
 Path to the project file to pick.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Register
+### Register
+
 Persist the choice as default build project file across PowerShell sessions.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

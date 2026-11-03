@@ -1,143 +1,174 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/docs/Commands/PSFramework/Get-PSFConfig
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Get-PSFConfig
 ---
 
 # Get-PSFConfig
 
-## SYNOPSIS
+## Synopsis
+
 Retrieves configuration elements by name.
 
-## SYNTAX
+## Syntax
 
-### FullName (Default)
+### FullName
+
 ```
-Get-PSFConfig [[-FullName] <String>] [-Persisted] [-Force] [<CommonParameters>]
+Get-PSFConfig [[-FullName] <string>] [-Persisted] [-Force] [<CommonParameters>]
 ```
 
 ### Module
+
 ```
-Get-PSFConfig [[-Name] <String>] [[-Module] <String>] [-Persisted] [-Force] [<CommonParameters>]
+Get-PSFConfig [[-Module] <string>] [[-Name] <string>] [-Persisted] [-Force] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Retrieves configuration elements by name.
 Can be used to search the existing configuration list.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-PSFConfig 'Mail.To'
+
+```powershell
+Get-PSFConfig 'Mail.To'
 ```
 
 Retrieves the configuration element for the key "Mail.To"
 
 ### EXAMPLE 2
-```
-Get-PSFConfig -Force
+
+```powershell
+Get-PSFConfig -Force
 ```
 
 Retrieve all configuration elements from all modules, even hidden ones.
 
 ### EXAMPLE 3
-```
-Get-PSFConfig -Persisted
+
+```powershell
+Get-PSFConfig -Persisted
 ```
 
 Retrieve all persisted settings.
 
-## PARAMETERS
+## Parameters
 
-### -FullName
+### Force
+
+Overrides the default behavior and also displays hidden configuration values.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### FullName
+
 Default: "*"
 Search for configurations using the full name
 
 ```yaml
-Type: String
-Parameter Sets: FullName
-Aliases:
-
-Required: False
-Position: 1
-Default value: *
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: '*'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: FullName
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: true
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Name
+### Module
+
+Default: "*"
+Search configuration by module.
+
+```yaml
+Type: System.String
+DefaultValue: '*'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Module
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Name
+
 Default: "*"
 The name of the configuration element(s) to retrieve.
 May be any string, supports wildcards.
 
 ```yaml
-Type: String
-Parameter Sets: Module
-Aliases:
-
-Required: False
-Position: 2
-Default value: *
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: '*'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Module
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Module
-Default: "*"
-Search configuration by module.
+### Persisted
 
-```yaml
-Type: String
-Parameter Sets: Module
-Aliases:
-
-Required: False
-Position: 1
-Default value: *
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Persisted
 Rather than retrieving current settings, look for configuration entries that have been persisted on the machine.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Force
-Overrides the default behavior and also displays hidden configuration values.
 
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
-
-## INPUTS
-
-## OUTPUTS
-
-### PSFramework.Configuration.Config
-## NOTES
-
-## RELATED LINKS

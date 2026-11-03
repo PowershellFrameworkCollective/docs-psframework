@@ -1,90 +1,108 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/docs/Commands/PSFramework/Register-PSFTeppArgumentCompleter
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Register-PSFTeppArgumentCompleter
 ---
 
 # Register-PSFTeppArgumentCompleter
 
-## SYNOPSIS
+## Synopsis
+
 Registers a parameter for a prestored Tepp.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Register-PSFTeppArgumentCompleter [-Command] <String[]> [-Parameter] <String[]> [-Name] <String>
+Register-PSFTeppArgumentCompleter [-Command] <string[]> [-Parameter] <string[]> [-Name] <string>
  [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Registers a parameter for a prestored Tepp.
 This function allows easily registering a function's parameter for Tepp in the function-file, rather than in a centralized location.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Register-PSFTeppArgumentCompleter -Command Get-Test -Parameter Example -Name MyModule.Example
+
+```powershell
+Register-PSFTeppArgumentCompleter -Command Get-Test -Parameter Example -Name MyModule.Example
 ```
 
 Registers the parameter 'Example' of the command 'Get-Test' to receive the tab completion registered to 'MyModule.Example'
 
-## PARAMETERS
+## Parameters
 
-### -Command
+### Command
+
 Name of the command whose parameter should receive Tepp.
 
 ```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Parameter
-Name of the parameter that should be Tepp'ed.
+### Name
 
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
 Name of the Tepp Completioner to use.
 Use the same name as was assigned in Register-PSFTeppScriptblock (which needs to be called first).
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 2
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### Parameter
 
-## INPUTS
+Name of the parameter that should be Tepp'ed.
 
-## OUTPUTS
+```yaml
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
 
-## RELATED LINKS

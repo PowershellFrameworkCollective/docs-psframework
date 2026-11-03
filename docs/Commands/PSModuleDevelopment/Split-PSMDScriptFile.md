@@ -1,92 +1,111 @@
----
-external help file: PSModuleDevelopment-help.xml
+﻿---
+document type: cmdlet
+external help file: PSModuleDevelopment-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSModuleDevelopment
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Split-PSMDScriptFile
 ---
 
 # Split-PSMDScriptFile
 
-## SYNOPSIS
+## Synopsis
+
 Parses a file and exports all top-level functions from it into a dedicated file, just for the function.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Split-PSMDScriptFile [[-File] <String[]>] [[-Path] <String>] [[-Encoding] <Object>] [<CommonParameters>]
+Split-PSMDScriptFile [[-File] <string[]>] [[-Path] <string>] [[-Encoding] <Object>]
+ [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Parses a file and exports all top-level functions from it into a dedicated file, just for the function.
 The original file remains unharmed by this.
 
 Note: Any comments outside the function definition will not be copied.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Split-PSMDScriptFile -File ".\module.ps1" -Path .\files
+
+```powershell
+Split-PSMDScriptFile -File ".\module.ps1" -Path .\files
 ```
 
 Exports all functions in module.ps1 and puts them in individual files in the folder .\files.
 
-## PARAMETERS
+## Parameters
 
-### -File
-The file(s) to extract functions from.
+### Encoding
 
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Path
-The folder to export to
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Encoding
 Default: UTF8
 The output encoding.
 Can usually be left alone.
 
 ```yaml
-Type: Object
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: UTF8
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Object
+DefaultValue: UTF8
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 2
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### File
 
-## INPUTS
+The file(s) to extract functions from.
 
-## OUTPUTS
+```yaml
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
+### Path
 
-## RELATED LINKS
+The folder to export to
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+

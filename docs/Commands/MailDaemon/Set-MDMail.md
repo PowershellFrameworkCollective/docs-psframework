@@ -1,214 +1,279 @@
----
-external help file: MailDaemon-help.xml
+﻿---
+document type: cmdlet
+external help file: MailDaemon-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: MailDaemon
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Set-MDMail
 ---
 
 # Set-MDMail
 
-## SYNOPSIS
+## Synopsis
+
 Changes properties for the upcoming mail to queue.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Set-MDMail [[-From] <String>] [[-To] <String[]>] [[-Cc] <String[]>] [[-Bcc] <String[]>] [[-Subject] <String>]
- [[-Body] <String>] [-BodyAsHtml] [[-Attachments] <String[]>] [-RemoveAttachments] [[-NotBefore] <DateTime>]
- [[-Priority] <MailPriority>] [<CommonParameters>]
+Set-MDMail [[-From] <string>] [[-To] <string[]>] [[-Cc] <string[]>] [[-Bcc] <string[]>]
+ [[-Subject] <string>] [[-Body] <string>] [[-Attachments] <string[]>] [[-NotBefore] <datetime>]
+ [[-Priority] <MailPriority>] [-BodyAsHtml] [-RemoveAttachments] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 This command sets up the email to send, configuring properties such as the sender, recipient or content.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Set-MDMail -From 'script@contoso.com' -To 'support@contoso.com' -Subject 'Daily Update Report' -Body $body
+
+```powershell
+Set-MDMail -From 'script@contoso.com' -To 'support@contoso.com' -Subject 'Daily Update Report' -Body $body
 ```
 
 Sends an email as script@contoso.com to support@contoso.com, reporting on the daily update status.
 
-## PARAMETERS
+## Parameters
 
-### -From
-The email address of the sender.
+### Attachments
 
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -To
-The email address to send to.
-
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Cc
-Additional addresses to keep in the information flow.
-
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Bcc
-Additional addresses to keep silently informed
-
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Subject
-The subject to send the email under.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Body
-The body of the email to send.
-You can individually add content to the body using Add-MDMailContent.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 6
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BodyAsHtml
-Whether the body is to be understood as html text.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Attachments
 Any attachments to send.
 Avoid sending large attachments with emails.
 You can individually add attachments to the email using Add-MDMailContent (using this parameter will replace attachments sent).
 
 ```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 7
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 6
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -RemoveAttachments
-After sending the email, remove the attachments sent.
-Use this to have the system clean up temporary files you wrote before sending this report.
+### Bcc
+
+Additional addresses to keep silently informed
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 3
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -NotBefore
+### Body
+
+The body of the email to send.
+You can individually add content to the body using Add-MDMailContent.
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 5
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### BodyAsHtml
+
+Whether the body is to be understood as html text.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Cc
+
+Additional addresses to keep in the information flow.
+
+```yaml
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 2
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### From
+
+The email address of the sender.
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### NotBefore
+
 Do not send this email before this timestamp has come to pass.
 
 ```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 8
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.DateTime
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 7
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Priority
+### Priority
+
 The priority of the email
 
 ```yaml
 Type: MailPriority
-Parameter Sets: (All)
-Aliases:
-Accepted values: Normal, Low, High
-
-Required: False
-Position: 9
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 8
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### RemoveAttachments
 
-## INPUTS
+After sending the email, remove the attachments sent.
+Use this to have the system clean up temporary files you wrote before sending this report.
 
-## OUTPUTS
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
+### Subject
 
-## RELATED LINKS
+The subject to send the email under.
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 4
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### To
+
+The email address to send to.
+
+```yaml
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+

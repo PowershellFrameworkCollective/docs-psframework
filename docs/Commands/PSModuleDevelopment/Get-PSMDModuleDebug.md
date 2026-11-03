@@ -1,59 +1,65 @@
----
-external help file: PSModuleDevelopment-help.xml
+﻿---
+document type: cmdlet
+external help file: PSModuleDevelopment-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSModuleDevelopment
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Get-PSMDModuleDebug
 ---
 
 # Get-PSMDModuleDebug
 
-## SYNOPSIS
+## Synopsis
+
 Retrieves module debugging configurations
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Get-PSMDModuleDebug [[-Filter] <String>] [<CommonParameters>]
+Get-PSMDModuleDebug [[-Filter] <string>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Retrieves a list of all matching module debugging configurations.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-PSMDModuleDebug -Filter *net*
+
+```powershell
+Get-PSMDModuleDebug -Filter *net*
 ```
 
 Returns the module debugging configuration for all modules with a name that contains "net"
 
-## PARAMETERS
+## Parameters
 
-### -Filter
+### Filter
+
 Default: "*"
 A string filter applied to the module name.
 All modules of matching name (using a -Like comparison) will be returned.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: *
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: '*'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

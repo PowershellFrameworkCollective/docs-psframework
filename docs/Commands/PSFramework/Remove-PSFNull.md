@@ -1,109 +1,139 @@
----
+﻿---
+document type: cmdlet
 external help file: PSFramework.dll-Help.xml
+HelpUri: https://psframework.org/documentation/commands/PSFramework/Remove-PSFNull.html
+Locale: en-US
 Module Name: PSFramework
-online version: https://psframework.org/documentation/commands/PSFramework/Remove-PSFNull.html
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Remove-PSFNull
 ---
 
 # Remove-PSFNull
 
-## SYNOPSIS
+## Synopsis
+
 Filters out null objects.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Remove-PSFNull [-InputObject <PSObject>] [-AllowEmptyCollections] [-AllowEmptyStrings] [-Enumerate]
+Remove-PSFNull [-InputObject <psobject>] [-AllowEmptyCollections] [-AllowEmptyStrings] [-Enumerate]
  [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 This cmdlet can be used to filter out $null objects, empty collections and empty strings from the pipeline.
 
-## EXAMPLES
+## Examples
 
-### Example 1: Sweeping the Pipeline
-```
-C:\PS> Get-Something | Remove-PSFNull | Do-Something
+### Sweeping the Pipeline
+
+```powershell
+C:\PS> Get-Something | Remove-PSFNull | Do-Something
 ```
 
 In this example, Remove-PSFNull cleans up the pipeline from null-equivalent objects before passing output along to Do-Something
 
-## PARAMETERS
+## Parameters
 
-### -InputObject
-The items to filter
+### AllowEmptyCollections
 
-```yaml
-Type: PSObject
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -AllowEmptyCollections
 By default, empty collections are dropped from the output.
 Using this switch, they are passe along.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -AllowEmptyStrings
+### AllowEmptyStrings
+
 By default, empty strings are discarded.
 Setting this switch causes them to be passed through instead.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Enumerate
+### Enumerate
+
 By default, output is not enumerated (Lists are sent along the pipeline as Lists, not individual items).
 If Remove-PSFNull should enumerate output after all, set this switch.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### InputObject
 
-## INPUTS
+The items to filter
 
-## OUTPUTS
+```yaml
+Type: System.Management.Automation.PSObject
+DefaultValue: None
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
+## Notes
 
-## RELATED LINKS
 
-[Online Documentation:](https://psframework.org/documentation/commands/PSFramework/Remove-PSFNull.html)
+
+
+## Links
+
+Microsoft.PowerShell.PlatyPS.Model.Links
+
 

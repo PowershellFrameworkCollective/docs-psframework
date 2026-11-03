@@ -1,26 +1,34 @@
----
-external help file: PSFramework.NuGet-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework.NuGet-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework.NuGet
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Update-PSFRepository
 ---
 
 # Update-PSFRepository
 
-## SYNOPSIS
+## Synopsis
+
 Executes configured repository settings.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
 Update-PSFRepository [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Executes configured repository settings.
 Using configuration settings - for example applied per GPO or configuration file - it is possible to define intended repositories.
 
-The configuration settings must be named as 'PSFramework.NuGet.Repositories.\<Repository Name\>.\<Setting\>'
+The configuration settings must be named as 'PSFramework.NuGet.Repositories.<Repository Name>.<Setting>'
 
 Available settings:
 - Uri: Url or filesystem path to the repository.
@@ -53,54 +61,60 @@ If V2 does not exist, existing V3 repositories will be allowed.
 - V3: Will only register on V3.
 If V2 is present, it will be unregistered, irrespective of whether V3 is available.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Update-PSFRepository
+
+```powershell
+Update-PSFRepository
 ```
 
 Executes configured repository settings, creating, updating and deleting repositories as defined.
 
-## PARAMETERS
+## Parameters
 
-### -WhatIf
-If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.
+### Confirm
 
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
 If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: ''
+SupportsWildcards: false
+Aliases:
+- cf
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### WhatIf
 
-## INPUTS
+If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.
 
-## OUTPUTS
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: ''
+SupportsWildcards: false
+Aliases:
+- wi
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
 
-## RELATED LINKS

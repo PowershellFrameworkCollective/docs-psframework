@@ -1,67 +1,74 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/docs/Commands/PSFramework/Get-PSFMessageLevelModifier
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Get-PSFMessageLevelModifier
 ---
 
 # Get-PSFMessageLevelModifier
 
-## SYNOPSIS
+## Synopsis
+
 Returns all registered message level modifiers with similar name.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Get-PSFMessageLevelModifier [[-Name] <String>] [<CommonParameters>]
+Get-PSFMessageLevelModifier [[-Name] <string>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Returns all registered message level modifiers with similar name.
 
 Message level modifiers are created using New-PSFMessageLevelModifier and allow dynamically modifying the actual message level written by commands.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-PSFMessageLevelModifier
+
+```powershell
+Get-PSFMessageLevelModifier
 ```
 
 Returns all message level filters
 
 ### EXAMPLE 2
-```
-Get-PSFmessageLevelModifier -Name "mymodule.*"
+
+```powershell
+Get-PSFmessageLevelModifier -Name "mymodule.*"
 ```
 
 Returns all message level filters that start with "mymodule."
 
-## PARAMETERS
+## Parameters
 
-### -Name
+### Name
+
 Default: "*"
 A name filter - only commands that are similar to the filter will be returned.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: *
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: '*'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

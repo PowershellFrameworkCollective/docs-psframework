@@ -1,101 +1,120 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/docs/Commands/PSFramework/Get-PSFLoggingProvider
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Get-PSFLoggingProviderInstance
 ---
 
 # Get-PSFLoggingProviderInstance
 
-## SYNOPSIS
+## Synopsis
+
 Returns a list of the enabled logging provider instances.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Get-PSFLoggingProviderInstance [[-ProviderName] <String>] [[-Name] <String>] [-Force] [<CommonParameters>]
+Get-PSFLoggingProviderInstance [[-ProviderName] <string>] [[-Name] <string>] [-Force]
+ [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Returns a list of the enabled logging provider instances.
 Those are used to log messages to whatever system they are designed to log to.
 
 PSFramework ships with a few default logging providers.
 Custom logging destinations can be created by implementing your own, custom provider and registering it using Register-PSFLoggingProvider.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-PSFLoggingProviderInstance
+
+```powershell
+Get-PSFLoggingProviderInstance
 ```
 
 Returns all enabled logging provider instances.
 
 ### EXAMPLE 2
-```
-Get-PSFLoggingProviderInstance -ProviderName logfile -Force
+
+```powershell
+Get-PSFLoggingProviderInstance -ProviderName logfile -Force
 ```
 
 Returns all logging provider instances - enabled or not - of the logfile provider
 
-## PARAMETERS
+## Parameters
 
-### -ProviderName
-Default: '*'
-The name of the provider the instance is an instance of.
+### Force
+
+Enables returning disabled instances.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: *
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Name
+### Name
+
 Default: '*'
 The name of the instance to filter by.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: *
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: '*'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Force
-Enables returning disabled instances.
+### ProviderName
+
+Default: '*'
+The name of the provider the instance is an instance of.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: '*'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-### PSFramework.Logging.Provider
-## NOTES
-
-## RELATED LINKS

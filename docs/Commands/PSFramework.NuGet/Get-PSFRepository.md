@@ -1,22 +1,30 @@
----
-external help file: PSFramework.NuGet-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework.NuGet-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework.NuGet
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Get-PSFRepository
 ---
 
 # Get-PSFRepository
 
-## SYNOPSIS
+## Synopsis
+
 Lists available PowerShell repositories.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Get-PSFRepository [[-Name] <String[]>] [[-Type] <String>] [<CommonParameters>]
+Get-PSFRepository [[-Name] <string[]>] [[-Type] <string>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Lists available PowerShell repositories.
 Includes both classic (V2 | Get-PSRepository) and new (V3 | Get-PSResourceRepository) repositories.
 This will also include additional metadata, including priority, which in this module is also applicable to classic repositories.
@@ -27,57 +35,61 @@ This is determined by whether it has been bootstrapped at the system level.
 If you have already bootstrapped it in user-mode, this may not be reflected correctly.
 If your computer is internet-facing, it can also automatically bootstrap itself without any issues.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-PSFRepository
+
+```powershell
+Get-PSFRepository
 ```
 
 List all available repositories.
 
-## PARAMETERS
+## Parameters
 
-### -Name
+### Name
+
 Name of the repository to list.
 
 ```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: *
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String[]
+DefaultValue: '*'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Type
+### Type
+
 What kind of repository to return:
 + All: (default) Return all, irrespective of type
 + V2: Only return classic repositories, as would be returned by Get-PSRepository
 + V3: Only return modern repositories, as would be returned by Get-PSResourceRepository
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: All
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: All
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

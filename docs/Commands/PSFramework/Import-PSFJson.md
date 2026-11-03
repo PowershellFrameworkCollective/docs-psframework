@@ -1,126 +1,156 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Import-PSFJson
 ---
 
 # Import-PSFJson
 
-## SYNOPSIS
+## Synopsis
+
 Imports a json document from file and offers its content as objects.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
 Import-PSFJson [[-Path] <PathFileLaxParameter>] [[-LiteralPath] <PathLiteralParameter>]
  [[-Encoding] <EncodingParameter>] [-AsHashtable] [-FixData] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Imports a json document from file and offers its content as objects.
 
 WARNING: The FixData parameter is experimental and may experience breaking changes!
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Import-PSFJson .\policies.json
+
+```powershell
+Import-PSFJson .\policies.json
 ```
 
 Reads the content of policies.json, parses its structure and returns objects representing its content.
 
-## PARAMETERS
+## Parameters
 
-### -Path
-Path to the file to import.
-Will evaluate wildcards.
+### AsHashtable
 
-```yaml
-Type: PathFileLaxParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -LiteralPath
-Path to the file to import.
-Will NOT evaluate wildcards.
+Return content as hashtable, rather than PSCustomObject
 
 ```yaml
-Type: PathLiteralParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Encoding
+### Encoding
+
 The encoding of the file to read.
 Defaults to UTF8.
 
 ```yaml
-Type: EncodingParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: UTF8
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: PSFramework.Parameter.EncodingParameter
+DefaultValue: UTF8
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 2
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -AsHashtable
-Return content as hashtable, rather than PSCustomObject
+### FixData
 
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FixData
 EXPERIMENTAL PARAMETER, MAY SUFFER BREAKING CHANGES
 Attempt to fix broken data from the data processed.
 Assumes the json was originally generated through PowerShell and tries to detect and fix issues that happened during export.
 Most notably: Timestamps no longer being proper timestamps.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### LiteralPath
 
-## INPUTS
+Path to the file to import.
+Will NOT evaluate wildcards.
 
-## OUTPUTS
+```yaml
+Type: PSFramework.Parameter.PathLiteralParameter
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
+### Path
 
-## RELATED LINKS
+Path to the file to import.
+Will evaluate wildcards.
+
+```yaml
+Type: PSFramework.Parameter.PathFileLaxParameter
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: true
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+

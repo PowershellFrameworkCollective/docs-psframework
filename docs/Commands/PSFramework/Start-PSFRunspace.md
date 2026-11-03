@@ -1,138 +1,176 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/docs/Commands/PSFramework/Start-PSFRunspace
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Start-PSFRunspace
 ---
 
 # Start-PSFRunspace
 
-## SYNOPSIS
+## Synopsis
+
 Starts a runspace that was registered to the PSFramework
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Start-PSFRunspace [[-Name] <String[]>] [[-Runspace] <RunspaceContainer[]>] [-NoMessage] [-EnableException]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-PSFRunspace [[-Name] <string[]>] [[-Runspace] <RunspaceContainer[]>] [-NoMessage]
+ [-EnableException] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Starts a runspace that was registered to the PSFramework
 Simply registering does not automatically start a given runspace.
 Only by executing this function will it take effect.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Start-PSFRunspace -Name 'mymodule.maintenance'
+
+```powershell
+Start-PSFRunspace -Name 'mymodule.maintenance'
 ```
 
 Starts the runspace registered under the name 'mymodule.maintenance'
 
-## PARAMETERS
+## Parameters
 
-### -Name
-The name of the registered runspace to launch
+### Confirm
 
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Runspace
-The runspace to launch.
-Returned by Get-PSFRunspace
+If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.
 
 ```yaml
-Type: RunspaceContainer[]
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: ''
+SupportsWildcards: false
 Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
+- cf
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -NoMessage
-Setting this will prevent messages be written to the message / logging system.
-This is designed to make the PSFramework not flood the log on each import.
+### EnableException
 
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableException
 This parameters disables user-friendly warnings and enables the throwing of exceptions.
 This is less user friendly, but allows catching exceptions in calling scripts.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -WhatIf
+### Name
+
+The name of the registered runspace to launch
+
+```yaml
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### NoMessage
+
+Setting this will prevent messages be written to the message / logging system.
+This is designed to make the PSFramework not flood the log on each import.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Runspace
+
+The runspace to launch.
+Returned by Get-PSFRunspace
+
+```yaml
+Type: PSFramework.Runspace.RunspaceContainer[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### WhatIf
+
 If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: ''
+SupportsWildcards: false
+Aliases:
+- wi
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Confirm
-If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.
 
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
-
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

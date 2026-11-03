@@ -1,22 +1,30 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Remove-PSFAlias
 ---
 
 # Remove-PSFAlias
 
-## SYNOPSIS
+## Synopsis
+
 Removes an alias from the global scope.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Remove-PSFAlias [-Name] <String[]> [-Force] [<CommonParameters>]
+Remove-PSFAlias [-Name] <string[]> [-Force] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Removes an alias from the global* scope.
 Please note that this always affects the global scope and should not be used lightly.
 This has the potential to break code that does not comply with PowerShell best practices and relies on the use of aliases.
@@ -26,62 +34,67 @@ Requires the '-Force' parameter to delete ReadOnly aliases.
 
 *This includes aliases exported by modules.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Remove-PSFAlias -Name 'grep'
+
+```powershell
+Remove-PSFAlias -Name 'grep'
 ```
 
 Removes the global alias 'grep'
 
 ### EXAMPLE 2
-```
-Remove-PSFAlias -Name 'select' -Force
+
+```powershell
+Remove-PSFAlias -Name 'select' -Force
 ```
 
 Removes the default alias 'select'
 
-## PARAMETERS
+## Parameters
 
-### -Name
-The name of the alias to remove.
+### Force
 
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -Force
 Enforce removal of aliases.
 Required to remove ReadOnly aliases (including default aliases such as "select" or "group").
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### Name
 
-## INPUTS
+The name of the alias to remove.
 
-## OUTPUTS
+```yaml
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: true
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
 
-## RELATED LINKS

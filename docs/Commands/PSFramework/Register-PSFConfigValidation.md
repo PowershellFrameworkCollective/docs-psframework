@@ -1,22 +1,30 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/docs/Commands/PSFramework/Register-PSFConfigValidation
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Register-PSFConfigValidation
 ---
 
 # Register-PSFConfigValidation
 
-## SYNOPSIS
+## Synopsis
+
 Registers a validation scriptblock for use with the configuration system.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Register-PSFConfigValidation [-Name] <String> [-ScriptBlock] <ScriptBlock> [<CommonParameters>]
+Register-PSFConfigValidation [-Name] <string> [-ScriptBlock] <scriptblock> [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Registers a validation scriptblock for use with the configuration system.
 
 The scriptblock must be designed according to a few guidelines:
@@ -28,54 +36,58 @@ The Value property contains the validated input.
 The scriptblock may legally convert the input (For example from string to int in case of integer validation)
 The message contains a string that will be passed along to an exception in case the input is NOT valid.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Register-PSFConfigValidation -Name IntPositive -ScriptBlock $scriptblock
+
+```powershell
+Register-PSFConfigValidation -Name IntPositive -ScriptBlock $scriptblock
 ```
 
 Registers the scriptblock stored in $scriptblock as validation with the name IntPositive
 
-## PARAMETERS
+## Parameters
 
-### -Name
+### Name
+
 The name under which to register the validation scriptblock
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -ScriptBlock
+### ScriptBlock
+
 The scriptblock to register
 
 ```yaml
-Type: ScriptBlock
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.ScriptBlock
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

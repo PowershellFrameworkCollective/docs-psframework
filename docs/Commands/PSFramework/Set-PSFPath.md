@@ -1,90 +1,118 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Set-PSFPath
 ---
 
 # Set-PSFPath
 
-## SYNOPSIS
+## Synopsis
+
 Configures or updates a path under a name.
 
-## SYNTAX
+## Syntax
 
-### Default (Default)
+### Default
+
 ```
-Set-PSFPath -Name <String> -Path <String> [<CommonParameters>]
+Set-PSFPath -Name <string> -Path <string> [<CommonParameters>]
 ```
 
 ### Register
+
 ```
-Set-PSFPath -Name <String> -Path <String> [-Register] [-Scope <ConfigScope>] [<CommonParameters>]
+Set-PSFPath -Name <string> -Path <string> -Register [-Scope <ConfigScope>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Configures or updates a path under a name.
 The path can be persisted using the "-Register" command.
 Paths setup like this can be retrieved using Get-PSFPath.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Set-PSFPath -Name 'temp' -Path 'C:\temp'
+
+```powershell
+Set-PSFPath -Name 'temp' -Path 'C:\temp'
 ```
 
-Configures C:\temp as the current temp path.
+Configures C:\temp as the current temp path.
 (does not override $env:temp !)
 
-## PARAMETERS
+## Parameters
 
-### -Name
+### Name
+
 Name the path should be stored under.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Path
+### Path
+
 The path that should be returned under the name.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Register
+### Register
+
 Registering a path in order for it to persist across sessions.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: Register
-Aliases:
-
-Required: True
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Register
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Scope
+### Scope
+
 The configuration scope it should be registered under.
 Defaults to UserDefault.
 Configuration scopes are the default locations configurations are being stored at.
@@ -92,25 +120,20 @@ For more details see:
 https://psframework.org/documentation/documents/psframework/configuration/persistence-location.html
 
 ```yaml
-Type: ConfigScope
-Parameter Sets: Register
-Aliases:
-Accepted values: UserDefault, UserMandatory, SystemDefault, SystemMandatory, FileUserLocal, FileUserShared, FileSystem, Environment, EnvironmentSimple
-
-Required: False
-Position: Named
-Default value: UserDefault
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: PSFramework.Configuration.ConfigScope
+DefaultValue: UserDefault
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Register
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

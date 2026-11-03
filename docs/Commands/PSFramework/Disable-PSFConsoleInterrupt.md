@@ -1,46 +1,46 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Disable-PSFConsoleInterrupt
 ---
 
 # Disable-PSFConsoleInterrupt
 
-## SYNOPSIS
+## Synopsis
+
 Prevents the use of CTRL+C from interrupting the console.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
 Disable-PSFConsoleInterrupt [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Prevents the use of CTRL+C from interrupting the console.
 
 Use this to prevent manual interruption of critical tasks, but do not forget to re-enable it as soon as possible.
 Usually, ctrl+C is a critical part of the user experience, enabling the user to interrupt the console
 and avoid a hang from locking the console.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Disable-PSFConsoleInterrupt
+
+```powershell
+Disable-PSFConsoleInterrupt
 ```
 
 Prevents the use of CTRL+C from interrupting the console.
 
-## PARAMETERS
+## Parameters
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

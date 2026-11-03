@@ -1,29 +1,37 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Register-PSFPsd1Converter
 ---
 
 # Register-PSFPsd1Converter
 
-## SYNOPSIS
+## Synopsis
+
 Registers a new piece of logic used to convert specific data types to PSD1 format.
 
-## SYNTAX
+## Syntax
 
-### Script (Default)
+### Script
+
 ```
-Register-PSFPsd1Converter -AssignedType <Type[]> -Code <PsfScriptBlock> [-DefaultResult <String>]
- [-OnErrorDefault] [-Properties <Hashtable>] [<CommonParameters>]
+Register-PSFPsd1Converter -AssignedType <type[]> -Code <PsfScriptBlock> [-DefaultResult <string>]
+ [-OnErrorDefault] [-Properties <hashtable>] [<CommonParameters>]
 ```
 
 ### Binary
+
 ```
-Register-PSFPsd1Converter -AssignedType <Type[]> -Converter <IPsd1Converter> [<CommonParameters>]
+Register-PSFPsd1Converter -AssignedType <type[]> -Converter <IPsd1Converter> [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Registers a new piece of logic used to convert specific data types to PSD1 format.
 This is used by ConvertTo-PSFPsd1 or Export-PSFPowerShellDataFile.
 
@@ -34,60 +42,63 @@ There are two fundamental ways to define these extensions:
 In either way, they target a specific datatype that they will convert.
 When processing elements in a object into a psd1 document, each element - property value or value of a subproperty - is processed based on its data type.
 The decision tree is thus processed:
-- Is it null?
-Then do '$null'
-- Is it an Enum?
-Then do "'\<Text Value\>'"
-- Do we have a converter defined for this exact type?
-If so, use it.
-- Is it a dictionary / hashtable?
-Then use the predefined converter for that
-- Do we have a converter defined for a type the input can be assigned to (Parent Type, Interface, etc.)?
-If so, use it (in case of multiple matches, a random one is picked).
+- Is it null? Then do '$null'
+- Is it an Enum? Then do "'<Text Value>'"
+- Do we have a converter defined for this exact type? If so, use it.
+- Is it a dictionary / hashtable? Then use the predefined converter for that
+- Do we have a converter defined for a type the input can be assigned to (Parent Type, Interface, etc.)? If so, use it (in case of multiple matches, a random one is picked).
 - Use the predefined default converter for all other PowerShell objects.
 
 This means, even if you define a converter for a specific interface, if the object processed is also a dictionary, your converter will be ignored.
 
-\> Data Type written in C#
+> Data Type written in C#
 For this, you need to define a class implementing the interface: PSFramework.Data.IPsd1Converter
 Which essentially requires a single "Convert" method to return the string that becomes part of the PSD1 document.
 
-\> Scriptblock
+> Scriptblock
 A scriptblock as a converter is a fairly simple thing and allows you to do your conversion in script.
 The item to convert is found under "$_", the scriptblock must return the result string as output.
 More details on the parameter "Code"'s documentation.
 ScriptBlocks offer inherently worse performance than C#-based converters.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
+
+```powershell
+Register-PSFPsd1Converter -Code { "'{0}'" -f $this.Converter.EscapeQuotes($_.ComputerName) } -AssignedType ([PSFramework.Parameter.ComputerParameter])
 ```
-Register-PSFPsd1Converter -Code { "'{0}'" -f $this.Converter.EscapeQuotes($_.ComputerName) } -AssignedType ([PSFramework.Parameter.ComputerParameter])
-```
 
-Registers a converter that will take the \[PSFComputer\] parameter class and serialize it into the ComputerName, no matter what data was provided for it.
+Registers a converter that will take the [PSFComputer] parameter class and serialize it into the ComputerName, no matter what data was provided for it.
 
-## PARAMETERS
+## Parameters
 
-### -AssignedType
+### AssignedType
+
 The type that should be converted.
 The same converter can be assigned to multiple types.
 Can be either a direct datatype or an interface, affecting all types implementing that type.
 In case of a direct datatype, classes inheriting from that type will also be affected, unless a direct assignments overrides this.
 
 ```yaml
-Type: Type[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Type[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Code
+### Code
+
 The script-code that should convert data into PSD1 string.
 There are several special considerations when implementing this:
 
@@ -109,13 +120,13 @@ Intended for if you want to provide some data with your conversion scriptblock.
   - "Value" is the exact same thing as what is already available in "$_"
 - The scriptblock must return a string, and only the first output element will be considered
 
-\> Converter
+> Converter
 The converter object manages the runtime and offers some settings and methods that may be useful:
 It has the "Convert" method, which allows you to use the conversion system for some of the properties on your object, while doing your own thing on the others.
 This method comes with two overloads:
 
 Convert(System.Object Value)
-Convert(System.Object Value, System.Object\[\] Parents, int Depth)
+Convert(System.Object Value, System.Object[] Parents, int Depth)
 
 Generally, you want to use the latter one, to ensure MaxDepth, recursion protection and indentation levels remain consistent.
 
@@ -128,90 +139,110 @@ Finally, the "Config" property on the converter allows your converter scriptbloc
 It is a hashtable users may chose to provide when calling ConvertTo-PSFPsd1 or Export-PSFPowerShellDataFile.
 
 ```yaml
-Type: PsfScriptBlock
-Parameter Sets: Script
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: PSFramework.Utility.PsfScriptBlock
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Script
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -DefaultResult
+### Converter
+
+The instance of a fully implemented (in c#) Converter.
+It comes with properties and behaviors as you defined it.
+
+```yaml
+Type: PSFramework.Data.IPsd1Converter
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Binary
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### DefaultResult
+
 The default result to use when the scriptblock runs into a terminating error.
 Will not actually be applied, unless "OnErrorDefault" is set.
 Defaults to: '$null'
 
 ```yaml
-Type: String
-Parameter Sets: Script
-Aliases:
-
-Required: False
-Position: Named
-Default value: $null
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: $null
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Script
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -OnErrorDefault
+### OnErrorDefault
+
 When the converter fails with a terminating error, use the default value, rather than kill the conversion.
 By default, an error during a conversion scriptblock will fail the entire transforamtion.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: Script
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Script
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Properties
+### Properties
+
 A hashtable of extra information to provide to the conversion scriptblock.
 This data will be the same in all conversion calls, no matter the object being processed.
 See the description for the code parameter on how to access per-conversion config settings.
 
 ```yaml
-Type: Hashtable
-Parameter Sets: Script
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Collections.Hashtable
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Script
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Converter
-The instance of a fully implemented (in c#) Converter.
-It comes with properties and behaviors as you defined it.
 
-```yaml
-Type: IPsd1Converter
-Parameter Sets: Binary
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
-
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

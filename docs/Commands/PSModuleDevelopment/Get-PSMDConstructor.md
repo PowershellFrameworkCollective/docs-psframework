@@ -1,22 +1,30 @@
----
-external help file: PSModuleDevelopment-help.xml
+﻿---
+document type: cmdlet
+external help file: PSModuleDevelopment-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSModuleDevelopment
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Get-PSMDConstructor
 ---
 
 # Get-PSMDConstructor
 
-## SYNOPSIS
+## Synopsis
+
 Returns information on the available constructors of a type.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
 Get-PSMDConstructor [[-InputObject] <Object>] [-NonPublic] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Returns information on the available constructors of a type.
 Accepts any object as pipeline input:
 - if it's a type, it will retrieve its constructors.
@@ -25,62 +33,67 @@ Accepts any object as pipeline input:
 Will not duplicate constructors if multiple objects of the same type are passed.
 In order to retrieve the constructor of an array, wrap it into another array.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-ChildItem | Get-PSMDConstructor
+
+```powershell
+Get-ChildItem | Get-PSMDConstructor
 ```
 
 Scans all objects in the given path, than tries to retrieve the constructor for each kind of object returned
 (generally, this will return the constructors for file and folder objects)
 
 ### EXAMPLE 2
-```
-Get-PSMDConstructor $result
+
+```powershell
+Get-PSMDConstructor $result
 ```
 
 Returns the constructors of objects stored in $result
 
-## PARAMETERS
+## Parameters
 
-### -InputObject
+### InputObject
+
 The object the constructor of which should be retrieved.
 
 ```yaml
-Type: Object
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
+Type: System.Object
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -NonPublic
+### NonPublic
+
 Show non-public constructors instead.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

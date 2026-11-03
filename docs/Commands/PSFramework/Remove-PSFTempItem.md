@@ -1,116 +1,138 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Remove-PSFTempItem
 ---
 
 # Remove-PSFTempItem
 
-## SYNOPSIS
+## Synopsis
+
 Removes temporary items.
 
-## SYNTAX
+## Syntax
 
-### targeted (Default)
+### targeted
+
 ```
-Remove-PSFTempItem -Name <String> -ModuleName <String> [<CommonParameters>]
+Remove-PSFTempItem -Name <string> -ModuleName <string> [<CommonParameters>]
 ```
 
 ### expired
+
 ```
 Remove-PSFTempItem [-ClearExpired] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Removes temporary items.
 This not only removes them from memory, but also invokes the item's deletion logic, removing temporary files, deleting temporary user accounts, etc.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Remove-PSFTempItem -ClearExpired
+
+```powershell
+Remove-PSFTempItem -ClearExpired
 ```
 
 Globally removes all temporary items that have expired.
 
 ### EXAMPLE 2
-```
-Get-PSFTempItem | Remove-PSFTempItem
+
+```powershell
+Get-PSFTempItem | Remove-PSFTempItem
 ```
 
 Remove ALL temporary items, irrespective of whether they are still needed or not.
 
 ### EXAMPLE 3
-```
-Remove-PSFTempItem -Name configFile -Module FWManager
+
+```powershell
+Remove-PSFTempItem -Name configFile -Module FWManager
 ```
 
 Removes the temp item "configFile" of the module "FWManager"
 
 ### EXAMPLE 4
-```
-Remove-PSFTempItem -Name *beer* -Module Fridge
+
+```powershell
+Remove-PSFTempItem -Name *beer* -Module Fridge
 ```
 
 Removes all temporary items containing the word "beer" that are associated with the module "Fridge".
 Try not to get too drunk.
 
-## PARAMETERS
+## Parameters
 
-### -Name
-Name of the temporary item to remove.
+### ClearExpired
 
-```yaml
-Type: String
-Parameter Sets: targeted
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -ModuleName
-Name of the module to filter by.
-
-```yaml
-Type: String
-Parameter Sets: targeted
-Aliases: Module
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ClearExpired
 Globally remove all temporary items that have expired.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: expired
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: expired
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### ModuleName
 
-## INPUTS
+Name of the module to filter by.
 
-## OUTPUTS
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases:
+- Module
+ParameterSets:
+- Name: targeted
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: true
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
+### Name
 
-## RELATED LINKS
+Name of the temporary item to remove.
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: targeted
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: true
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+

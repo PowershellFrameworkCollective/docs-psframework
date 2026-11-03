@@ -1,73 +1,107 @@
----
-external help file: MailDaemon-help.xml
+﻿---
+document type: cmdlet
+external help file: MailDaemon-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: MailDaemon
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Send-MDMail
 ---
 
 # Send-MDMail
 
-## SYNOPSIS
+## Synopsis
+
 Queues current email for delivery.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Send-MDMail [-TaskName] <String> [-PersistAttachments] [<CommonParameters>]
+Send-MDMail [-TaskName] <string> [-PersistAttachments] [-DontTrigger] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Uses the data prepared by Set-MDMail or Add-MDMailContent and queues the email for delivery.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Send-MDMail -TaskName "Logrotate"
+
+```powershell
+Send-MDMail -TaskName "Logrotate"
 ```
 
 Queues the currently prepared email under the name "Logrotate"
 
-## PARAMETERS
+## Parameters
 
-### -TaskName
+### DontTrigger
+
+Do not trigger the task that sends the email.
+By default, after submitting an email for delivery, it will immediately trigger the scheduled task to send it.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### PersistAttachments
+
+Attachments will be serialized with the queued email allowing the source files to be removed immediately.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### TaskName
+
 Name of the task that is sending the email.
 Used in the name of the file used to queue messages in order to reduce likelyhood of accidental clash.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -PersistAttachments
-Attachments will be serialized with the queued email allowing the source files to be removed immediately.
 
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
-
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

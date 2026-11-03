@@ -1,123 +1,153 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Export-PSFJson
 ---
 
 # Export-PSFJson
 
-## SYNOPSIS
+## Synopsis
+
 Converts input to json string and writes the result to file.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Export-PSFJson [-Path] <PathNewFileParameter> [[-InputObject] <Object>] [[-Depth] <Int32>] [-Compress]
- [[-Encoding] <EncodingParameter>] [<CommonParameters>]
+Export-PSFJson [-Path] <PathNewFileParameter> [[-InputObject] <Object>] [[-Depth] <int>]
+ [[-Encoding] <EncodingParameter>] [-Compress] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Converts input to json string and writes the result to file.
 Uses ConvertTo-Json under the hood.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-MgUser | Export-PSFJson .\users.json
+
+```powershell
+Get-MgUser | Export-PSFJson .\users.json
 ```
 
 Write all users from Microsoft Graph into a json file.
 
-## PARAMETERS
+## Parameters
 
-### -Path
-The path to the file(s) to create.
-The parent directory must exist, the file will be overwritten if it already does.
+### Compress
 
-```yaml
-Type: PathNewFileParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-The data to convert to json and export.
+Whether the Json string should be compressed to save space.
 
 ```yaml
-Type: Object
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Depth
+### Depth
+
 How deep the into sub-properties do we want to delve?
 Defaults to 2.
 Any nested sub-properties that are deeper than that many levels in will be lost in the result.
 
 ```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Int32
+DefaultValue: 0
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 2
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Compress
-Whether the Json string should be compressed to save space.
+### Encoding
 
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Encoding
 What encoding to write the file in.
 Defaults to UTF8 (with BOM).
 
 ```yaml
-Type: EncodingParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: UTF8
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: PSFramework.Parameter.EncodingParameter
+DefaultValue: UTF8
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 3
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### InputObject
 
-## INPUTS
+The data to convert to json and export.
 
-## OUTPUTS
+```yaml
+Type: System.Object
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
+### Path
 
-## RELATED LINKS
+The path to the file(s) to create.
+The parent directory must exist, the file will be overwritten if it already does.
+
+```yaml
+Type: PSFramework.Parameter.PathNewFileParameter
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+

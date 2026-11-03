@@ -1,33 +1,42 @@
----
-external help file: PSUtil-help.xml
+﻿---
+document type: cmdlet
+external help file: PSUtil-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSUtil
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Expand-PSUObject
 ---
 
 # Expand-PSUObject
 
-## SYNOPSIS
+## Synopsis
+
 A comfortable replacement for Select-Object -ExpandProperty.
 
-## SYNTAX
+## Syntax
 
-### Equals (Default)
+### Equals
+
 ```
-Expand-PSUObject [[-Name] <String>] [-InputObject <Object>] [<CommonParameters>]
+Expand-PSUObject [[-Name] <string>] [-InputObject <Object>] [<CommonParameters>]
 ```
 
 ### Match
+
 ```
-Expand-PSUObject [-Name] <String> [-Match] [-InputObject <Object>] [<CommonParameters>]
+Expand-PSUObject [-Name] <string> -Match [-InputObject <Object>] [<CommonParameters>]
 ```
 
 ### Like
+
 ```
-Expand-PSUObject [-Name] <String> [-Like] [-InputObject <Object>] [<CommonParameters>]
+Expand-PSUObject [-Name] <string> -Like [-InputObject <Object>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 A comfortable replacement for Select-Object -ExpandProperty.
 Allows extracting properties with less typing and more flexibility:
 
@@ -44,115 +53,133 @@ Like / Match comparison:
 Specifying either like or match allows extracting any number of matching properties from each object.
 Note that this is a somewhat more CPU-expensive operation (which shouldn't matter unless with gargantuan numbers of objects).
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-dir | exp
+
+```powershell
+dir | exp
 ```
 
 Expands the property whose name is the first on the defaults list ($DefaultExpandedProperties).
 By default, FullName would be expanded.
 
 ### EXAMPLE 2
-```
-dir | exp length
+
+```powershell
+dir | exp length
 ```
 
-Expands the length property of all objects returned by dir.
+Expands the length property of all objects returned by dir.
 Simply ignores those that do not have the property (folders).
 
 ### EXAMPLE 3
-```
-dir | exp name -match
+
+```powershell
+dir | exp name -match
 ```
 
 Expands all properties from all objects returned by dir that match the string "name" ("PSChildName", "FullName", "Name", "BaseName" for directories)
 
-## PARAMETERS
+## Parameters
 
-### -Name
-ParSet: Equals, Like, Match
-The name of the Property to expand.
+### InputObject
 
-```yaml
-Type: String
-Parameter Sets: Equals
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
+The objects whose properties are to be expanded.
 
 ```yaml
-Type: String
-Parameter Sets: Match, Like
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Object
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Like
+### Like
+
 ParSet: Like
 Expands all properties that match the -Name parameter using -like comparison.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: Like
-Aliases:
-
-Required: True
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Like
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Match
+### Match
+
 ParSet: Match
 Expands all properties that match the -Name parameter using -match comparison.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: Match
-Aliases:
-
-Required: True
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Match
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -InputObject
-The objects whose properties are to be expanded.
+### Name
+
+ParSet: Equals, Like, Match
+The name of the Property to expand.
 
 ```yaml
-Type: Object
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Match
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+- Name: Like
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+- Name: Equals
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

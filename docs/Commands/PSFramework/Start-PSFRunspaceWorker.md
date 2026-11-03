@@ -1,63 +1,70 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/documentation/documents/psframework/runspace-workflows.html
+Locale: en-US
 Module Name: PSFramework
-online version: https://psframework.org/documentation/documents/psframework/runspace-workflows.html
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Start-PSFRunspaceWorker
 ---
 
 # Start-PSFRunspaceWorker
 
-## SYNOPSIS
+## Synopsis
+
 Start a runspace worker, part of the logic executing a Runspace Workflow.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
 Start-PSFRunspaceWorker [[-InputObject] <RSWorker[]>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Start a runspace worker, part of the logic executing a Runspace Workflow.
 This will have it start its workers and process any queued input.
 
 Use this to start only part of a Runspace Workflow, rather than all of it.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-$worker | Start-PSFRunspaceWorker
+
+```powershell
+$worker | Start-PSFRunspaceWorker
 ```
 
 Starts the worker specified in $worker
 
-## PARAMETERS
+## Parameters
 
-### -InputObject
+### InputObject
+
 The Worker object to start.
 
 ```yaml
-Type: RSWorker[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
+Type: PSFramework.Runspace.RSWorker[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+## Links
 
-## INPUTS
+Microsoft.PowerShell.PlatyPS.Model.Links
 
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS
-
-[https://psframework.org/documentation/documents/psframework/runspace-workflows.html](https://psframework.org/documentation/documents/psframework/runspace-workflows.html)
 

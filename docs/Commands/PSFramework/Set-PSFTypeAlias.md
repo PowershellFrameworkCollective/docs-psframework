@@ -1,108 +1,126 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/docs/Commands/PSFramework/Set-PSFTypeAlias
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Set-PSFTypeAlias
 ---
 
 # Set-PSFTypeAlias
 
-## SYNOPSIS
+## Synopsis
+
 Registers or updates an alias for a .NET type.
 
-## SYNTAX
+## Syntax
 
-### Name (Default)
+### Name
+
 ```
-Set-PSFTypeAlias [-AliasName] <String> [-TypeName] <String> [<CommonParameters>]
+Set-PSFTypeAlias [-AliasName] <string> [-TypeName] <string> [<CommonParameters>]
 ```
 
 ### Hashtable
+
 ```
-Set-PSFTypeAlias [-Mapping] <Hashtable> [<CommonParameters>]
+Set-PSFTypeAlias [-Mapping] <hashtable> [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Registers or updates an alias for a .NET type.
 Use this function during module import to create shortcuts for typenames users can be expected to interact with directly.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Set-PSFTypeAlias -AliasName 'file' -TypeName 'System.IO.File'
+
+```powershell
+Set-PSFTypeAlias -AliasName 'file' -TypeName 'System.IO.File'
 ```
 
 Creates an alias for the type 'System.IO.File' named 'file'
 
 ### EXAMPLE 2
-```
-Set-PSFTypeAlias -Mapping @{
-```
 
-file = 'System.IO.File'
+```powershell
+Set-PSFTypeAlias -Mapping @{
+	file = 'System.IO.File'
 	path = 'System.IO.Path'
-}
+}
+```
 
 Creates an alias for the type 'System.IO.File' named 'file'
 Creates an alias for the type 'System.IO.Path' named 'path'
 
-## PARAMETERS
+## Parameters
 
-### -AliasName
+### AliasName
+
 The short and useful alias for the type.
 
 ```yaml
-Type: String
-Parameter Sets: Name
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Name
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: true
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -TypeName
-The full name of the type.
-Example: 'System.IO.FileInfo'
+### Mapping
 
-```yaml
-Type: String
-Parameter Sets: Name
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Mapping
 A hashtable of alias to typename mappings.
 Useful to registering a full set of type aliases.
 
 ```yaml
-Type: Hashtable
-Parameter Sets: Hashtable
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Collections.Hashtable
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Hashtable
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### TypeName
 
-## INPUTS
+The full name of the type.
+Example: 'System.IO.FileInfo'
 
-## OUTPUTS
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Name
+  Position: 1
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: true
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
 
-## RELATED LINKS

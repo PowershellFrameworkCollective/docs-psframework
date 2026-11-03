@@ -1,118 +1,144 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/docs/Commands/PSFramework/Set-PSFResultCache
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Set-PSFResultCache
 ---
 
 # Set-PSFResultCache
 
-## SYNOPSIS
+## Synopsis
+
 Stores a result in the result cache
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Set-PSFResultCache [-InputObject] <Object> [-DisableCache <Boolean>] [-PassThru] [-CommandName <String>]
- [<CommonParameters>]
+Set-PSFResultCache [-InputObject] <Object> [-DisableCache <bool>] [-PassThru]
+ [-CommandName <string>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Stores a result in the result cache.
 This function is designed for use in other functions, a user should never have cause to use it directly himself.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Set-PSFResultCache -InputObject $Results -DisableCache $NoRes
+
+```powershell
+Set-PSFResultCache -InputObject $Results -DisableCache $NoRes
 ```
 
 Stores the contents of $Results in the result cache, but does nothing if $NoRes is $true (the default Switch-name for disabling the result cache)
 
 ### EXAMPLE 2
-```
-Get-ChildItem $path | Get-Acl | Set-PSFResultCache -DisableCache $NoRes -PassThru
+
+```powershell
+Get-ChildItem $path | Get-Acl | Set-PSFResultCache -DisableCache $NoRes -PassThru
 ```
 
 Gets all items in $Path, then retrieves each of their Acl, finally it stores those in the result cache (if it isn't disabled via $NoRes) and finally passes each Acl through for the user to see.
 This will return all objects, even if $NoRes is set to $True.
 
-## PARAMETERS
+## Parameters
 
-### -InputObject
-The value to store in the result cache.
+### CommandName
+
+Default: (Get-PSCallStack)[0].Command
+The name of the command that called Set-PSFResultCache.
+Is automatically detected and usually doesn't need to be changed.
 
 ```yaml
-Type: Object
-Parameter Sets: (All)
-Aliases: Value
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: (Get-PSCallStack)[0].Command
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -DisableCache
+### DisableCache
+
 Allows you to control, whether the function actually writes to the cache.
 Useful when used in combination with -PassThru.
 Does not suppress output via -PassThru.
 However in combination, these two parameters make caching within a pipeline practical.
 
 ```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Boolean
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -PassThru
+### InputObject
+
+The value to store in the result cache.
+
+```yaml
+Type: System.Object
+DefaultValue: ''
+SupportsWildcards: false
+Aliases:
+- Value
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### PassThru
+
 The objects that are being cached are passed through this function.
 By default, Set-PSFResultCache doesn't have any output.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -CommandName
-Default: (Get-PSCallStack)\[0\].Command
-The name of the command that called Set-PSFResultCache.
-Is automatically detected and usually doesn't need to be changed.
 
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: (Get-PSCallStack)[0].Command
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
-
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

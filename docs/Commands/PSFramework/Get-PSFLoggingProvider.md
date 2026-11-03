@@ -1,70 +1,78 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/docs/Commands/PSFramework/Get-PSFLoggingProvider
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Get-PSFLoggingProvider
 ---
 
 # Get-PSFLoggingProvider
 
-## SYNOPSIS
+## Synopsis
+
 Returns a list of the registered logging providers.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Get-PSFLoggingProvider [[-Name] <String>] [<CommonParameters>]
+Get-PSFLoggingProvider [[-Name] <string>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Returns a list of the registered logging providers.
 Those are used to log messages to whatever system they are designed to log to.
 
 PSFramework ships with a few default logging providers.
 Custom logging destinations can be created by implementing your own, custom provider and registering it using Register-PSFLoggingProvider.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-PSFLoggingProvider
+
+```powershell
+Get-PSFLoggingProvider
 ```
 
 Returns all logging provider
 
 ### EXAMPLE 2
-```
-Get-PSFLoggingProvider -Name filesystem
+
+```powershell
+Get-PSFLoggingProvider -Name filesystem
 ```
 
 Returns the filesystem provider
 
-## PARAMETERS
+## Parameters
 
-### -Name
+### Name
+
 Default: '*'
 The name to filter by
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: Provider, ProviderName
-
-Required: False
-Position: 1
-Default value: *
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: '*'
+SupportsWildcards: false
+Aliases:
+- Provider
+- ProviderName
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-### PSFramework.Logging.Provider
-## NOTES
-
-## RELATED LINKS

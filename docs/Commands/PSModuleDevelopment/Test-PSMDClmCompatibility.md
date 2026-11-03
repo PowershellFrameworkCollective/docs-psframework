@@ -1,22 +1,30 @@
----
-external help file: PSModuleDevelopment-help.xml
+﻿---
+document type: cmdlet
+external help file: PSModuleDevelopment-Help.xml
+HelpUri: https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_language_modes?view=powershell-7.1#constrained-language-constrained-language
+Locale: en-US
 Module Name: PSModuleDevelopment
-online version: https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_language_modes?view=powershell-7.1#constrained-language-constrained-language
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Test-PSMDClmCompatibility
 ---
 
 # Test-PSMDClmCompatibility
 
-## SYNOPSIS
+## Synopsis
+
 Tests, whether the targeted file would have trouble executing under Constrained Language Mode.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Test-PSMDClmCompatibility [-Path] <String[]> [<CommonParameters>]
+Test-PSMDClmCompatibility [-Path] <string[]> [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Tests, whether the targeted file would have trouble executing under Constrained Language Mode (CLM).
 
 In CLM, various language features and commands are constrained in their ability to execute.
@@ -40,42 +48,42 @@ To get a full list of the constraints and what types are allowed, see the docume
 
 https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_language_modes?view=powershell-7.1#constrained-language-constrained-language
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-ChildItem C:\Scripts | Test-PSMDClmCompatibility
+
+```powershell
+Get-ChildItem C:\Scripts | Test-PSMDClmCompatibility
 ```
 
 Scans each file in C:\Scripts and returns any issues that might occur in CLM.
 
-## PARAMETERS
+## Parameters
 
-### -Path
+### Path
+
 Path to the scriptfile to scan.
 
 ```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases: FullName
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases:
+- FullName
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: true
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+## Links
 
-## INPUTS
+Microsoft.PowerShell.PlatyPS.Model.Links
 
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS
-
-[https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_language_modes?view=powershell-7.1#constrained-language-constrained-language](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_language_modes?view=powershell-7.1#constrained-language-constrained-language)
 

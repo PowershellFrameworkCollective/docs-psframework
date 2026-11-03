@@ -1,62 +1,68 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Get-PSFPath
 ---
 
 # Get-PSFPath
 
-## SYNOPSIS
+## Synopsis
+
 Access a configured path.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Get-PSFPath [-Name] <String> [<CommonParameters>]
+Get-PSFPath [-Name] <string> [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Access a configured path.
 Paths can be configured using Set-PSFPath or using the configuration system.
 To register a path using the configuration system create a setting key named like this:
-"PSFramework.Path.\<PathName\>"
+"PSFramework.Path.<PathName>"
 For example the following setting points at the temp path:
 "PSFramework.Path.Temp"
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-PSFPath -Name 'temp'
+
+```powershell
+Get-PSFPath -Name 'temp'
 ```
 
 Returns the temp path.
 
-## PARAMETERS
+## Parameters
 
-### -Name
+### Name
+
 Name of the path to retrieve.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

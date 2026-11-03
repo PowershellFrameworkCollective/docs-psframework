@@ -1,113 +1,136 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/docs/Commands/PSFramework/Register-PSFParameterClassMapping
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Register-PSFParameterClassMapping
 ---
 
 # Register-PSFParameterClassMapping
 
-## SYNOPSIS
+## Synopsis
+
 Registers types to a parameter classes input interpretation.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Register-PSFParameterClassMapping [-ParameterClass] <ParameterClasses> [-TypeName] <String>
- [-Properties] <String[]> [-EnableException] [<CommonParameters>]
+Register-PSFParameterClassMapping [-ParameterClass] <ParameterClasses> [-TypeName] <string>
+ [-Properties] <string[]> [-EnableException] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 The parameter classes shipped in PSFramework can be extended to support input of an unknown object type.
 In order to accomplish that, it is necessary to register the name of that type (and the properties to use) using this command.
 
 On input interpretation, it will check the TypeNames property on the PSObject for evaluation.
 This means you can also specify custom PSObjects by giving them a dedicated name.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Register-PSFParameterClassMapping -ParameterClass 'Computer' -TypeName 'microsoft.activedirectory.management.adcomputer' -Properties 'DNSHostName', 'Name'
+
+```powershell
+Register-PSFParameterClassMapping -ParameterClass 'Computer' -TypeName 'microsoft.activedirectory.management.adcomputer' -Properties 'DNSHostName', 'Name'
 ```
 
 This extends the computer parameter class by ...
 - having it accept the type 'microsoft.activedirectory.management.adcomputer'
 - having it use the 'DNSHostName' property if available, falling back to 'Name' if necessary
 
-## PARAMETERS
+## Parameters
 
-### -ParameterClass
+### EnableException
+
+This parameters disables user-friendly warnings and enables the throwing of exceptions.
+This is less user friendly, but allows catching exceptions in calling scripts.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### ParameterClass
+
 The parameter class to extend.
 
 ```yaml
-Type: ParameterClasses
-Parameter Sets: (All)
-Aliases:
-Accepted values: Computer, DateTime, TimeSpan, Encoding, Path
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: PSFramework.Parameter.ParameterClasses
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -TypeName
-The name of the type to register.
+### Properties
 
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Properties
 The properties to check.
 When processing an object of this type, it will try to access the properties in this order, trying to make something fit the intended result.
 The first property that is a fit for the parameter class is chosen, other ones are ignored.
 
 ```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 2
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -EnableException
-This parameters disables user-friendly warnings and enables the throwing of exceptions.
-This is less user friendly, but allows catching exceptions in calling scripts.
+### TypeName
+
+The name of the type to register.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

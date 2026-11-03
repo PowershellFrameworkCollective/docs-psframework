@@ -1,22 +1,30 @@
----
-external help file: PSUtil-help.xml
+﻿---
+document type: cmdlet
+external help file: PSUtil-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSUtil
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Register-PSUObjectExpansion
 ---
 
 # Register-PSUObjectExpansion
 
-## SYNOPSIS
+## Synopsis
+
 Registers a custom scriptblock for a type when processed by Expand-PSUObject.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Register-PSUObjectExpansion [-TypeName] <String> [-ScriptBlock] <ScriptBlock> [<CommonParameters>]
+Register-PSUObjectExpansion [-TypeName] <string> [-ScriptBlock] <scriptblock> [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Registers a custom scriptblock for a type when processed by Expand-PSUObject.
 
 Expand-PSUObject enables accelerated object expansion,
@@ -28,54 +36,58 @@ This commands sets up these custom expansion rules.
 Define a scriptblock, it receives a single parameter - the input object to expand.
 The scriptblock is then responsible for expanding it and producing the desired output.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Register-PSUObjectExpansion -TypeName 'MyModule.MyClass' -ScriptBlock $ScriptBlock
+
+```powershell
+Register-PSUObjectExpansion -TypeName 'MyModule.MyClass' -ScriptBlock $ScriptBlock
 ```
 
 Sets up a custom expansion rule for the 'MyModule.MyClass' class.
 
-## PARAMETERS
+## Parameters
 
-### -TypeName
-The name of the type to custom-expand.
+### ScriptBlock
 
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScriptBlock
 The scriptblock performing the expansion.
 
 ```yaml
-Type: ScriptBlock
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.ScriptBlock
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### TypeName
 
-## INPUTS
+The name of the type to custom-expand.
 
-## OUTPUTS
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
 
-## RELATED LINKS

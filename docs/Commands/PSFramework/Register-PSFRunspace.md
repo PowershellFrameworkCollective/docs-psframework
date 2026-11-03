@@ -1,28 +1,48 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/docs/Commands/PSFramework/Register-PSFRunspace
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Register-PSFRunspace
 ---
 
 # Register-PSFRunspace
 
-## SYNOPSIS
+## Synopsis
+
 Registers a scriptblock to run in the background.
 
-## SYNTAX
+## Syntax
+
+### Gen2
 
 ```
-Register-PSFRunspace -ScriptBlock <ScriptBlock> -Name <String> [-NoMessage] [<CommonParameters>]
+Register-PSFRunspace -Name <string> -Process <scriptblock> [-Begin <scriptblock>]
+ [-End <scriptblock>] [-NoMessage] [-Start] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+### Gen1
+
+```
+Register-PSFRunspace -Name <string> -ScriptBlock <scriptblock> [-NoMessage] [-Start]
+ [<CommonParameters>]
+```
+
+## Description
+
 This function registers a scriptblock to run in separate runspace.
 This is different from most runspace solutions, in that it is designed for permanent background tasks that need to be done.
 It guarantees a single copy of the task to run within the powershell process, even when running the same module in many runspaces in parallel.
 
-The scriptblock must be built with some rules in mind, for details on using this system run:
-Get-Help about_psf_runspace
+There are two Generations of the Managed Runspace system available:
+Gen 1: -ScriptBlock | Full control over the execution, but some integrations are required for the whole thing to work.
+Gen 2: -Begin/-Process/-End | Simple execution that is easy to use, but surrenders some control over the process.
+
+The full documentation can be found online: https://psframework.org
+By default, using the Generation 2 implementation is recommended, the third shows how to use it.
 
 Updating:
 If this function is called multiple times, targeting the same name, it will update the scriptblock.
@@ -30,82 +50,193 @@ If this function is called multiple times, targeting the same name, it will upda
 - If that scriptblock is different from the previous ones, it will be registered, but will not be executed right away!
   Only after stopping and starting the runspace will it operate under the new scriptblock.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Register-PSFRunspace -ScriptBlock $scriptBlock -Name 'mymodule.maintenance'
+
+```powershell
+Register-PSFRunspace -ScriptBlock $scriptBlock -Name 'mymodule.maintenance'
 ```
 
 Registers the script defined in $scriptBlock under the name 'mymodule.maintenance'
-It does not start the runspace yet.
+It does not start the runspace yet.
 If it already exists, it will overwrite the scriptblock without affecting the running script.
 
 ### EXAMPLE 2
-```
-Register-PSFRunspace -ScriptBlock $scriptBlock -Name 'mymodule.maintenance'
-```
 
-PS C:\\\> Start-PSFRunspace -Name 'mymodule.maintenance'
+```powershell
+Register-PSFRunspace -ScriptBlock $scriptBlock -Name 'mymodule.maintenance'
+PS C:\> Start-PSFRunspace -Name 'mymodule.maintenance'
+```
 
 Registers the script defined in $scriptBlock under the name 'mymodule.maintenance'
 Then it starts the runspace, running the registered $scriptBlock
 
-## PARAMETERS
+### EXAMPLE 3
 
-### -ScriptBlock
-The scriptblock to run in a dedicated runspace.
-
-```yaml
-Type: ScriptBlock
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+```powershell
+$code = { Remove-Item -Path "$env:TEMP\MyModule-*" -Force -Recurse; Start-Sleep -Seconds 30 }
+PS C:\> Register-PSFRunspace -Name 'mymodule.tempcleaner' -Process $code -Start
 ```
 
-### -Name
+Creates a background runspace that can never exist more than once in the current process.
+It will clean all items under $env:TEMP that start with "MyModule-" every 30 seconds (plus 250ms, which are added by the system).
+
+## Parameters
+
+### Begin
+
+The startup phase in a Generation 2 Managed Runspace.
+Will be executed once in the managed runspace and will run in the global scope.
+Scriptblock must be trusted and not in Constrained Language Mode.
+
+```yaml
+Type: System.Management.Automation.ScriptBlock
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Gen2
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### End
+
+The end phase in a Generation 2 Managed Runspace.
+Will be executed once at the end when stopping the Managed Runspace
+
+```yaml
+Type: System.Management.Automation.ScriptBlock
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Gen2
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Name
+
 The name to register the scriptblock under.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -NoMessage
+### NoMessage
+
 Setting this will prevent messages be written to the message / logging system.
 This is designed to make the PSFramework not flood the log on each import.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### Process
 
-## INPUTS
+The main processing phase in a Generation 2 Managed Runspace.
+Will be executed repeatedly until the Managed Runspace is stopped.
+There is a 250ms wait inbetween executions, to prevent CPU overload, additional waiting can be performed within the code.
+To stop the entire Managed Runspace from within your code, call "break" - this will not prevent the End phase from executing if specified.
 
-## OUTPUTS
+```yaml
+Type: System.Management.Automation.ScriptBlock
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Gen2
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
+### ScriptBlock
 
-## RELATED LINKS
+The scriptblock to run in a dedicated runspace.
+Scriptblock must be trusted and not in Constrained Language Mode.
+
+```yaml
+Type: System.Management.Automation.ScriptBlock
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Gen1
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Start
+
+Automatically start the runspace after registering it.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+

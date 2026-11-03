@@ -1,107 +1,130 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/docs/Commands/PSFramework/Resolve-PSFDefaultParameterValue
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Resolve-PSFDefaultParameterValue
 ---
 
 # Resolve-PSFDefaultParameterValue
 
-## SYNOPSIS
+## Synopsis
+
 Used to filter and process default parameter values.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Resolve-PSFDefaultParameterValue [-Reference] <Hashtable> [-CommandName] <String[]> [[-Target] <Hashtable>]
- [[-ParameterName] <String[]>] [<CommonParameters>]
+Resolve-PSFDefaultParameterValue [-Reference] <hashtable> [-CommandName] <string[]>
+ [[-Target] <hashtable>] [[-ParameterName] <string[]>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 This command picks all the default parameter values from a reference hashtable.
 It then filters all that match a specified command and binds them to that specific command, narrowing its focus.
 These get merged into either a new or a specified hashtable and returned.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Resolve-PSFDefaultParameterValue -Reference $global:PSDefaultParameterValues -CommandName 'Invoke-WebRequest'
+
+```powershell
+Resolve-PSFDefaultParameterValue -Reference $global:PSDefaultParameterValues -CommandName 'Invoke-WebRequest'
 ```
 
 Returns a hashtable containing all default parameter values in the global scope affecting the command 'Invoke-WebRequest'.
 
-## PARAMETERS
+## Parameters
 
-### -Reference
-The hashtable to pick default parameter values from.
+### CommandName
 
-```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CommandName
 The commands to pick default parameter values for.
 
 ```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Target
+### ParameterName
+
+Only resolve for specific parameter names.
+
+```yaml
+Type: System.String[]
+DefaultValue: '*'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 3
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Reference
+
+The hashtable to pick default parameter values from.
+
+```yaml
+Type: System.Collections.Hashtable
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Target
+
 The target hashtable to merge results into.
 By default an empty hashtable is used.
 
 ```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: @{ }
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Collections.Hashtable
+DefaultValue: '@{ }'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 2
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -ParameterName
-Only resolve for specific parameter names.
 
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: *
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
-
-## INPUTS
-
-## OUTPUTS
-
-### System.Collections.Hashtable
-## NOTES
-
-## RELATED LINKS

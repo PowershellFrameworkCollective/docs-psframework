@@ -1,57 +1,63 @@
----
-external help file: PSModuleDevelopment-help.xml
+﻿---
+document type: cmdlet
+external help file: PSModuleDevelopment-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSModuleDevelopment
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Import-PSMDModuleDebug
 ---
 
 # Import-PSMDModuleDebug
 
-## SYNOPSIS
+## Synopsis
+
 Invokes the preconfigured import of a module.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Import-PSMDModuleDebug [[-Name] <String>] [<CommonParameters>]
+Import-PSMDModuleDebug [[-Name] <string>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Invokes the preconfigured import of a module.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Import-PSMDModuleDebug -Name 'cPSNetwork'
+
+```powershell
+Import-PSMDModuleDebug -Name 'cPSNetwork'
 ```
 
 Imports the cPSNetwork module as it was configured to be imported using Set-ModuleDebug.
 
-## PARAMETERS
+## Parameters
 
-### -Name
+### Name
+
 The exact name of the module to import using the specified configuration.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

@@ -1,43 +1,42 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Get-PSFPipeline
 ---
 
 # Get-PSFPipeline
 
-## SYNOPSIS
+## Synopsis
+
 Generates meta-information for the pipeline from the calling command.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
 Get-PSFPipeline [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Generates meta-information for the pipeline from the calling command.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-Pipeline
+
+```powershell
+Get-Pipeline
 ```
 
 Generates meta-information for the pipeline from the calling command.
 
-## PARAMETERS
+## Parameters
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-### PSFramework.Meta.Pipeline
-## NOTES
-
-## RELATED LINKS

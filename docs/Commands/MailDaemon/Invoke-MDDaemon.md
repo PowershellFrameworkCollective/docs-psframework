@@ -1,22 +1,30 @@
----
-external help file: MailDaemon-help.xml
+﻿---
+document type: cmdlet
+external help file: MailDaemon-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: MailDaemon
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Invoke-MDDaemon
 ---
 
 # Invoke-MDDaemon
 
-## SYNOPSIS
+## Synopsis
+
 Processes the email queue and sends emails
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Invoke-MDDaemon [<CommonParameters>]
+Invoke-MDDaemon [-NoLogging] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Processes the email queue and sends emails.
 Should be scheduled using a scheduled task.
 Recommended Setting:
@@ -24,24 +32,38 @@ Recommended Setting:
 - Launch on Midnight
 - Repeat every 30 minutes for one day
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Invoke-MDDaemon
+
+```powershell
+Invoke-MDDaemon
 ```
 
 Processes the email queue and sends emails
 
-## PARAMETERS
+## Parameters
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### NoLogging
 
-## INPUTS
+Disables Eventlog logging.
+By default, the mail invocation is logged to the Windows Eventlog.
 
-## OUTPUTS
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
 
-## RELATED LINKS

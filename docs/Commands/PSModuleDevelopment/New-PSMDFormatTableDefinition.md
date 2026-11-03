@@ -1,34 +1,44 @@
----
-external help file: PSModuleDevelopment-help.xml
+﻿---
+document type: cmdlet
+external help file: PSModuleDevelopment-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSModuleDevelopment
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: New-PSMDFormatTableDefinition
 ---
 
 # New-PSMDFormatTableDefinition
 
-## SYNOPSIS
+## Synopsis
+
 Generates a format XML for the input type.
 
-## SYNTAX
+## Syntax
 
-### default (Default)
+### default
+
 ```
-New-PSMDFormatTableDefinition -InputObject <Object> [-IncludeProperty <String[]>] [-ExcludeProperty <String[]>]
- [-IncludePropertyAttribute <String>] [-ExcludePropertyAttribute <String>] [-DocumentName <String>]
- [-SortColumns] [-ColumnOrder <String[]>] [-ColumnOrderHash <Hashtable[]>]
+New-PSMDFormatTableDefinition -InputObject <Object> [-IncludeProperty <string[]>]
+ [-ExcludeProperty <string[]>] [-IncludePropertyAttribute <string>]
+ [-ExcludePropertyAttribute <string>] [-DocumentName <string>] [-SortColumns]
+ [-ColumnOrder <string[]>] [-ColumnOrderHash <hashtable[]>]
  [-ColumnTransformations <ColumnTransformation[]>] [<CommonParameters>]
 ```
 
 ### fragment
+
 ```
-New-PSMDFormatTableDefinition -InputObject <Object> [-IncludeProperty <String[]>] [-ExcludeProperty <String[]>]
- [-IncludePropertyAttribute <String>] [-ExcludePropertyAttribute <String>] [-Fragment] [-SortColumns]
- [-ColumnOrder <String[]>] [-ColumnOrderHash <Hashtable[]>] [-ColumnTransformations <ColumnTransformation[]>]
+New-PSMDFormatTableDefinition -InputObject <Object> [-IncludeProperty <string[]>]
+ [-ExcludeProperty <string[]>] [-IncludePropertyAttribute <string>]
+ [-ExcludePropertyAttribute <string>] [-Fragment] [-SortColumns] [-ColumnOrder <string[]>]
+ [-ColumnOrderHash <hashtable[]>] [-ColumnTransformations <ColumnTransformation[]>]
  [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Generates a format XML for the input type.
 Currently, only tables are supported.
 
@@ -40,186 +50,77 @@ You can generate all items in a single call (which will probably be messy on man
 Or you can use the -Fragment parameter to create individual fragments, and combine them by passing
 those items again to this command (the final time without the -Fragment parameter).
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-ChildItem | New-PSMDFormatTableDefinition
+
+```powershell
+Get-ChildItem | New-PSMDFormatTableDefinition
 ```
 
 Generates a format xml for the objects in the current path (files and folders in most cases)
 
 ### EXAMPLE 2
-```
-Get-ChildItem | New-PSMDFormatTableDefinition -IncludeProperty LastWriteTime, FullName
+
+```powershell
+Get-ChildItem | New-PSMDFormatTableDefinition -IncludeProperty LastWriteTime, FullName
 ```
 
 Creates a format xml that only includes the columns LastWriteTime, FullName
 
-## PARAMETERS
+## Parameters
 
-### -InputObject
-The object that will be used to generate the format XML for.
-Will not duplicate its work if multiple object of the same type are passed.
-Accepts objects generated when using the -Fragment parameter, combining them into a single document.
+### ColumnOrder
 
-```yaml
-Type: Object
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -IncludeProperty
-Only properties in this list will be included.
-
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExcludeProperty
-Only properties not in this list will be included.
-
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IncludePropertyAttribute
-Only properties that have the specified attribute will be included.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExcludePropertyAttribute
-Only properties that do NOT have the specified attribute will be included.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Fragment
-The function will only return a partial Format-XML object (an individual table definition per type).
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: fragment
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DocumentName
-Adds a name to the document generated.
-Purely cosmetic.
-
-```yaml
-Type: String
-Parameter Sets: default
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SortColumns
-Enabling this will cause the command to sort columns alphabetically.
-Explicit order styles take precedence over alphabetic sorting.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ColumnOrder
 Specify a list of properties in the order they should appear.
 For properties with labels: Labels take precedence over selected propertyname.
 
 ```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -ColumnOrderHash
+### ColumnOrderHash
+
 Allows explicitly defining the order of columns on a per-type basis.
 These hashtables need to have two properties:
 - Type: The name of the type it applies to (e.g.: "System.IO.FileInfo")
 - Properties: The list of properties in the order they should appear.
-Example: `@{ Type = "System.IO.FileInfo"; Properties = "Name", "Length", "LastWriteTime" }`
+Example: @{ Type = "System.IO.FileInfo"; Properties = "Name", "Length", "LastWriteTime" }
 This parameter takes precedence over ColumnOrder in instances where the
 processed typename is explicitly listed in a hashtable.
 
 ```yaml
-Type: Hashtable[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Collections.Hashtable[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -ColumnTransformations
+### ColumnTransformations
+
 A complex parameter that allows customizing columns or even adding new ones.
 This parameter accepts a hashtable that can ...
 - Set column width
@@ -243,7 +144,6 @@ Notes:
 - Alignment: Expects a string, can be any choice of "Left", "Center", "Right"
 
 Example:
-```powershell
 $transform = @{
     Type = "System.IO.FileInfo"
     Append = $true
@@ -251,29 +151,194 @@ $transform = @{
     Label = "Ext.Length"
     Align = "Left"
 }
-```
 
 ```yaml
-Type: ColumnTransformation[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: PSModuleDevelopment.Format.ColumnTransformation[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### DocumentName
 
-## INPUTS
+Adds a name to the document generated.
+Purely cosmetic.
 
-## OUTPUTS
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: default
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-### PSModuleDevelopment.Format.Document
-### PSModuleDevelopment.Format.TableDefinition
-## NOTES
+### ExcludeProperty
 
-## RELATED LINKS
+Only properties not in this list will be included.
+
+```yaml
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### ExcludePropertyAttribute
+
+Only properties that do NOT have the specified attribute will be included.
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Fragment
+
+The function will only return a partial Format-XML object (an individual table definition per type).
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: fragment
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### IncludeProperty
+
+Only properties in this list will be included.
+
+```yaml
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### IncludePropertyAttribute
+
+Only properties that have the specified attribute will be included.
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### InputObject
+
+The object that will be used to generate the format XML for.
+Will not duplicate its work if multiple object of the same type are passed.
+Accepts objects generated when using the -Fragment parameter, combining them into a single document.
+
+```yaml
+Type: System.Object
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### SortColumns
+
+Enabling this will cause the command to sort columns alphabetically.
+Explicit order styles take precedence over alphabetic sorting.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+

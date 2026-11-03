@@ -1,117 +1,140 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/docs/Commands/PSFramework/Get-PSFLicense
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Get-PSFLicense
 ---
 
 # Get-PSFLicense
 
-## SYNOPSIS
+## Synopsis
+
 Returns registered licenses
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Get-PSFLicense [[-Filter] <String>] [-ProductType <ProductType[]>] [-LicenseType <LicenseType>]
- [-Manufacturer <String>] [<CommonParameters>]
+Get-PSFLicense [[-Filter] <string>] [-ProductType <ProductType[]>] [-LicenseType <LicenseType>]
+ [-Manufacturer <string>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Returns all matching licenses from the PSFramework internal license cache.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-PSFLicense *Microsoft*
+
+```powershell
+Get-PSFLicense *Microsoft*
 ```
 
 Returns all registered licenses for products with the string "Microsoft" in their name
 
 ### EXAMPLE 2
-```
-Get-PSFLicense -LicenseType Commercial -ProductType Library
+
+```powershell
+Get-PSFLicense -LicenseType Commercial -ProductType Library
 ```
 
 Returns a list of all registered licenses for products that have commercial licenses and are libraries.
 
-## PARAMETERS
+## Parameters
 
-### -Filter
+### Filter
+
 Default: "*"
 Filters for the name of the product.
 Uses the -like operator.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: Product
-
-Required: False
-Position: 1
-Default value: *
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProductType
-Only licenses of products for any of the specified types are considered.
-
-```yaml
-Type: ProductType[]
-Parameter Sets: (All)
+Type: System.String
+DefaultValue: '*'
+SupportsWildcards: false
 Aliases:
-Accepted values: Module, Script, Library, Application, Other
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+- Product
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -LicenseType
+### LicenseType
+
 Only licenses of any matching type are returned.
 
 ```yaml
-Type: LicenseType
-Parameter Sets: (All)
-Aliases:
-Accepted values: Free, Commercial, NoAttribution, NoModify
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: PSFramework.License.LicenseType
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Manufacturer
+### Manufacturer
+
 Default: "*"
 Only licenses for products of a matching manufacturer are returned.
 Uses the -like operator for comparisons.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: *
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: '*'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### ProductType
 
-## INPUTS
+Only licenses of products for any of the specified types are considered.
 
-## OUTPUTS
+```yaml
+Type: PSFramework.License.ProductType[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-### PSFramework.License.License
-## NOTES
 
-## RELATED LINKS

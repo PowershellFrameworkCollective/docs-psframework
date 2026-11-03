@@ -1,23 +1,31 @@
----
-external help file: PSModuleDevelopment-help.xml
+﻿---
+document type: cmdlet
+external help file: PSModuleDevelopment-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSModuleDevelopment
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Resolve-PSMDBuildStepParameter
 ---
 
 # Resolve-PSMDBuildStepParameter
 
-## SYNOPSIS
+## Synopsis
+
 Resolves and consolidates the overall parameters of a given step.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Resolve-PSMDBuildStepParameter [-Parameters] <Hashtable> [-FromArtifacts] <Hashtable> [-ProjectName] <String>
- [-StepName] <String> [<CommonParameters>]
+Resolve-PSMDBuildStepParameter [-Parameters] <hashtable> [-FromArtifacts] <hashtable>
+ [-ProjectName] <string> [-StepName] <string> [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Resolves and consolidates the overall parameters of a given step.
 This ensures that individual actions do not have to implement manual resolution and complex conditionals.
 Sources of parameters:
@@ -29,96 +37,111 @@ Sources of parameters:
   This supports wildcard resolution, so "%!Session.*!%" will resolve to all artifacts with a name starting with "Session."
 
 Configuration-driven parameters follow this name scheme:
-"PSModuleDevelopment.BuildParam.\<project\>.\<step\>.\<parameterName\>"
+"PSModuleDevelopment.BuildParam.<project>.<step>.<parameterName>"
 
 For example:
 "PSModuleDevelopment.BuildParam.Admf.connect.credential"
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Resolve-PSMDBuildStepParameter -Parameters $actualParameters -ProjectName VMDeployment -StepName 'Create Session'
+
+```powershell
+Resolve-PSMDBuildStepParameter -Parameters $actualParameters -ProjectName VMDeployment -StepName 'Create Session'
 ```
 
 Adds parameters provided through configuration.
 
-## PARAMETERS
+## Parameters
 
-### -Parameters
-The hashtable containing the currently specified parameters from the step configuration within the build project file.
-Only settings not already defined there are taken from configuration.
+### FromArtifacts
 
-```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FromArtifacts
 The hashtable mapping parameters from artifacts.
 This allows dynamically assigning artifacts to parameters.
 
 ```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Collections.Hashtable
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -ProjectName
+### Parameters
+
+The hashtable containing the currently specified parameters from the step configuration within the build project file.
+Only settings not already defined there are taken from configuration.
+
+```yaml
+Type: System.Collections.Hashtable
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### ProjectName
+
 The name of the project being executed.
 Supplementary parameters taken from configuration will pick up settings based on this name:
-"PSModuleDevelopment.BuildParam.\<ProjectName\>.\<StepName\>.*"
+"PSModuleDevelopment.BuildParam.<ProjectName>.<StepName>.*"
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 2
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -StepName
+### StepName
+
 The name of the step being executed.
 Supplementary parameters taken from configuration will pick up settings based on this name:
-"PSModuleDevelopment.BuildParam.\<ProjectName\>.\<StepName\>.*"
+"PSModuleDevelopment.BuildParam.<ProjectName>.<StepName>.*"
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 3
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-### System.Collections.Hashtable
-## NOTES
-
-## RELATED LINKS

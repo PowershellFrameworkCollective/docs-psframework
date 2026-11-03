@@ -1,96 +1,116 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Join-PSFPath
 ---
 
 # Join-PSFPath
 
-## SYNOPSIS
+## Synopsis
+
 Performs multisegment path joins.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Join-PSFPath [-Path] <String> [-Child <String[]>] [-Normalize] [<CommonParameters>]
+Join-PSFPath [-Path] <string> [-Child <string[]>] [-Normalize] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Performs multisegment path joins.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Join-PSFPath -Path 'C:\temp' 'Foo' 'Bar'
+
+```powershell
+Join-PSFPath -Path 'C:\temp' 'Foo' 'Bar'
 ```
 
 Returns 'C:\temp\Foo\Bar'
 
 ### EXAMPLE 2
-```
+
+```powershell
 Join-PSFPath -Path 'C:\temp' 'Foo' 'Bar' -Normalize
 ```
 
-Returns 'C:\temp\Foo\Bar' on a Windows OS.
+      Returns 'C:\temp\Foo\Bar' on a Windows OS.
 Returns 'C:/temp/Foo/Bar' on most non-Windows OSes.
 
-## PARAMETERS
+## Parameters
 
-### -Path
-The basepath to join on.
+### Child
 
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Child
 Any number of child paths to add.
 
 ```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases: ChildPath
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases:
+- ChildPath
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: true
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Normalize
+### Normalize
+
 Normalizes path separators for the path segments offered.
 This ensures the correct path separators for the current OS are chosen.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### Path
 
-## INPUTS
+The basepath to join on.
 
-## OUTPUTS
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
 
-## RELATED LINKS

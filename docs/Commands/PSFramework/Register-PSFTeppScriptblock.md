@@ -1,24 +1,32 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/docs/Commands/PSFramework/Register-PSFTeppScriptblock
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Register-PSFTeppScriptblock
 ---
 
 # Register-PSFTeppScriptblock
 
-## SYNOPSIS
+## Synopsis
+
 Registers a scriptblock under name, to later be available for TabExpansion.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Register-PSFTeppScriptblock [-ScriptBlock] <ScriptBlock> [-Name] <String> [[-Mode] <TeppScriptMode>]
- [[-CacheDuration] <TimeSpanParameter>] [-Global] [-MatchAnywhere] [-FuzzyMatch] [-AlwaysQuote] [-DontSort]
- [-AutoTraining] [<CommonParameters>]
+Register-PSFTeppScriptblock [-ScriptBlock] <scriptblock> [-Name] <string> [[-Mode] <TeppScriptMode>]
+ [[-CacheDuration] <TimeSpanParameter>] [[-MaxResults] <int>] [-Global] [-MatchAnywhere]
+ [-FuzzyMatch] [-AlwaysQuote] [-DontSort] [-DontFilter] [-AutoTraining] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Registers a scriptblock under name, to later be available for TabExpansion.
 
 This system supports two separate types of input: Full or Simple.
@@ -33,201 +41,296 @@ A full scriptblock implements all that is needed to provide Tab Expansion.
 For more details and guidance, see the following concept help:
 Get-Help about_psf_tabexpansion
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Register-PSFTeppScriptblock -Name "psalcohol-liquids" -ScriptBlock { "beer", "mead", "wine", "vodka", "whiskey", "rum" }
-```
 
-Register-PSFTeppArgumentCompleter -Command Get-Alcohol -Parameter Type -Name "psalcohol-liquids"
+```powershell
+Register-PSFTeppScriptblock -Name "psalcohol-liquids" -ScriptBlock { "beer", "mead", "wine", "vodka", "whiskey", "rum" }
+Register-PSFTeppArgumentCompleter -Command Get-Alcohol -Parameter Type -Name "psalcohol-liquids"
+```
 
 In step one we set a list of questionable liquids as the list of available beverages for parameter 'Type' on the command 'Get-Alcohol'
 
 ### EXAMPLE 2
-```
-Register-PSFTeppScriptblock -ScriptBlock $scriptBlock -Name MyFirstTeppScriptBlock
+
+```powershell
+Register-PSFTeppScriptblock -ScriptBlock $scriptBlock -Name MyFirstTeppScriptBlock
 ```
 
 Stores the scriptblock stored in $scriptBlock under the name "MyFirstTeppScriptBlock"
 
 ### EXAMPLE 3
-```
-$scriptBlock = { (Get-ChildItem (Get-PSFConfigValue -FullName mymodule.path.scripts -Fallback "$env:USERPROFILE\Documents\WindowsPowerShell\Scripts")).FullName }
-```
 
-Register-PSFTeppScriptblock -Name mymodule-scripts -ScriptBlock $scriptBlock -Mode Simple
+```powershell
+$scriptBlock = { (Get-ChildItem (Get-PSFConfigValue -FullName mymodule.path.scripts -Fallback "$env:USERPROFILE\Documents\WindowsPowerShell\Scripts")).FullName }
+Register-PSFTeppScriptblock -Name mymodule-scripts -ScriptBlock $scriptBlock -Mode Simple
+```
 
 Stores a simple scriptblock that will return a list of strings under the name "mymodule-scripts".
 The system will wrap all the stuff around this that is necessary to provide Tab Expansion and filter out output that doesn't fit the user input so far.
 
-## PARAMETERS
+## Parameters
 
-### -ScriptBlock
-The scriptblock to register.
+### AlwaysQuote
 
-```yaml
-Type: ScriptBlock
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name under which the scriptblock should be registered.
-It is recommended to prefix the name with the module (e.g.: mymodule.\<name\>), as names are shared across all implementing modules.
+All completion results will be wrapped in quotes, not just the ones with a whitespace.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Mode
-Whether the script provided is a full or simple scriptblock.
-By default, this function automatically detects this, but just in case, you can override this detection.
+### AutoTraining
+
+Automatically train the tab completion by caching user inputs.
+Requires using Update-PSFTeppCompletion inside of the respective command, to automatically pick up new values.
 
 ```yaml
-Type: TeppScriptMode
-Parameter Sets: (All)
-Aliases:
-Accepted values: Simple, Full, Auto
-
-Required: False
-Position: 3
-Default value: Auto
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -CacheDuration
+### CacheDuration
+
 How long a tab completion result is valid.
 By default, PSFramework tab completion will run the scriptblock on each call.
 This can be used together with a background refresh mechanism to offload the cost of expensive queries into the background.
 See Set-PSFTeppResult for details on how to refresh the cache.
 
 ```yaml
-Type: TimeSpanParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: PSFramework.Parameter.TimeSpanParameter
+DefaultValue: 0
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 3
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Global
+### DontFilter
+
+Do not automatically filter by the words the user typed.
+This allows for the scriptblock to provide its own, more complex filtering.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### DontSort
+
+Completion results are no longer sorted alphabetically.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### FuzzyMatch
+
+Apply FuzzyMatching to the legal completion text, not just direct word matching.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Global
+
 Whether the scriptblock should be executed in the global context.
 This parameter is needed to reliably execute in background runspaces, but means no direct access to module content.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -MatchAnywhere
+### MatchAnywhere
+
 Match input against any part of the completion text, not just the beginning.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -FuzzyMatch
-Apply FuzzyMatching to the legal completion text, not just direct word matching.
+### MaxResults
+
+The maximum number of results shown to the user.
+If more completions would be viable, only the first X are shown, as well as a message informaing about the truncation.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Int32
+DefaultValue: 0
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 4
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -AlwaysQuote
-All completion results will be wrapped in quotes, not just the ones with a whitespace.
+### Mode
+
+Whether the script provided is a full or simple scriptblock.
+By default, this function automatically detects this, but just in case, you can override this detection.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: PSFramework.TabExpansion.TeppScriptMode
+DefaultValue: Auto
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 2
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -DontSort
-Completion results are no longer sorted alphabetically.
+### Name
+
+The name under which the scriptblock should be registered.
+It is recommended to prefix the name with the module (e.g.: mymodule.<name>), as names are shared across all implementing modules.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -AutoTraining
-Automatically train the tab completion by caching user inputs.
-Requires using Update-PSFTeppCompletion inside of the respective command, to automatically pick up new values.
+### ScriptBlock
+
+The scriptblock to register.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.ScriptBlock
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

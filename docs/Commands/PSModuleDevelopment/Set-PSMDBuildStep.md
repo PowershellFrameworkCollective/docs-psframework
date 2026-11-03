@@ -1,102 +1,93 @@
----
-external help file: PSModuleDevelopment-help.xml
+﻿---
+document type: cmdlet
+external help file: PSModuleDevelopment-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSModuleDevelopment
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Set-PSMDBuildStep
 ---
 
 # Set-PSMDBuildStep
 
-## SYNOPSIS
+## Synopsis
+
 Create or update a step from a build project.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Set-PSMDBuildStep [-Name] <String> [[-Weight] <Int32>] [[-Action] <String>] [[-Parameters] <Hashtable>]
- [[-Condition] <String>] [[-ConditionSet] <String>] [[-Dependency] <String[]>] [[-BuildProject] <String>]
- [<CommonParameters>]
+Set-PSMDBuildStep [-Name] <string> [[-Weight] <int>] [[-Action] <string>]
+ [[-Parameters] <hashtable>] [[-Condition] <string>] [[-ConditionSet] <string>]
+ [[-Dependency] <string[]>] [[-BuildProject] <string>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Create or update a step from a build project.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Set-PSMDBuildStep -Name 'Create Session' -Action new-pssession -Parameters @{ VMName = 'labdc1'; CredentialPath = "%ProjectRoot%\creds\labdc1.cred";  }
+
+```powershell
+Set-PSMDBuildStep -Name 'Create Session' -Action new-pssession -Parameters @{ VMName = 'labdc1'; CredentialPath = "%ProjectRoot%\creds\labdc1.cred";  }
 ```
 
 Defines a new step named 'Create Session' using the 'new-pssession'-action.
 
-## PARAMETERS
+## Parameters
 
-### -Name
-The name of the step.
-All step names must be unique within a single build project.
+### Action
 
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Weight
-The weight of the step.
-Weight determines processing order, the lower the number the earlier it is executed.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Action
 The name of the action to execute.
 Use Get-PSMDBuildAction to get a list of available actions.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 2
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Parameters
-The parameters this action should take.
-See the action object to see a description of parameters, including which must be provided and which can be skipped.
+### BuildProject
+
+The build project file to work against.
+Specify the full path to the build project file.
+This parameter can be skipped if a default project file has been defined.
 
 ```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 7
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Condition
+### Condition
+
 A PSFramework filter condition that must apply for this action to be executed successfully.
 Example Conditions:
   Elevated
@@ -104,77 +95,134 @@ Example Conditions:
 More Details: https://psframework.org/documentation/documents/psframework/filters.html
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 4
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -ConditionSet
+### ConditionSet
+
 The name of the condition set to use.
 This is part of the PSFramework filter system:
 https://psframework.org/documentation/documents/psframework/filters.html
 
-Specify as "\<module\> \<conditionsetname\>" format.
+Specify as "<module> <conditionsetname>" format.
 Default Value: PSFramework Environment
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 6
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 5
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Dependency
+### Dependency
+
 Any other steps that must successfully finished in order for this step to execute.
 ALL of the listed steps must have succeeded, skipped steps do not count.
 
 ```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 7
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 6
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -BuildProject
-The build project file to work against.
-Specify the full path to the build project file.
-This parameter can be skipped if a default project file has been defined.
+### Name
+
+The name of the step.
+All step names must be unique within a single build project.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 8
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### Parameters
 
-## INPUTS
+The parameters this action should take.
+See the action object to see a description of parameters, including which must be provided and which can be skipped.
 
-## OUTPUTS
+```yaml
+Type: System.Collections.Hashtable
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 3
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
+### Weight
 
-## RELATED LINKS
+The weight of the step.
+Weight determines processing order, the lower the number the earlier it is executed.
+
+```yaml
+Type: System.Int32
+DefaultValue: 0
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+

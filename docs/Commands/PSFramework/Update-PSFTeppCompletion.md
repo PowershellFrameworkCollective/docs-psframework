@@ -1,22 +1,30 @@
----
+﻿---
+document type: cmdlet
 external help file: PSFramework.dll-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Update-PSFTeppCompletion
 ---
 
 # Update-PSFTeppCompletion
 
-## SYNOPSIS
+## Synopsis
+
 Imports provided values to parameters configured for an auto-training argument completer.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
 Update-PSFTeppCompletion [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 When registering an Argument Completer using "Register-PSFTeppScriptblock", it is possible to configure it for automatic training ("-AutoTraining").
 Doing so will not do anything ...
 by itself.
@@ -26,26 +34,21 @@ Finally, within your command, simply call this Cmdlet - it will automatically ma
 
 For finer control of adding explicit values to a specific completer's offered values, use "Add-PSFTeppCompletion" instead.
 
-## EXAMPLES
+## Examples
 
 ### Example 1
-```
-PS C:\> Update-PSFTeppCompletion
+
+```powershell
+PS C:\> Update-PSFTeppCompletion
 ```
 
 Imports provided values to parameters configured for an auto-training argument completer.
 
-## PARAMETERS
+## Parameters
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+## Notes
 
-## INPUTS
 
-### None
-## OUTPUTS
 
-### System.Object
-## NOTES
 
-## RELATED LINKS
+

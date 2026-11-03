@@ -1,74 +1,87 @@
----
-external help file: PSModuleDevelopment-help.xml
+﻿---
+document type: cmdlet
+external help file: PSModuleDevelopment-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSModuleDevelopment
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Get-PSMDArgumentCompleter
 ---
 
 # Get-PSMDArgumentCompleter
 
-## SYNOPSIS
+## Synopsis
+
 Gets the registered argument completers.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Get-PSMDArgumentCompleter [[-CommandName] <String>] [-ParameterName <String>] [<CommonParameters>]
+Get-PSMDArgumentCompleter [[-CommandName] <string>] [-ParameterName <string>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 This function can be used to serach the argument completers registered using either the Register-ArgumentCompleter command or created using the ArgumentCompleter attribute.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-PSMDArgumentCompleter
+
+```powershell
+Get-PSMDArgumentCompleter
 ```
 
 Get all argument completers in use in the current PowerShell session.
 
-## PARAMETERS
+## Parameters
 
-### -CommandName
+### CommandName
+
 Filter the results to a specific command.
 Wildcards are supported.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: Name
-
-Required: False
-Position: 2
-Default value: *
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: '*'
+SupportsWildcards: false
+Aliases:
+- Name
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: true
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -ParameterName
+### ParameterName
+
 Filter results to a specific parameter name.
 Wildcards are supported.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: *
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: '*'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

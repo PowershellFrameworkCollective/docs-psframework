@@ -1,22 +1,30 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Select-PSFConfig
 ---
 
 # Select-PSFConfig
 
-## SYNOPSIS
+## Synopsis
+
 Select a subset of configuration entries and return them as objects.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Select-PSFConfig [[-FullName] <String>] [[-Depth] <Int32[]>] [-Force] [<CommonParameters>]
+Select-PSFConfig [[-FullName] <string>] [[-Depth] <int[]>] [-Force] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Select a subset of configuration entries and return them as objects.
 
 This can be used to retrieve related configuration entries as a single PowerShell object.
@@ -54,34 +62,20 @@ It will group on each part of the FullName of the selected configuration entries
 - Entries with values AND children, will have child entries included in the _Children property.
 - Even child entries of Entries with values will be returned
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Select-PSFConfig 'LoggingProvider.LogFile.*'
+
+```powershell
+Select-PSFConfig 'LoggingProvider.LogFile.*'
 ```
 
 Selects all configuration settings under 'LoggingProvider.LogFile.*', grouping the value ends as PSObject.
 
-## PARAMETERS
+## Parameters
 
-### -FullName
-String filter to select, which configuration entries to select on.
-Use the same value on Get-PSFConfig to see what configuration entries will be processed.
+### Depth
 
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: Name
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Depth
 Only entries at the specified depth level will be returned.
 Depth starts at "0"
 In the name 'LoggingProvider.LogFile.AutoInstall' ...
@@ -91,40 +85,65 @@ In the name 'LoggingProvider.LogFile.AutoInstall' ...
 - ...
 
 ```yaml
-Type: Int32[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Int32[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Force
+### Force
+
 Also select hidden configuration items.
 By default, only non-hidden settings are selected.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### FullName
 
-## INPUTS
+String filter to select, which configuration entries to select on.
+Use the same value on Get-PSFConfig to see what configuration entries will be processed.
 
-## OUTPUTS
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases:
+- Name
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
 
-## RELATED LINKS

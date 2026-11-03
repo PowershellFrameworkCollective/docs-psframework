@@ -1,110 +1,132 @@
----
-external help file: PSUtil-help.xml
+﻿---
+document type: cmdlet
+external help file: PSUtil-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSUtil
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Get-PSUCalendarWeek
 ---
 
 # Get-PSUCalendarWeek
 
-## SYNOPSIS
+## Synopsis
+
 Calculates the calendar week of the specified date.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Get-PSUCalendarWeek [[-Date] <DateTimeParameter>] [[-FirstDay] <DayOfWeek>] [[-WeekRule] <CalendarWeekRule>]
- [[-Culture] <CultureInfo>] [<CommonParameters>]
+Get-PSUCalendarWeek [[-Date] <DateTimeParameter>] [[-FirstDay] <DayOfWeek>]
+ [[-WeekRule] <CalendarWeekRule>] [[-Culture] <cultureinfo>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Calculates the calendar week of the specified date.
 Can be customized to fit the calendar rules of a given culture.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-PSUCalendarWeek
+
+```powershell
+Get-PSUCalendarWeek
 ```
 
 Gets the current calendar week
 
-## PARAMETERS
+## Parameters
 
-### -Date
-The date for which to process the calendar week.
-Defaults to the current time and date.
+### Culture
 
-```yaml
-Type: DateTimeParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: (Get-Date)
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FirstDay
-Which day is considered the first day of the week.
-Defaults to the current or selected culture.
-
-```yaml
-Type: DayOfWeek
-Parameter Sets: (All)
-Aliases:
-Accepted values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WeekRule
-The rule by which the first week of the year is determined.
-Defaults to the current or selected culture.
-
-```yaml
-Type: CalendarWeekRule
-Parameter Sets: (All)
-Aliases:
-Accepted values: FirstDay, FirstFullWeek, FirstFourDayWeek
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Culture
 The culture to use when determining the calendarweek of the specified date.
 Defaults to the current culture.
 
 ```yaml
-Type: CultureInfo
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: (Get-Culture)
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Globalization.CultureInfo
+DefaultValue: (Get-Culture)
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 3
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### Date
 
-## INPUTS
+The date for which to process the calendar week.
+Defaults to the current time and date.
 
-## OUTPUTS
+```yaml
+Type: PSFramework.Parameter.DateTimeParameter
+DefaultValue: (Get-Date)
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
+### FirstDay
 
-## RELATED LINKS
+Which day is considered the first day of the week.
+Defaults to the current or selected culture.
+
+```yaml
+Type: System.DayOfWeek
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### WeekRule
+
+The rule by which the first week of the year is determined.
+Defaults to the current or selected culture.
+
+```yaml
+Type: System.Globalization.CalendarWeekRule
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 2
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+

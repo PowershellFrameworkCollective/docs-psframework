@@ -1,114 +1,143 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/docs/Commands/PSFramework/Import-PSFCmdlet
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Import-PSFCmdlet
 ---
 
 # Import-PSFCmdlet
 
-## SYNOPSIS
+## Synopsis
+
 Loads a cmdlet into the current context.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Import-PSFCmdlet [-Name] <String> [-Type] <Type> [[-HelpFile] <String>] [[-Module] <PSModuleInfo>]
+Import-PSFCmdlet [-Name] <string> [-Type] <type> [[-HelpFile] <string>] [[-Module] <psmoduleinfo>]
  [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Loads a cmdlet into the current context.
 This can be used to register a cmdlet during module import, making it easy to have hybrid modules publishing both cmdlets and functions.
 Can also be used to register cmdlets written in PowerShell classes.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Import-PSFCmdlet -Name Get-Something -Type ([GetSomethingCommand])
+
+```powershell
+Import-PSFCmdlet -Name Get-Something -Type ([GetSomethingCommand])
 ```
 
 Imports the Get-Something cmdlet into the current context.
 
 ### EXAMPLE 2
-```
-Import-PSFCmdlet -Name Get-Something -Type ([GetSomethingCommand]) -Module (Get-Module PSReadline)
+
+```powershell
+Import-PSFCmdlet -Name Get-Something -Type ([GetSomethingCommand]) -Module (Get-Module PSReadline)
 ```
 
 Imports the Get-Something cmdlet into the PSReadline module.
 
-## PARAMETERS
+## Parameters
 
-### -Name
-The name of the cmdlet to register.
+### HelpFile
 
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Type
-The type of the class implementing the cmdlet.
-
-```yaml
-Type: Type
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HelpFile
 Path to the help XML containing the help for the cmdlet.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 2
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Module
+### Module
+
 Module to inject the cmdlet into.
 
 ```yaml
-Type: PSModuleInfo
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.PSModuleInfo
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 3
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### Name
 
-## INPUTS
+The name of the cmdlet to register.
 
-## OUTPUTS
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
+### Type
+
+The type of the class implementing the cmdlet.
+
+```yaml
+Type: System.Type
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+## Notes
+
 Original Author: Chris Dent
 Link: https://www.indented.co.uk/cmdlets-without-a-dll/
 
-## RELATED LINKS
+
+

@@ -1,66 +1,74 @@
----
-external help file: PSModuleDevelopment-help.xml
+﻿---
+document type: cmdlet
+external help file: PSModuleDevelopment-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSModuleDevelopment
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Measure-PSMDLinesOfCode
 ---
 
 # Measure-PSMDLinesOfCode
 
-## SYNOPSIS
+## Synopsis
+
 Measures the lines of code ina PowerShell scriptfile.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Measure-PSMDLinesOfCode [-Path] <String[]> [<CommonParameters>]
+Measure-PSMDLinesOfCode [-Path] <string[]> [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Measures the lines of code ina PowerShell scriptfile.
 This scan uses the AST to figure out how many lines contain actual functional code.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Measure-PSMDLinesOfCode -Path .\script.ps1
+
+```powershell
+Measure-PSMDLinesOfCode -Path .\script.ps1
 ```
 
 Measures the lines of code in the specified file.
 
 ### EXAMPLE 2
-```
-Get-ChildItem C:\Scripts\*.ps1 | Measure-PSMDLinesOfCode
+
+```powershell
+Get-ChildItem C:\Scripts\*.ps1 | Measure-PSMDLinesOfCode
 ```
 
 Measures the lines of code for every single file in the folder c:\Scripts.
 
-## PARAMETERS
+## Parameters
 
-### -Path
+### Path
+
 Path to the files to scan.
 Folders will be ignored.
 
 ```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases: FullName
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases:
+- FullName
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: true
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

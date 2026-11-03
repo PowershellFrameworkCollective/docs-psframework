@@ -1,78 +1,90 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/docs/Commands/PSFramework/Register-PSFTypeSerializationData
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Register-PSFTypeSerializationData
 ---
 
 # Register-PSFTypeSerializationData
 
-## SYNOPSIS
+## Synopsis
+
 Registers serialization xml Typedata.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Register-PSFTypeSerializationData [-TypeData] <String[]> [[-Path] <String>] [<CommonParameters>]
+Register-PSFTypeSerializationData [-TypeData] <string[]> [[-Path] <string>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Registers serialization xml Typedata.
 Use Get-PSFTypeSerializationData to generate such a string.
 When building a module, consider shipping that xml type extension in a dedicated file as part of the module and import it as part of the manifest's 'TypesToProcess' node.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-PSFTypeSerializationData -InputObject 'My.Custom.Type' | Register-PSFTypeSerializationData
+
+```powershell
+Get-PSFTypeSerializationData -InputObject 'My.Custom.Type' | Register-PSFTypeSerializationData
 ```
 
 Generates a custom type serialization xml and registers it.
 
-## PARAMETERS
+## Parameters
 
-### -TypeData
-The data to register.
-Generate with Get-PSFTypeSerializationData.
+### Path
 
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Path
 Where the file should be stored before appending.
 While type extensions can be added at runtime directly from memory, from file is more reliable.
 By default, a PSFramework path is chosen.
 The default path can be configured under the 'PSFramework.Serialization.WorkingDirectory' confguration setting.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: (Get-PSFConfigValue -FullName 'PSFramework.Serialization.WorkingDirectory' -Fallback $script:path_typedata)
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: (Get-PSFConfigValue -FullName 'PSFramework.Serialization.WorkingDirectory' -Fallback $script:path_typedata)
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### TypeData
 
-## INPUTS
+The data to register.
+Generate with Get-PSFTypeSerializationData.
 
-## OUTPUTS
+```yaml
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
 
-## RELATED LINKS

@@ -1,99 +1,117 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Test-PSFLanguageMode
 ---
 
 # Test-PSFLanguageMode
 
-## SYNOPSIS
+## Synopsis
+
 Tests, in what language mode a specified scriptblock is in.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Test-PSFLanguageMode [-ScriptBlock] <ScriptBlock> [[-Mode] <PSLanguageMode[]>] [-Not] [<CommonParameters>]
+Test-PSFLanguageMode [-ScriptBlock] <scriptblock> [[-Mode] <PSLanguageMode[]>] [-Not]
+ [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Tests, in what language mode a specified scriptblock is in.
 Use this to determine the trustworthyness of a scriptblock, or for insights, into what its capabilities are.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Test-PSFLanguageMode -ScriptBlock $ScriptBlock
+
+```powershell
+Test-PSFLanguageMode -ScriptBlock $ScriptBlock
 ```
 
 Returns, whether the $Scriptblock is in FullLanguage mode.
 
 ### EXAMPLE 2
-```
-Test-PSFLanguageMode -ScriptBlock $code -Mode ConstrainedLanguage -Not
+
+```powershell
+Test-PSFLanguageMode -ScriptBlock $code -Mode ConstrainedLanguage -Not
 ```
 
 Returns $true if the specified scriptblock is NOT inconstrained language mode.
 
-## PARAMETERS
+## Parameters
 
-### -ScriptBlock
-The scriptblock to test.
+### Mode
 
-```yaml
-Type: ScriptBlock
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Mode
 The Languagemode(s) to compare it to.
 The scriptblock must be in one of the specified modes.
 Defaults to 'FullLanguage'
 
 ```yaml
-Type: PSLanguageMode[]
-Parameter Sets: (All)
-Aliases:
-Accepted values: FullLanguage, RestrictedLanguage, NoLanguage, ConstrainedLanguage
-
-Required: False
-Position: 2
-Default value: FullLanguage
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.PSLanguageMode[]
+DefaultValue: FullLanguage
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Not
+### Not
+
 Reverses the test results - now the scriptblock may NOT be in one of the specified language modes.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### ScriptBlock
 
-## INPUTS
+The scriptblock to test.
 
-## OUTPUTS
+```yaml
+Type: System.Management.Automation.ScriptBlock
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-### System.Boolean
-## NOTES
 
-## RELATED LINKS

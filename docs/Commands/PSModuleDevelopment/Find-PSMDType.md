@@ -1,197 +1,253 @@
----
-external help file: PSModuleDevelopment-help.xml
+﻿---
+document type: cmdlet
+external help file: PSModuleDevelopment-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSModuleDevelopment
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Find-PSMDType
 ---
 
 # Find-PSMDType
 
-## SYNOPSIS
+## Synopsis
+
 Searches assemblies for types.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Find-PSMDType [[-Name] <String>] [[-FullName] <String>] [[-Assembly] <Assembly[]>] [-Public] [-Enum] [-Static]
- [[-Implements] <String>] [[-InheritsFrom] <String>] [[-Attribute] <String>] [<CommonParameters>]
+Find-PSMDType [[-Name] <string>] [[-FullName] <string>] [[-Assembly] <Assembly[]>]
+ [[-Implements] <string>] [[-InheritsFrom] <string>] [[-Attribute] <string>] [-Public] [-Enum]
+ [-Static] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 This function searches the currently imported assemblies for a specific type.
 It is not inherently limited to public types however, and can search interna just as well.
 
 Can be used to scan for dependencies, to figure out what libraries one needs for a given type and what dependencies exist.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Find-PSMDType -Name "*String*"
+
+```powershell
+Find-PSMDType -Name "*String*"
 ```
 
 Finds all types whose name includes the word "String"
 (This will be quite a few)
 
 ### EXAMPLE 2
-```
-Find-PSMDType -InheritsFrom System.Management.Automation.Runspaces.Runspace
+
+```powershell
+Find-PSMDType -InheritsFrom System.Management.Automation.Runspaces.Runspace
 ```
 
 Finds all types that inherit from the Runspace class
 
-## PARAMETERS
+## Parameters
 
-### -Name
-Default: "*"
-The name of the type to search for.
-Accepts wildcards.
+### Assembly
 
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: *
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FullName
-Default: "*"
-The FullName of the type to search for.
-Accepts wildcards.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: *
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Assembly
 Default: (Get-PSMDAssembly)
 The assemblies to search.
 By default, all loaded assemblies are searched.
 
 ```yaml
-Type: Assembly[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: (Get-PSMDAssembly)
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
+Type: System.Reflection.Assembly[]
+DefaultValue: (Get-PSMDAssembly)
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 2
+  IsRequired: false
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Public
-Whether the type to find must be public.
+### Attribute
 
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Enum
-Whether the type to find must be an enumeration.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Static
-Whether the type to find must be static.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Implements
-Whether the type to find must implement this interface
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InheritsFrom
-The type must directly inherit from this type.
-Accepts wildcards.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Attribute
 The type must have this attribute assigned.
 Accepts wildcards.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 6
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 5
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### Enum
 
-## INPUTS
+Whether the type to find must be an enumeration.
 
-## OUTPUTS
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
+### FullName
 
-## RELATED LINKS
+Default: "*"
+The FullName of the type to search for.
+Accepts wildcards.
+
+```yaml
+Type: System.String
+DefaultValue: '*'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Implements
+
+Whether the type to find must implement this interface
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 3
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### InheritsFrom
+
+The type must directly inherit from this type.
+Accepts wildcards.
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 4
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Name
+
+Default: "*"
+The name of the type to search for.
+Accepts wildcards.
+
+```yaml
+Type: System.String
+DefaultValue: '*'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Public
+
+Whether the type to find must be public.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Static
+
+Whether the type to find must be static.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+

@@ -1,60 +1,66 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: ConvertFrom-PSFClixml
 ---
 
 # ConvertFrom-PSFClixml
 
-## SYNOPSIS
+## Synopsis
+
 Converts data that was serialized from an object back into that object.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
 ConvertFrom-PSFClixml [-InputObject] <Object> [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Converts data that was serialized from an object back into that object.
 
 Use Import-PSFclixml to restore objects serialized and written to file.
 This command is designed for converting serialized data in memory, for example to expand objects returned by a network api.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-$data | ConvertFrom-PSFClixml
+
+```powershell
+$data | ConvertFrom-PSFClixml
 ```
 
 Converts the data stored in $data back into objects
 
-## PARAMETERS
+## Parameters
 
-### -InputObject
+### InputObject
+
 The serialized data to restore to objects.
 
 ```yaml
-Type: Object
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
+Type: System.Object
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

@@ -1,62 +1,69 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/documentation/documents/psframework/runspace-workflows.html
+Locale: en-US
 Module Name: PSFramework
-online version: https://psframework.org/documentation/documents/psframework/runspace-workflows.html
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Get-PSFRunspaceWorkflow
 ---
 
 # Get-PSFRunspaceWorkflow
 
-## SYNOPSIS
+## Synopsis
+
 Returns a list of registered runspace workflows.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Get-PSFRunspaceWorkflow [[-Name] <String>] [<CommonParameters>]
+Get-PSFRunspaceWorkflow [[-Name] <string>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Returns a list of registered runspace workflows.
 A Runspace workflow object is the main component managing a PSFramework Runspace Workflow
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-PSFRunspaceWorkflow
+
+```powershell
+Get-PSFRunspaceWorkflow
 ```
 
 Returns all registered runspace workflows.
 
-## PARAMETERS
+## Parameters
 
-### -Name
+### Name
+
 By which name to filter.
 Defaults to *
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: *
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: '*'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+## Links
 
-## INPUTS
+Microsoft.PowerShell.PlatyPS.Model.Links
 
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS
-
-[https://psframework.org/documentation/documents/psframework/runspace-workflows.html](https://psframework.org/documentation/documents/psframework/runspace-workflows.html)
 

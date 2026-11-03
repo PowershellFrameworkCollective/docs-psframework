@@ -1,65 +1,72 @@
----
-external help file: PSModuleDevelopment-help.xml
+﻿---
+document type: cmdlet
+external help file: PSModuleDevelopment-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSModuleDevelopment
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Remove-PSMDBuildArtifact
 ---
 
 # Remove-PSMDBuildArtifact
 
-## SYNOPSIS
+## Synopsis
+
 Removes an artifact from the build pipeline.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Remove-PSMDBuildArtifact [-Name] <String[]> [<CommonParameters>]
+Remove-PSMDBuildArtifact [-Name] <string[]> [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Removes an artifact from the build pipeline.
 Only interacts with the PSModuleDevelopment build system.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Remove-PSMDBuildArtifact -Name 'session'
+
+```powershell
+Remove-PSMDBuildArtifact -Name 'session'
 ```
 
 Removes the artifact 'session' from the build pipeline.
 
 ### EXAMPLE 2
-```
-Get-PSMDBuildArtifact -Tag pssession | Remove-PSMDBuildArtifact
+
+```powershell
+Get-PSMDBuildArtifact -Tag pssession | Remove-PSMDBuildArtifact
 ```
 
 Removes all artifacts with the 'pssession' tag from the build pipeline.
 
-## PARAMETERS
+## Parameters
 
-### -Name
+### Name
+
 Name of the artifact to remove.
 
 ```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: true
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

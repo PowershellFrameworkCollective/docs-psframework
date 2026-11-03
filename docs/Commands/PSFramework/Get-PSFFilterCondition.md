@@ -1,143 +1,174 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Get-PSFFilterCondition
 ---
 
 # Get-PSFFilterCondition
 
-## SYNOPSIS
+## Synopsis
+
 Retrieve defined filter conditions.
 
-## SYNTAX
+## Syntax
 
-### default (Default)
+### default
+
 ```
-Get-PSFFilterCondition [-Module <String>] [-Name <String>] [-SetName <String>] [<CommonParameters>]
+Get-PSFFilterCondition [-Module <string>] [-Name <string>] [-SetName <string>] [<CommonParameters>]
 ```
 
 ### Version
+
 ```
-Get-PSFFilterCondition [-Module <String>] [-Name <String>] [-SetName <String>] [-Version <Version>]
+Get-PSFFilterCondition [-Module <string>] [-Name <string>] [-SetName <string>] [-Version <version>]
  [<CommonParameters>]
 ```
 
 ### AllVersion
+
 ```
-Get-PSFFilterCondition [-Module <String>] [-Name <String>] [-SetName <String>] [-AllVersions]
+Get-PSFFilterCondition [-Module <string>] [-Name <string>] [-SetName <string>] [-AllVersions]
  [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Retrieve defined filter conditions.
 Filter conditions can be used as part of a condition set, used to evaluate filter expressions defined with New-PSFFilter.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-PSFFilterCondition
+
+```powershell
+Get-PSFFilterCondition
 ```
 
 List all defined filter conditions.
 
 ### EXAMPLE 2
-```
-Get-PSFFilterCondition -Module PSFramework -Name OSWindows
+
+```powershell
+Get-PSFFilterCondition -Module PSFramework -Name OSWindows
 ```
 
 Returns the filter condition "OSWindows" from the module PSFramework.
 
-## PARAMETERS
+## Parameters
 
-### -Module
+### AllVersions
+
+Retrieve all versions of a given filter condition.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: AllVersion
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Module
+
 The module to filter by.
 Defaults to '*'
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: *
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: '*'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Name
+### Name
+
 The name of the condition to retrieve.
 Defaults to '*'
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: *
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: '*'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -SetName
+### SetName
+
 The name of the condition set the condition is assigned to.
 Allows searching by assignment.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Version
+### Version
+
 Retrieve a specific version of the filter condition.
 By default, the latest version only is returned.
 
 ```yaml
-Type: Version
-Parameter Sets: Version
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Version
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Version
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -AllVersions
-Retrieve all versions of a given filter condition.
 
-```yaml
-Type: SwitchParameter
-Parameter Sets: AllVersion
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
-
-## INPUTS
-
-## OUTPUTS
-
-### PSFramework.Filter.Condition
-## NOTES
-
-## RELATED LINKS

@@ -1,22 +1,30 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/docs/Commands/PSFramework/Get-PSFDynamicContentObject
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Get-PSFDynamicContentObject
 ---
 
 # Get-PSFDynamicContentObject
 
-## SYNOPSIS
+## Synopsis
+
 Retrieves a named value object that can be updated from another runspace.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Get-PSFDynamicContentObject [-Name] <String[]> [<CommonParameters>]
+Get-PSFDynamicContentObject [-Name] <string[]> [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Retrieves a named value object that can be updated from another runspace.
 
 This comes in handy to have a variable that is automatically updated.
@@ -28,41 +36,38 @@ It matters not from what runspace you update the object.
 Note:
 When planning to use such an object, keep in mind that it can easily change its content at any given time.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-PSFDynamicContentObject -Name "Test"
+
+```powershell
+Get-PSFDynamicContentObject -Name "Test"
 ```
 
 Returns the Dynamic Content Object named "test"
 
-## PARAMETERS
+## Parameters
 
-### -Name
+### Name
+
 The name of the object to retrieve.
 Will create an empty value object if the object doesn't already exist.
 
 ```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: true
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-### PSFramework.Utility.DynamicContentObject
-## NOTES
-
-## RELATED LINKS

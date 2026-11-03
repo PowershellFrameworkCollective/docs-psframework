@@ -1,57 +1,63 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Unregister-PSFMessageColorTransform
 ---
 
 # Unregister-PSFMessageColorTransform
 
-## SYNOPSIS
+## Synopsis
+
 Removes a previously registered message color rule.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Unregister-PSFMessageColorTransform [-Name] <String[]> [<CommonParameters>]
+Unregister-PSFMessageColorTransform [-Name] <string[]> [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Removes a previously registered message color rule.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-PSFMessageColorTransform | Unregister-PSFMessageColorTransform
+
+```powershell
+Get-PSFMessageColorTransform | Unregister-PSFMessageColorTransform
 ```
 
 Clears all message color rules..
 
-## PARAMETERS
+## Parameters
 
-### -Name
+### Name
+
 Name of the rule to remove.
 
 ```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: true
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

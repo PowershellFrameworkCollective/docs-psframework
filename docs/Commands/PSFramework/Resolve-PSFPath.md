@@ -1,31 +1,41 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/docs/Commands/PSFramework/Resolve-PSFPath
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Resolve-PSFPath
 ---
 
 # Resolve-PSFPath
 
-## SYNOPSIS
+## Synopsis
+
 Resolves a path.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Resolve-PSFPath [-Path] <String[]> [-Provider <String>] [-SingleItem] [-NewChild] [<CommonParameters>]
+Resolve-PSFPath [-Path] <string[]> [-Provider <string>] [-SingleItem] [-NewChild]
+ [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Resolves a path.
 Will try to resolve to paths including some basic path validation and resolution.
 Will fail if the path cannot be resolved (so an existing path must be reached at).
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Resolve-PSFPath -Path report.log -Provider FileSystem -NewChild -SingleItem
+
+```powershell
+Resolve-PSFPath -Path report.log -Provider FileSystem -NewChild -SingleItem
 ```
 
 Ensures the resolved path is a FileSystem path.
@@ -34,86 +44,102 @@ Will not ensure the file exists or doesn't exist.
 If the current path is in a different provider, it will throw an exception.
 
 ### EXAMPLE 2
-```
-Resolve-PSFPath -Path ..\*
+
+```powershell
+Resolve-PSFPath -Path ..\*
 ```
 
 This will resolve all items in the parent folder, whatever the current path or drive might be.
 
-## PARAMETERS
+## Parameters
 
-### -Path
-The path to validate.
+### NewChild
 
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Provider
-Ensure the path is of the expected provider.
-Allows ensuring one does not operate in the wrong provider.
-Common providers include the filesystem, the registry or the active directory.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SingleItem
-Ensure the path should resolve to a single path only.
-This may - intentionally or not - trip up wildcard paths.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NewChild
 Assumes one wishes to create a new child item.
 The parent path will be resolved and must validate true.
 The final leaf will be treated as a leaf item that does not exist yet.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### Path
 
-## INPUTS
+The path to validate.
 
-## OUTPUTS
+```yaml
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
+### Provider
 
-## RELATED LINKS
+Ensure the path is of the expected provider.
+Allows ensuring one does not operate in the wrong provider.
+Common providers include the filesystem, the registry or the active directory.
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### SingleItem
+
+Ensure the path should resolve to a single path only.
+This may - intentionally or not - trip up wildcard paths.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+

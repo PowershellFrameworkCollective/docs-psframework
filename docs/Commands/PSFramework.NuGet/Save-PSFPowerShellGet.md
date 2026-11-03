@@ -1,60 +1,66 @@
----
-external help file: PSFramework.NuGet-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework.NuGet-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework.NuGet
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Save-PSFPowerShellGet
 ---
 
 # Save-PSFPowerShellGet
 
-## SYNOPSIS
+## Synopsis
+
 Downloads and provides the latest packages for both PowerShellGet V2 and V3.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Save-PSFPowerShellGet [[-Path] <String>] [<CommonParameters>]
+Save-PSFPowerShellGet [[-Path] <string>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Downloads and provides the latest packages for both PowerShellGet V2 and V3.
 These can then be used by this module to deploy and bootstrap offline computers with package management tooling.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Save-PSFPowerShellGet
+
+```powershell
+Save-PSFPowerShellGet
 ```
 
 Downloads and deploys the latest version of Get V2 & V3 to "%AppData%/PowerShell/PSFramework/modules/PowerShellGet"
 
-## PARAMETERS
+## Parameters
 
-### -Path
+### Path
+
 The path where to deploy the module packages as zip-files.
 Must be a directory.
 Defaults to: %AppData%/PowerShell/PSFramework/modules/PowerShellGet
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

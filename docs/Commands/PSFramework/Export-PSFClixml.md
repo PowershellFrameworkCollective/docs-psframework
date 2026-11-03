@@ -1,163 +1,205 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/docs/Commands/PSFramework/Export-PSFClixml
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Export-PSFClixml
 ---
 
 # Export-PSFClixml
 
-## SYNOPSIS
+## Synopsis
+
 Writes objects to the filesystem.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Export-PSFClixml [-Path] <String> [-Depth <Int32>] [-InputObject <Object>] [-Style <ClixmlDataStyle>]
+Export-PSFClixml [-Path] <string> [-Depth <int>] [-InputObject <Object>] [-Style <ClixmlDataStyle>]
  [-NoCompression] [-PassThru] [-Encoding <EncodingParameter>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Writes objects to the filesystem.
 In opposite to the default Export-Clixml cmdlet, this function offers data compression as the default option.
 
 Exporting to regular clixml is still supported though.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-ChildItem | Export-PSFClixml -Path 'C:\temp\data.byte'
+
+```powershell
+Get-ChildItem | Export-PSFClixml -Path 'C:\temp\data.byte'
 ```
 
 Exports a list of all items in the current path as compressed binary file to C:\temp\data.byte
 
 ### EXAMPLE 2
-```
-Get-ChildItem | Export-PSFClixml -Path C:\temp\data.xml -Style 'String' -NoCompression
+
+```powershell
+Get-ChildItem | Export-PSFClixml -Path C:\temp\data.xml -Style 'String' -NoCompression
 ```
 
 Exports a list of all items in the current path as a default clixml readable by Import-Clixml
 
-## PARAMETERS
+## Parameters
 
-### -Path
-The path to write to.
+### Depth
 
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Depth
 Specifies how many levels of contained objects are included in the XML representation.
 The default value is 2.
 
 ```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Int32
+DefaultValue: 0
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -InputObject
-The object(s) to serialize.
+### Encoding
 
-```yaml
-Type: Object
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Style
-Whether to export as byte (better compression) or as string (often easier to transmit using other utilities/apis).
-
-```yaml
-Type: ClixmlDataStyle
-Parameter Sets: (All)
-Aliases:
-Accepted values: String, Byte
-
-Required: False
-Position: Named
-Default value: Byte
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoCompression
-By default, exported data is compressed, saving a lot of storage at the cost of some CPU cycles.
-This switch disables this compression, making string-style exports compatible with Import-Clixml.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Passes all objects along the pipeline.
-By default, Export-PSFClixml does not produce output.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Encoding
 The encoding to use when using string-style export.
 By default, it exports as UTF8 encoding.
 
 ```yaml
-Type: EncodingParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: (Get-PSFConfigValue -FullName 'PSFramework.Text.Encoding.DefaultWrite')
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: PSFramework.Parameter.EncodingParameter
+DefaultValue: (Get-PSFConfigValue -FullName 'PSFramework.Text.Encoding.DefaultWrite')
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### InputObject
 
-## INPUTS
+The object(s) to serialize.
 
-## OUTPUTS
+```yaml
+Type: System.Object
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
+### NoCompression
 
-## RELATED LINKS
+By default, exported data is compressed, saving a lot of storage at the cost of some CPU cycles.
+This switch disables this compression, making string-style exports compatible with Import-Clixml.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### PassThru
+
+Passes all objects along the pipeline.
+By default, Export-PSFClixml does not produce output.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Path
+
+The path to write to.
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Style
+
+Whether to export as byte (better compression) or as string (often easier to transmit using other utilities/apis).
+
+```yaml
+Type: PSFramework.Serialization.ClixmlDataStyle
+DefaultValue: Byte
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+

@@ -1,22 +1,30 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/docs/Commands/PSFramework/Test-PSFFunctionInterrupt
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Test-PSFFunctionInterrupt
 ---
 
 # Test-PSFFunctionInterrupt
 
-## SYNOPSIS
+## Synopsis
+
 Tests whether the calling function should be interrupted.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
 Test-PSFFunctionInterrupt [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 This helper function is designed to work in tandem with Stop-PSFFunction.
 When gracefully terminating a function, there is a major issue:
 "Return" will only stop the current one of the three blocks (Begin, Process, End).
@@ -30,25 +38,16 @@ This avoids having to handle odd variables in the parent function and causes the
 For a more detailed explanation - including commented full-scale implementation examples - see the associated help article:
 Get-Help about_psf_flowcontrol
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-if (Test-PSFFunctionInterrupt) { return }
+
+```powershell
+if (Test-PSFFunctionInterrupt) { return }
 ```
 
 The calling function will stop if this function returns true.
 
-## PARAMETERS
+## Parameters
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-### System.Boolean
-## NOTES
-
-## RELATED LINKS

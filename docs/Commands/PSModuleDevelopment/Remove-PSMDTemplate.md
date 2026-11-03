@@ -1,189 +1,254 @@
----
-external help file: PSModuleDevelopment-help.xml
+﻿---
+document type: cmdlet
+external help file: PSModuleDevelopment-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSModuleDevelopment
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Remove-PSMDTemplate
 ---
 
 # Remove-PSMDTemplate
 
-## SYNOPSIS
+## Synopsis
+
 Removes templates
 
-## SYNTAX
+## Syntax
 
-### NameStore (Default)
+### NameStore
+
 ```
-Remove-PSMDTemplate [-TemplateName] <String> [-Store <String>] [-Deprecated] [-EnableException] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-PSMDTemplate [-TemplateName] <string> [-Store <string>] [-Deprecated] [-EnableException]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Template
+
 ```
-Remove-PSMDTemplate -Template <TemplateInfo[]> [-EnableException] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-PSMDTemplate -Template <TemplateInfo[]> [-EnableException] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### NamePath
+
 ```
-Remove-PSMDTemplate [-TemplateName] <String> -Path <String> [-Deprecated] [-EnableException] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-PSMDTemplate [-TemplateName] <string> -Path <string> [-Deprecated] [-EnableException]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 This function removes templates used in the PSModuleDevelopment templating system.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Remove-PSMDTemplate -TemplateName '*' -Deprecated
+
+```powershell
+Remove-PSMDTemplate -TemplateName '*' -Deprecated
 ```
 
 Remove all templates that have been superseded by a newer version.
 
 ### EXAMPLE 2
-```
-Get-PSMDTemplate -TemplateName 'module' -RequiredVersion '1.2.2.1' | Remove-PSMDTemplate
+
+```powershell
+Get-PSMDTemplate -TemplateName 'module' -RequiredVersion '1.2.2.1' | Remove-PSMDTemplate
 ```
 
 Removes all copies of the template 'module' with exactly the version '1.2.2.1'
 
-## PARAMETERS
+## Parameters
 
-### -Template
-A template object returned by Get-PSMDTemplate.
-Will clear exactly the version specified, from exactly its location.
+### Confirm
 
-```yaml
-Type: TemplateInfo[]
-Parameter Sets: Template
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -TemplateName
-The name of the template to remove.
-Templates are filtered by this using wildcard comparison.
+If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.
 
 ```yaml
-Type: String
-Parameter Sets: NameStore, NamePath
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: ''
+SupportsWildcards: false
 Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+- cf
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Store
-The template store to retrieve tempaltes from.
-By default, all stores are queried.
+### Deprecated
 
-```yaml
-Type: String
-Parameter Sets: NameStore
-Aliases:
-
-Required: False
-Position: Named
-Default value: *
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Path
-Instead of a registered store, look in this path for templates.
-
-```yaml
-Type: String
-Parameter Sets: NamePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Deprecated
 Will delete all versions of matching templates except for the latest one.
 Note:
 If the same template is found in multiple stores, it will keep a single copy across all stores.
 To process by store, be sure to specify the store parameter and loop over the stores desired.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: NameStore, NamePath
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: NamePath
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+- Name: NameStore
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -EnableException
+### EnableException
+
 Replaces user friendly yellow warnings with bloody red exceptions of doom!
 Use this if you want the function to throw terminating errors you want to catch.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -WhatIf
+### Path
+
+Instead of a registered store, look in this path for templates.
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: NamePath
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Store
+
+The template store to retrieve tempaltes from.
+By default, all stores are queried.
+
+```yaml
+Type: System.String
+DefaultValue: '*'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: NameStore
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Template
+
+A template object returned by Get-PSMDTemplate.
+Will clear exactly the version specified, from exactly its location.
+
+```yaml
+Type: PSModuleDevelopment.Template.TemplateInfo[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Template
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### TemplateName
+
+The name of the template to remove.
+Templates are filtered by this using wildcard comparison.
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: NamePath
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+- Name: NameStore
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### WhatIf
+
 If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: ''
+SupportsWildcards: false
+Aliases:
+- wi
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Confirm
-If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.
 
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
-
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

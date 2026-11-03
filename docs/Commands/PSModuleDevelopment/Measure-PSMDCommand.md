@@ -1,98 +1,116 @@
----
-external help file: PSModuleDevelopment-help.xml
+﻿---
+document type: cmdlet
+external help file: PSModuleDevelopment-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSModuleDevelopment
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Measure-PSMDCommand
 ---
 
 # Measure-PSMDCommand
 
-## SYNOPSIS
+## Synopsis
+
 Measures command performance with consecutive tests.
 
-## SYNTAX
+## Syntax
 
 ### Script
+
 ```
-Measure-PSMDCommand -ScriptBlock <ScriptBlock> [-Iterations <Int32>] [<CommonParameters>]
+Measure-PSMDCommand -ScriptBlock <scriptblock> [-Iterations <int>] [<CommonParameters>]
 ```
 
 ### Set
+
 ```
-Measure-PSMDCommand [-Iterations <Int32>] -TestSet <Hashtable> [<CommonParameters>]
+Measure-PSMDCommand -TestSet <hashtable> [-Iterations <int>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 This function measures the performance of a scriptblock many consective times.
 
 Warning: Running a command repeatedly may not yield reliable information, since repeated executions may benefit from caching or other performance enhancing features, depending on the script content.
 This is best suited for measuring the performance of tasks that will later be run repeatedly as well.
 It also is useful for mitigating local performance fluctuations when comparing performances.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Measure-PSMDCommand -ScriptBlock { dir \\Server\share } -Iterations 100
+
+```powershell
+Measure-PSMDCommand -ScriptBlock { dir \\Server\share } -Iterations 100
 ```
 
 This tries to use Get-ChildItem on a remote directory 100 consecutive times, then measures performance and reports common performance indicators (Average duration, Maximum, Minimum, Total)
 
-## PARAMETERS
+## Parameters
 
-### -ScriptBlock
-The scriptblock whose performance is to be measure.
+### Iterations
 
-```yaml
-Type: ScriptBlock
-Parameter Sets: Script
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Iterations
 How many times should this performance test be repeated.
 
 ```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: 1
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Int32
+DefaultValue: 1
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -TestSet
+### ScriptBlock
+
+The scriptblock whose performance is to be measure.
+
+```yaml
+Type: System.Management.Automation.ScriptBlock
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Script
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### TestSet
+
 Accepts a hashtable, mapping a name to a specific scriptblock to measure.
 This will generate a result grading the performance of the various sets offered.
 
 ```yaml
-Type: Hashtable
-Parameter Sets: Set
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Collections.Hashtable
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Set
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

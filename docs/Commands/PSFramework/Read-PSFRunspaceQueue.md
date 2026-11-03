@@ -1,165 +1,210 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/documentation/documents/psframework/runspace-workflows.html
+Locale: en-US
 Module Name: PSFramework
-online version: https://psframework.org/documentation/documents/psframework/runspace-workflows.html
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Read-PSFRunspaceQueue
 ---
 
 # Read-PSFRunspaceQueue
 
-## SYNOPSIS
+## Synopsis
+
 Reads data from a queue associated with a runspace workflow.
 
-## SYNTAX
+## Syntax
 
-### Default (Default)
+### Default
+
 ```
-Read-PSFRunspaceQueue -Name <String> [-All] [-WorkflowName <String[]>] [-InputObject <RSWorkflow[]>]
+Read-PSFRunspaceQueue -Name <string> [-All] [-WorkflowName <string[]>] [-InputObject <RSWorkflow[]>]
  [<CommonParameters>]
 ```
 
 ### Peek
+
 ```
-Read-PSFRunspaceQueue -Name <String> [-All] [-Peek] [-WorkflowName <String[]>] [-InputObject <RSWorkflow[]>]
- [<CommonParameters>]
+Read-PSFRunspaceQueue -Name <string> [-All] [-Peek] [-WorkflowName <string[]>]
+ [-InputObject <RSWorkflow[]>] [<CommonParameters>]
 ```
 
 ### Continual
+
 ```
-Read-PSFRunspaceQueue -Name <String> [-Continual] [-WorkflowName <String[]>] [-InputObject <RSWorkflow[]>]
- [<CommonParameters>]
+Read-PSFRunspaceQueue -Name <string> [-Continual] [-WorkflowName <string[]>]
+ [-InputObject <RSWorkflow[]>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Reads data from a queue associated with a runspace workflow.
 Can be used to receive the final workflow results or to collect data outside of the default workflow.
 Note: Reading data from a queue removes the item from it!
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-$workflow | Read-PSFRunspaceQueue -Name Done -All
+
+```powershell
+$workflow | Read-PSFRunspaceQueue -Name Done -All
 ```
 
 Read / retrieve all items from the queue "Done" of the workflow $workflow
 
 ### EXAMPLE 2
-```
-Read-PSFRunspaceQueue -Name extraData
+
+```powershell
+Read-PSFRunspaceQueue -Name extraData
 ```
 
 Read a value from "extraData" queue of the current Runspace Workflow.
 Only works from within the code of a running worker.
 Keep in mind that worker code automatically receives input from the specified input queue.
 
-## PARAMETERS
+## Parameters
 
-### -Name
-Name of the queue to read data from.
+### All
 
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -All
 Retrieve all items from the queue.
 By default, only the oldest entry is returned.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: Default, Peek
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Peek
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+- Name: Default
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Continual
+### Continual
+
 Keep reading data from the queue until the queue is closed and emptied.
 Intended for use in situations, where a processing worker must run within a single pipeline,
 rather than the default, repeated calls of the processing scriptblock per queue item.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: Continual
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Continual
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Peek
-Retrieve one (or all, if used with -All) item from the queue, without actually removing the item from it.
+### InputObject
 
-```yaml
-Type: SwitchParameter
-Parameter Sets: Peek
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WorkflowName
-Name of the Runspace Workflow the queue read from belongs to.
-The workflow contains all the workers, queues and management tools for the Runspace Workload.
-
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
-### -InputObject
 Workflow object the queue read from belongs to.
 The workflow contains all the workers, queues and management tools for the Runspace Workload.
 
 ```yaml
-Type: RSWorkflow[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
+Type: PSFramework.Runspace.RSWorkflow[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### Name
 
-## INPUTS
+Name of the queue to read data from.
 
-## OUTPUTS
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
+### Peek
 
-## RELATED LINKS
+Retrieve one (or all, if used with -All) item from the queue, without actually removing the item from it.
 
-[https://psframework.org/documentation/documents/psframework/runspace-workflows.html](https://psframework.org/documentation/documents/psframework/runspace-workflows.html)
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Peek
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### WorkflowName
+
+Name of the Runspace Workflow the queue read from belongs to.
+The workflow contains all the workers, queues and management tools for the Runspace Workload.
+
+```yaml
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: true
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+## Links
+
+Microsoft.PowerShell.PlatyPS.Model.Links
+
 

@@ -1,42 +1,42 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Enable-PSFConsoleInterrupt
 ---
 
 # Enable-PSFConsoleInterrupt
 
-## SYNOPSIS
+## Synopsis
+
 Re-enables the use of CTRL+C to interrupt the console.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
 Enable-PSFConsoleInterrupt [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Re-enables the use of CTRL+C to interrupt the console.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Enable-PSFConsoleInterrupt
+
+```powershell
+Enable-PSFConsoleInterrupt
 ```
 
 Re-enables the use of CTRL+C to interrupt the console.
 
-## PARAMETERS
+## Parameters
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

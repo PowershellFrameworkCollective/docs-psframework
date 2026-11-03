@@ -1,45 +1,56 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/docs/Commands/PSFramework/Get-PSFResultCache
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Get-PSFResultCache
 ---
 
 # Get-PSFResultCache
 
-## SYNOPSIS
+## Synopsis
+
 Returns the last stored result
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Get-PSFResultCache [[-Type] <String>] [<CommonParameters>]
+Get-PSFResultCache [[-Type] <string>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Functions that implement the result cache store their information in the cache.
 This can then be retrieved by the user running this command.
 This forgives the user for forgetting to store the output in a variable and is especially precious when running commands that take a while to execute.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-PSFResultCache
+
+```powershell
+Get-PSFResultCache
 ```
 
 Returns the latest cached result.
 
 ### EXAMPLE 2
-```
-Get-PSFResultCache -Type 'All'
+
+```powershell
+Get-PSFResultCache -Type 'All'
 ```
 
 Returns a meta-information object containing the last result, when it was written and which function did the writing.
 
-## PARAMETERS
+## Parameters
 
-### -Type
+### Type
+
 Default: Value
 Options: All, Value
 By default, this function will return the output that was cached during the last execution.
@@ -49,24 +60,20 @@ This includes the name of the command calling Set-PFSResultCache as well as the 
 - Value: Returns just the object(s) that were written to cache
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: Value
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: Value
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

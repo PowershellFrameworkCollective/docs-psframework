@@ -1,107 +1,130 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: ConvertTo-PSFClixml
 ---
 
 # ConvertTo-PSFClixml
 
-## SYNOPSIS
+## Synopsis
+
 Converts an input object into a serialized string or byte array.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-ConvertTo-PSFClixml [[-Depth] <Int32>] [[-InputObject] <Object>] [[-Style] <ClixmlDataStyle>] [-NoCompression]
- [<CommonParameters>]
+ConvertTo-PSFClixml [[-Depth] <int>] [[-InputObject] <Object>] [[-Style] <ClixmlDataStyle>]
+ [-NoCompression] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Converts an input object into a serialized string or byte array.
 Works analogous to Export-PSFClixml, only it does not require being written to file.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-ChildItem | ConvertTo-PSFClixml
+
+```powershell
+Get-ChildItem | ConvertTo-PSFClixml
 ```
 
 Scans all items in the current folder and then converts that into a compressed clixml string.
 
-## PARAMETERS
+## Parameters
 
-### -Depth
+### Depth
+
 Specifies how many levels of contained objects are included in the XML representation.
 The default value is 2.
 
 ```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Int32
+DefaultValue: 0
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -InputObject
+### InputObject
+
 The object(s) to serialize.
 
 ```yaml
-Type: Object
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
+Type: System.Object
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Style
-Whether to export as byte (better compression) or as string (often easier to transmit using other utilities/apis).
+### NoCompression
 
-```yaml
-Type: ClixmlDataStyle
-Parameter Sets: (All)
-Aliases:
-Accepted values: String, Byte
-
-Required: False
-Position: 3
-Default value: String
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoCompression
 By default, exported data is compressed, saving a lot of storage at the cost of some CPU cycles.
 This switch disables this compression, making string-style exports compatible with Import-Clixml.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### Style
 
-## INPUTS
+Whether to export as byte (better compression) or as string (often easier to transmit using other utilities/apis).
 
-## OUTPUTS
+```yaml
+Type: PSFramework.Serialization.ClixmlDataStyle
+DefaultValue: String
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 2
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
 
-## RELATED LINKS

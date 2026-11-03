@@ -1,110 +1,134 @@
----
-external help file: PSModuleDevelopment-help.xml
+﻿---
+document type: cmdlet
+external help file: PSModuleDevelopment-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSModuleDevelopment
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Find-PSMDFileContent
 ---
 
 # Find-PSMDFileContent
 
-## SYNOPSIS
+## Synopsis
+
 Used to quickly search in module files.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Find-PSMDFileContent [-Pattern] <String> [-Extension <String>] [-Path <String>] [-EnableException]
+Find-PSMDFileContent [-Pattern] <string> [-Extension <string>] [-Path <string>] [-EnableException]
  [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 This function can be used to quickly search files in your module's path.
-By using Set-PSMDModulePath (or Set-PSFConfig 'PSModuleDevelopment.Module.Path' '\<path\>') you can set the default path to search in.
+By using Set-PSMDModulePath (or Set-PSFConfig 'PSModuleDevelopment.Module.Path' '<path>') you can set the default path to search in.
 Using
   Register-PSFConfig -FullName 'PSModuleDevelopment.Module.Path'
 allows you to persist this setting across sessions.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Find-PSMDFileContent -Pattern 'Get-Test'
+
+```powershell
+Find-PSMDFileContent -Pattern 'Get-Test'
 ```
 
 Searches all module files for the string 'Get-Test'.
 
-## PARAMETERS
+## Parameters
 
-### -Pattern
-The text to search for, can be any regex pattern
+### EnableException
 
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Extension
-The extension of files to consider.
-Only files with this extension will be searched.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: (Get-PSFConfigValue -FullName 'PSModuleDevelopment.Find.DefaultExtensions')
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Path
-The path to use as search base.
-Defaults to the path found in the setting 'PSModuleDevelopment.Module.Path'
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: (Get-PSFConfigValue -FullName 'PSModuleDevelopment.Module.Path')
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableException
 Replaces user friendly yellow warnings with bloody red exceptions of doom!
 Use this if you want the function to throw terminating errors you want to catch.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### Extension
 
-## INPUTS
+The extension of files to consider.
+Only files with this extension will be searched.
 
-## OUTPUTS
+```yaml
+Type: System.String
+DefaultValue: (Get-PSFConfigValue -FullName 'PSModuleDevelopment.Find.DefaultExtensions')
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
+### Path
 
-## RELATED LINKS
+The path to use as search base.
+Defaults to the path found in the setting 'PSModuleDevelopment.Module.Path'
+
+```yaml
+Type: System.String
+DefaultValue: (Get-PSFConfigValue -FullName 'PSModuleDevelopment.Module.Path')
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Pattern
+
+The text to search for, can be any regex pattern
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+

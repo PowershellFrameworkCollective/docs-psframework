@@ -1,53 +1,71 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/documentation/documents/psframework/runspace-workflows.html
+Locale: en-US
 Module Name: PSFramework
-online version: https://psframework.org/documentation/documents/psframework/runspace-workflows.html
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Remove-PSFRunspaceWorkflow
 ---
 
 # Remove-PSFRunspaceWorkflow
 
-## SYNOPSIS
+## Synopsis
+
 Removes a Runspace Workflow, stopping all processing.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Remove-PSFRunspaceWorkflow [-Name] <String[]> [<CommonParameters>]
+Remove-PSFRunspaceWorkflow [-Name] <string[]> [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Removes a Runspace Workflow, stopping all processing.
 This stops all workers, ends all runspaces and unlists the workflow object.
 
 The queues remain untouched, but will be garbage collected together with the workflow object,
 assuming no variable outside of the module retains it.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-PSFRunspaceWorkflow | Remove-PSFRunspaceWorkflow
+
+```powershell
+Get-PSFRunspaceWorkflow | Remove-PSFRunspaceWorkflow
 ```
 
 Stops and removes all runspace workflows.
 
-## PARAMETERS
+## Parameters
 
-### -Name
+### Name
+
 The name of the Runspace Workflow to remove.
 
 ```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: true
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+## Links
+
+Microsoft.PowerShell.PlatyPS.Model.Links Microsoft.PowerShell.PlatyPS.Model.Links Microsoft.PowerShell.PlatyPS.Model.Links
+
+

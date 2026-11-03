@@ -1,123 +1,148 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Test-PSFFilter
 ---
 
 # Test-PSFFilter
 
-## SYNOPSIS
+## Synopsis
+
 Tests a filter expression on whether it is valid.
 
-## SYNTAX
+## Syntax
 
-### default (Default)
+### default
+
 ```
-Test-PSFFilter -Expression <String> [<CommonParameters>]
+Test-PSFFilter -Expression <string> [<CommonParameters>]
 ```
 
 ### Object
+
 ```
-Test-PSFFilter -Expression <String> -ConditionSet <ConditionSet> [<CommonParameters>]
+Test-PSFFilter -Expression <string> -ConditionSet <ConditionSet> [<CommonParameters>]
 ```
 
 ### Name
+
 ```
-Test-PSFFilter -Expression <String> -SetModule <String> -SetName <String> [<CommonParameters>]
+Test-PSFFilter -Expression <string> -SetModule <string> -SetName <string> [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Tests a filter expression on whether it is valid.
 Can also validate, that it will work with the specified condition set.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Test-PSFFilter -Expression 'OSWindows -or EnvAzurePipelines'
+
+```powershell
+Test-PSFFilter -Expression 'OSWindows -or EnvAzurePipelines'
 ```
 
 Validates the syntax of the "OSWindows -or EnvAzurePipelines" expression (which is correct).
 
 ### EXAMPLE 2
-```
-Test-PSFFilter -Expression 'OSWindows -or EnvAzurePipelines' -SetModule PSFramework -SetName Environment
+
+```powershell
+Test-PSFFilter -Expression 'OSWindows -or EnvAzurePipelines' -SetModule PSFramework -SetName Environment
 ```
 
 Validates the syntax of the "OSWindows -or EnvAzurePipelines" expression (which is correct).
 It then compares it to the latest version of the Environment ConditionSet from within the PSFramework and validates, that it contains the conditions used in the expression ("OSWindows" and "EnvAzurePipelines").
 
-## PARAMETERS
+## Parameters
 
-### -Expression
-The filter expression to validate.
+### ConditionSet
 
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConditionSet
 The condition set object (as returned by Get-PSFFilterConditionSet) to validate against the expression.
 
 ```yaml
-Type: ConditionSet
-Parameter Sets: Object
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: PSFramework.Filter.ConditionSet
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Object
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -SetModule
+### Expression
+
+The filter expression to validate.
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### SetModule
+
 The name of the module from which to pick up the condition set to validate against the expression.
 
 ```yaml
-Type: String
-Parameter Sets: Name
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Name
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -SetName
+### SetName
+
 The name of the condition set to validate against the expression.
 
 ```yaml
-Type: String
-Parameter Sets: Name
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Name
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-## OUTPUTS
-
-### System.Boolean
-## NOTES
-
-## RELATED LINKS

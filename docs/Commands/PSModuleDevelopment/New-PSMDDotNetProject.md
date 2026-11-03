@@ -1,254 +1,326 @@
----
-external help file: PSModuleDevelopment-help.xml
+﻿---
+document type: cmdlet
+external help file: PSModuleDevelopment-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSModuleDevelopment
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: New-PSMDDotNetProject
 ---
 
 # New-PSMDDotNetProject
 
-## SYNOPSIS
+## Synopsis
+
 Wrapper function around 'dotnet new'
 
-## SYNTAX
+## Syntax
 
-### Create (Default)
+### Create
+
 ```
-New-PSMDDotNetProject [-TemplateName] <String> [-Help] [-Force] [[-Name] <String>] [[-Output] <String>]
- [-Arguments <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-PSMDDotNetProject [-TemplateName] <string> [[-Name] <string>] [[-Output] <string>] [-Help]
+ [-Force] [-Arguments <string[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### List
+
 ```
-New-PSMDDotNetProject [[-TemplateName] <String>] [-List] [-Help] [-Force] [-Arguments <String[]>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-PSMDDotNetProject [[-TemplateName] <string>] [-List] [-Help] [-Force] [-Arguments <string[]>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Install
+
 ```
-New-PSMDDotNetProject [-Help] [-Force] -Install <String> [-Arguments <String[]>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-PSMDDotNetProject -Install <string> [-Help] [-Force] [-Arguments <string[]>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### Uninstall
+
 ```
-New-PSMDDotNetProject [-Help] [-Force] -Uninstall <String> [-Arguments <String[]>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-PSMDDotNetProject -Uninstall <string> [-Help] [-Force] [-Arguments <string[]>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 This function is a wrapper around the dotnet.exe application with the parameter 'new'.
 It can be used to create projects from templates, as well as to administrate templates.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-dotnetnew -l
+
+```powershell
+dotnetnew -l
 ```
 
 Lists all installed templates.
 
 ### EXAMPLE 2
-```
-dotnetnew mvc foo F:\temp\projects\foo -au Windows --no-restore
+
+```powershell
+dotnetnew mvc foo F:\temp\projects\foo -au Windows --no-restore
 ```
 
 Creates a new MVC project named "foo" in folder "F:\Temp\projects\foo"
 - It will set authentication to windows
 - It will skip the automatic restore of the project on create
 
-## PARAMETERS
+## Parameters
 
-### -TemplateName
-The name of the template to create
+### Arguments
+
+Additional arguments to pass to the application.
+Generally used for parameters when creating a project from a template.
 
 ```yaml
-Type: String
-Parameter Sets: Create
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
 Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+- a
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: true
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
+### Confirm
+
+If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.
+
 ```yaml
-Type: String
-Parameter Sets: List
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: ''
+SupportsWildcards: false
 Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+- cf
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -List
-List the existing templates.
+### Force
+
+Overwrite existing files.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: List
-Aliases: l
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Help
+### Help
+
 Ask for help / documentation.
 Particularly useful when dealing with project types that have a lot of options.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: h
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases:
+- h
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Force
-Overwrite existing files.
+### Install
+
+Install the specified template from the VS marketplace.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
 Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+- i
+ParameterSets:
+- Name: Install
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Name
+### List
+
+List the existing templates.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases:
+- l
+ParameterSets:
+- Name: List
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Name
+
 The name of the project to create
 
 ```yaml
-Type: String
-Parameter Sets: Create
-Aliases: n
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases:
+- n
+ParameterSets:
+- Name: Create
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Output
+### Output
+
 The folder in which to create it.
 Note: This folder will automatically be te root folder of the project.
 If this folder doesn't exist yet, it will be created.
 When used with -Force, it will automatically purge all contents.
 
 ```yaml
-Type: String
-Parameter Sets: Create
-Aliases: o
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases:
+- o
+ParameterSets:
+- Name: Create
+  Position: 2
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Install
-Install the specified template from the VS marketplace.
+### TemplateName
+
+The name of the template to create
 
 ```yaml
-Type: String
-Parameter Sets: Install
-Aliases: i
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: List
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+- Name: Create
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Uninstall
+### Uninstall
+
 Uninstall an installed template.
 
 ```yaml
-Type: String
-Parameter Sets: Uninstall
-Aliases: u
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases:
+- u
+ParameterSets:
+- Name: Uninstall
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Arguments
-Additional arguments to pass to the application.
-Generally used for parameters when creating a project from a template.
+### WhatIf
 
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases: a
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
 If this switch is enabled, no actions are performed but informational messages will be displayed that explain what would happen if the command were to run.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: ''
+SupportsWildcards: false
+Aliases:
+- wi
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Confirm
-If this switch is enabled, you will be prompted for confirmation before executing any operations that change state.
 
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
-
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

@@ -1,99 +1,118 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/docs/Commands/PSFramework/Remove-PSFMessageLevelModifier
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Remove-PSFMessageLevelModifier
 ---
 
 # Remove-PSFMessageLevelModifier
 
-## SYNOPSIS
+## Synopsis
+
 Removes a message level modifier.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Remove-PSFMessageLevelModifier [[-Name] <String[]>] [[-Modifier] <MessageLevelModifier[]>] [-EnableException]
- [<CommonParameters>]
+Remove-PSFMessageLevelModifier [[-Name] <string[]>] [[-Modifier] <MessageLevelModifier[]>]
+ [-EnableException] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Removes a message level modifier.
 
 Message Level Modifiers can be created by using New-PSFMessageLevelModifier.
 They are used to emphasize or deemphasize messages, in order to help with debugging.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-PSFMessageLevelModifier | Remove-PSFMessageLevelModifier
+
+```powershell
+Get-PSFMessageLevelModifier | Remove-PSFMessageLevelModifier
 ```
 
 Removes all message level modifiers, restoring everything to their default levels.
 
 ### EXAMPLE 2
-```
-Remove-PSFMessageLevelModifier -Name "mymodule.foo"
+
+```powershell
+Remove-PSFMessageLevelModifier -Name "mymodule.foo"
 ```
 
 Removes the message level modifier named "mymodule.foo"
 
-## PARAMETERS
+## Parameters
 
-### -Name
-Name of the message level modifier to remove.
+### EnableException
 
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Modifier
-The actual modifier to remove, as returned by Get-PSFMessageLevelModifier.
-
-```yaml
-Type: MessageLevelModifier[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -EnableException
 This parameters disables user-friendly warnings and enables the throwing of exceptions.
 This is less user friendly, but allows catching exceptions in calling scripts.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### Modifier
 
-## INPUTS
+The actual modifier to remove, as returned by Get-PSFMessageLevelModifier.
 
-## OUTPUTS
+```yaml
+Type: PSFramework.Message.MessageLevelModifier[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
+### Name
 
-## RELATED LINKS
+Name of the message level modifier to remove.
+
+```yaml
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: false
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+

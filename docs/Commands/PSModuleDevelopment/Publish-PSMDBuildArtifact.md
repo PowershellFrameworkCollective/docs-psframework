@@ -1,22 +1,31 @@
----
-external help file: PSModuleDevelopment-help.xml
+﻿---
+document type: cmdlet
+external help file: PSModuleDevelopment-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSModuleDevelopment
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Publish-PSMDBuildArtifact
 ---
 
 # Publish-PSMDBuildArtifact
 
-## SYNOPSIS
+## Synopsis
+
 Create a new artifact for the current build pipeline.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Publish-PSMDBuildArtifact [-Name] <String> [-Value] <Object> [[-Tag] <String[]>] [<CommonParameters>]
+Publish-PSMDBuildArtifact [-Name] <string> [-Value] <Object> [[-Tag] <string[]>]
+ [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Create a new artifact for the current build pipeline.
 Use this create artifacts that are accessible in later steps in the pipeline.
 
@@ -25,72 +34,82 @@ They are always cleared at the beginning of a new one.
 
 Artifacts are NOT persisted across PowerShell sessions.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Publish-PSMDBuildArtifact -Name 'session' -Value $session -Tag 'pssession'
+
+```powershell
+Publish-PSMDBuildArtifact -Name 'session' -Value $session -Tag 'pssession'
 ```
 
 Publishes an artifact named "session" containing the content of $session that is tagged as a PowerShell remoting session.
 
-## PARAMETERS
+## Parameters
 
-### -Name
+### Name
+
 Name of the Artifact to create.
 Technically there are no limits to which character to chose, but we strongly encourage restricting yourself to letters, numbers, dash, underscore and dot.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Value
-The value to assign to the artifact.
+### Tag
 
-```yaml
-Type: Object
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
 Any tags to add to an artifact.
 Tags can be searched for in order to bulk-operate against all artifacts of that tag.
 For example, the "remove-pssession" action can remove all remoting sessions for all artifacts tagged as "pssession".
 
 ```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: @()
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String[]
+DefaultValue: '@()'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 2
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### Value
 
-## INPUTS
+The value to assign to the artifact.
 
-## OUTPUTS
+```yaml
+Type: System.Object
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
 
-## RELATED LINKS

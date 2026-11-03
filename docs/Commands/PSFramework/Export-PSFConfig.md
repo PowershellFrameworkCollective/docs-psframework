@@ -1,227 +1,301 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: https://psframework.org/docs/Commands/PSFramework/Export-PSFConfig
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Export-PSFConfig
 ---
 
 # Export-PSFConfig
 
-## SYNOPSIS
+## Synopsis
+
 Exports configuration items to a Json file.
 
-## SYNTAX
+## Syntax
 
-### FullName (Default)
+### FullName
+
 ```
-Export-PSFConfig [-FullName] <String> [-OutPath] <String> [-SkipUnchanged] [-EnableException]
+Export-PSFConfig [-FullName] <string> [-OutPath] <string> [-SkipUnchanged] [-EnableException]
  [<CommonParameters>]
 ```
 
 ### Module
+
 ```
-Export-PSFConfig [-Module] <String> [[-Name] <String>] [-OutPath] <String> [-SkipUnchanged] [-EnableException]
- [<CommonParameters>]
+Export-PSFConfig [-Module] <string> [[-Name] <string>] [-OutPath] <string> [-SkipUnchanged]
+ [-EnableException] [<CommonParameters>]
 ```
 
 ### Config
+
 ```
-Export-PSFConfig [-Config] <Config[]> [-OutPath] <String> [-SkipUnchanged] [-EnableException]
+Export-PSFConfig [-Config] <Config[]> [-OutPath] <string> [-SkipUnchanged] [-EnableException]
  [<CommonParameters>]
 ```
 
 ### ModuleName
+
 ```
-Export-PSFConfig -ModuleName <String> [-ModuleVersion <Int32>] [-Scope <ConfigScope>] [-SkipUnchanged]
+Export-PSFConfig -ModuleName <string> [-ModuleVersion <int>] [-Scope <ConfigScope>] [-SkipUnchanged]
  [-EnableException] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Exports configuration items to a Json file.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Get-PSFConfig | Export-PSFConfig -OutPath '~/export.json'
+
+```powershell
+Get-PSFConfig | Export-PSFConfig -OutPath '~/export.json'
 ```
 
 Exports all current settings to json.
 
 ### EXAMPLE 2
-```
-Export-PSFConfig -Module MyModule -OutPath '~/export.json' -SkipUnchanged
+
+```powershell
+Export-PSFConfig -Module MyModule -OutPath '~/export.json' -SkipUnchanged
 ```
 
 Exports all settings of the module 'MyModule' that are no longer the original default values to json.
 
-## PARAMETERS
+## Parameters
 
-### -FullName
-Select the configuration objects to export by filtering by their full name.
+### Config
 
-```yaml
-Type: String
-Parameter Sets: FullName
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Module
-Select the configuration objects to export by filtering by their module name.
-
-```yaml
-Type: String
-Parameter Sets: Module
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Select the configuration objects to export by filtering by their name.
-
-```yaml
-Type: String
-Parameter Sets: Module
-Aliases:
-
-Required: False
-Position: 2
-Default value: *
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Config
 The configuration object(s) to export.
 Returned by Get-PSFConfig.
 
 ```yaml
-Type: Config[]
-Parameter Sets: Config
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
+Type: PSFramework.Configuration.Config[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Config
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: true
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -ModuleName
+### EnableException
+
+This parameters disables user-friendly warnings and enables the throwing of exceptions.
+This is less user friendly, but allows catching exceptions in calling scripts.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### FullName
+
+Select the configuration objects to export by filtering by their full name.
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: FullName
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Module
+
+Select the configuration objects to export by filtering by their module name.
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Module
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### ModuleName
+
 Exports all configuration pertinent to a module to a predefined path.
 Exported configuration items include all settings marked as 'ModuleExport' that have been changed from the default value.
 
 ```yaml
-Type: String
-Parameter Sets: ModuleName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: ModuleName
+  Position: Named
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -ModuleVersion
+### ModuleVersion
+
 The configuration version of the module-settings to write.
 
 ```yaml
-Type: Int32
-Parameter Sets: ModuleName
-Aliases:
-
-Required: False
-Position: Named
-Default value: 1
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Int32
+DefaultValue: 1
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: ModuleName
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -Scope
+### Name
+
+Select the configuration objects to export by filtering by their name.
+
+```yaml
+Type: System.String
+DefaultValue: '*'
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Module
+  Position: 1
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### OutPath
+
+The path (filename included) to export to.
+Will fail if the folder does not exist, will overwrite the file if it exists.
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: Module
+  Position: 2
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+- Name: FullName
+  Position: 1
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+- Name: Config
+  Position: 1
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Scope
+
 Which predefined path to write module specific settings to.
 Only file scopes are considered.
 By default it writes to the suer profile.
 
 ```yaml
-Type: ConfigScope
-Parameter Sets: ModuleName
-Aliases:
-Accepted values: UserDefault, UserMandatory, SystemDefault, SystemMandatory, FileUserLocal, FileUserShared, FileSystem, Environment, EnvironmentSimple
-
-Required: False
-Position: Named
-Default value: FileUserShared
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: PSFramework.Configuration.ConfigScope
+DefaultValue: FileUserShared
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: ModuleName
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -OutPath
-The path (filename included) to export to.
-Will fail if the folder does not exist, will overwrite the file if it exists.
+### SkipUnchanged
 
-```yaml
-Type: String
-Parameter Sets: FullName, Module, Config
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkipUnchanged
 If set, configuration objects whose value was not changed from its original value will not be exported.
 (Note: Settings that were updated with the same value as the original default will still be considered changed)
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### -EnableException
-This parameters disables user-friendly warnings and enables the throwing of exceptions.
-This is less user friendly, but allows catching exceptions in calling scripts.
 
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
-
-## INPUTS
-
-## OUTPUTS
-
-## NOTES
-
-## RELATED LINKS

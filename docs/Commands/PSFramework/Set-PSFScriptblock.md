@@ -1,154 +1,195 @@
----
-external help file: PSFramework-help.xml
+﻿---
+document type: cmdlet
+external help file: PSFramework-Help.xml
+HelpUri: 
+Locale: en-US
 Module Name: PSFramework
-online version:
-schema: 2.0.0
+ms.date: 11-03-2026
+PlatyPS schema version: 2024-05-01
+title: Set-PSFScriptblock
 ---
 
 # Set-PSFScriptblock
 
-## SYNOPSIS
+## Synopsis
+
 Stores a scriptblock in the central scriptblock store.
 
-## SYNTAX
+## Syntax
+
+### __AllParameterSets
 
 ```
-Set-PSFScriptblock [-Name] <String> [-Scriptblock] <ScriptBlock> [-Global] [-Local] [-Tag <String[]>]
- [-Description <String>] [<CommonParameters>]
+Set-PSFScriptblock [-Name] <string> [-Scriptblock] <scriptblock> [-Global] [-Local]
+ [-Tag <string[]>] [-Description <string>] [<CommonParameters>]
 ```
 
-## DESCRIPTION
+## Description
+
 Stores a scriptblock in the central scriptblock store.
 This store can be accessed using Get-PSFScriptblock.
 It is used to share scriptblocks outside of scope and runspace boundaries.
 Scriptblocks thus registered can be accessed by C#-based services, such as the PsfValidateScript attribute.
 
-## EXAMPLES
+## Examples
 
 ### EXAMPLE 1
-```
-Set-PSFScriptblock -Name 'MyModule.TestServer' -Scriptblock $Scriptblock
+
+```powershell
+Set-PSFScriptblock -Name 'MyModule.TestServer' -Scriptblock $Scriptblock
 ```
 
 Stores the scriptblock contained in $Scriptblock under the 'MyModule.TestServer' name.
 
 ### EXAMPLE 2
-```
-Set-PSFScriptblock -Name 'MyModule.TestServer' -Scriptblock $Scriptblock -Tag Awesome, BestCodeEver -Description 'This scriptblock is the only one you need'
+
+```powershell
+Set-PSFScriptblock -Name 'MyModule.TestServer' -Scriptblock $Scriptblock -Tag Awesome, BestCodeEver -Description 'This scriptblock is the only one you need'
 ```
 
 Stores the scriptblock contained in $Scriptblock under the 'MyModule.TestServer' name.
 Applies the tags 'Awesome' and 'BestCodeEver', as well as a descriptive text.
 
-## PARAMETERS
+## Parameters
 
-### -Name
-The name of the scriptblock.
-Must be unique, it is recommended to prefix the module name:
-\<Module\>.\<Scriptblock\>
+### Description
 
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Scriptblock
-The scriptcode to register
-
-```yaml
-Type: ScriptBlock
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Global
-Whether the scriptblock should be invoked in the global context.
-If defined, accessing the scriptblock will automatically globalize it before returning it.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Local
-Whether the scriptblock should be local to the current runspace.
-If defined, each runspace must define its own instance of the scriptblock to use it.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-A list of tags to apply to a scriptblock.
-Used for easier filtering.
-
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Description
 A description for a scriptblock.
 Used for easier filtering and in lieu of documentation.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+### Global
 
-## INPUTS
+Whether the scriptblock should be invoked in the global context.
+If defined, accessing the scriptblock will automatically globalize it before returning it.
 
-## OUTPUTS
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
 
-## NOTES
+### Local
+
+Whether the scriptblock should be local to the current runspace.
+If defined, each runspace must define its own instance of the scriptblock to use it.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+DefaultValue: False
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Name
+
+The name of the scriptblock.
+Must be unique, it is recommended to prefix the module name:
+<Module>.<Scriptblock>
+
+```yaml
+Type: System.String
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 0
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Scriptblock
+
+The scriptcode to register
+
+```yaml
+Type: System.Management.Automation.ScriptBlock
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: 1
+  IsRequired: true
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+### Tag
+
+A list of tags to apply to a scriptblock.
+Used for easier filtering.
+
+```yaml
+Type: System.String[]
+DefaultValue: ''
+SupportsWildcards: false
+Aliases: []
+ParameterSets:
+- Name: (All)
+  Position: Named
+  IsRequired: false
+  ValueFromPipeline: false
+  ValueFromPipelineByPropertyName: false
+  ValueFromRemainingArguments: false
+DontShow: false
+AcceptedValues: []
+HelpMessage: ''
+```
+
+## Notes
+
 Repeatedly registering the same scriptblock (e.g.
 in multi-runspace scenarios) is completely safe:
 - Access is threadsafe & Runspacesafe
 - Overwriting the scriptblock does not affect the statistics
 
-## RELATED LINKS
+
+
